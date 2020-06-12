@@ -1,7 +1,14 @@
 import {useContext, useCallback} from 'react'
 import {useForm} from 'react-hook-form'
 import AuthStore from '@state/auth'
-import {Input, Button} from '@chakra-ui/core'
+import {
+  Input,
+  Button,
+  FormControl,
+  FormLabel,
+  FormHelperText,
+  Stack,
+} from '@chakra-ui/core'
 
 type LoginData = {
   email: string
@@ -18,21 +25,33 @@ const LoginForm = () => {
   )
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        type="email"
-        id="email"
-        name="email"
-        ref={register({required: true})}
-      />
-      <Input
-        type="password"
-        id="password"
-        name="password"
-        ref={register({required: true})}
-      />
-      <Button type="submit">Login</Button>
-    </form>
+    <Stack as="form" spacing={4} onSubmit={handleSubmit(onSubmit)}>
+      <FormControl>
+        <FormLabel htmlFor="email">Email address</FormLabel>
+        <Input
+          type="email"
+          id="email"
+          name="email"
+          ref={register({required: true})}
+          aria-describedby="email-helper-text"
+        />
+        <FormHelperText id="email-helper-text">
+          We'll never share your email.
+        </FormHelperText>
+      </FormControl>
+      <FormControl>
+        <FormLabel htmlFor="email">Password</FormLabel>
+        <Input
+          type="password"
+          id="password"
+          name="password"
+          ref={register({required: true})}
+        />
+      </FormControl>
+      <FormControl>
+        <Button type="submit">Login</Button>
+      </FormControl>
+    </Stack>
   )
 }
 

@@ -3,6 +3,7 @@ import Router from 'next/router'
 import LoginForm from '@components/form/login'
 import AuthStore from '@state/auth'
 import LoginButton from '@components/LoginButton'
+import {Flex} from '@chakra-ui/core'
 
 // Redirects to `/platform` if the user is logged in
 const withRedirect = (WrappedComponent) => (props) => {
@@ -21,10 +22,10 @@ const withRedirect = (WrappedComponent) => (props) => {
 }
 
 const Login = () => (
-  <>
-    <LoginButton />
+  <Flex flex={1} alignItems="flex-start" justifyContent="space-between">
     <LoginForm />
-  </>
+    <LoginButton />
+  </Flex>
 )
 
 export default withRedirect(Login)

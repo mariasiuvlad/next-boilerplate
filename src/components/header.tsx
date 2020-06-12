@@ -1,67 +1,82 @@
+import React, {useCallback, useContext} from 'react'
+import {Box, Heading, Flex, Text, Button} from '@chakra-ui/core'
 import Link from 'next/link'
-import Router from 'next/router'
-import {logout} from '../lib/auth'
-import {useContext} from 'react'
 import AuthStore from '@state/auth'
-import {Logout} from '@state/auth/actions'
 
-const Header = () => {
-  const {dispatch} = useContext(AuthStore)
+const MenuItems = ({children}) => (
+  <Text mt={{base: 4, md: 0}} mr={6} display="block">
+    {children}
+  </Text>
+)
 
-  const onLogout = async () => {
-    await logout()
-    dispatch(Logout())
-    Router.push('/login')
-  }
+const Header = (props) => {
+  const [show, setShow] = React.useState(false)
+  const {actionCreators: authActions} = useContext(AuthStore)
+
+  const handleLogout = useCallback(() => authActions.logout(), [])
+  const handleToggle = useCallback(() => setShow(!show), [])
 
   return (
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/login">
-              <a>Login</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/platform">
-              <a>App</a>
-            </Link>
-          </li>
-          <li>
-            <button onClick={onLogout}>Logout</button>
-          </li>
-        </ul>
-      </nav>
-      <style jsx>{`
-        ul {
-          display: flex;
-          list-style: none;
-          margin-left: 0;
-          padding-left: 0;
-        }
-        li {
-          margin-right: 1rem;
-        }
-        li:first-child {
-          margin-left: auto;
-        }
-        a {
-          color: #fff;
-          text-decoration: none;
-        }
-        header {
-          padding: 0.2rem;
-          color: #fff;
-          background-color: #333;
-        }
-      `}</style>
-    </header>
+    <Flex
+      as="nav"
+      align="center"
+      justify="space-between"
+      wrap="wrap"
+      padding="1.5rem"
+      bg="teal.500"
+      color="white"
+      {...props}
+    >
+      <Flex align="center" mr={5}>
+        <Heading as="h1" size="lg" letterSpacing={'-.1rem'}>
+          PlayTwin
+        </Heading>
+      </Flex>
+
+      <Box display={{sm: 'block', md: 'none'}} onClick={handleToggle}>
+        <svg
+          fill="white"
+          width="12px"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+      </Box>
+
+      <Box
+        display={{sm: show ? 'block' : 'none', md: 'flex'}}
+        width={{sm: 'full', md: 'auto'}}
+        alignItems="center"
+        flexGrow={1}
+      >
+        <MenuItems>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+        </MenuItems>
+        <MenuItems>
+          <Link href="/login">
+            <a>Login</a>
+          </Link>
+        </MenuItems>
+        <MenuItems>
+          <Link href="/platform">
+            <a>App</a>
+          </Link>
+        </MenuItems>
+      </Box>
+
+      <Box
+        display={{sm: show ? 'block' : 'none', md: 'block'}}
+        mt={{base: 4, md: 0}}
+      >
+        <Button bg="transparent" border="1px" onClick={authActions.logout}>
+          Logout
+        </Button>
+      </Box>
+    </Flex>
   )
 }
 

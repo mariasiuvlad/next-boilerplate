@@ -1,5 +1,5 @@
 import {createContext, useReducer, Dispatch, useEffect} from 'react'
-import {refresh, login} from '@lib/auth'
+import {refresh, login, logout} from '@lib/auth'
 import authReducer from './reducer'
 import {getAuthState} from './utils'
 import initialState, {IState} from './initialState'
@@ -10,6 +10,7 @@ import {
   LoginSuccess,
   LoginStart,
   LoginError,
+  Logout,
 } from './actions'
 
 interface IContextProps {
@@ -46,6 +47,9 @@ export const AuthProvider = ({jwtToken, children}) => {
       login(email, password)
         .then(({data: {jwt_token}}) => dispatch(LoginSuccess(jwt_token)))
         .catch((e) => dispatch(LoginError(e.message)))
+    },
+    logout: () => {
+      logout().then(() => dispatch(Logout()))
     },
   })
 

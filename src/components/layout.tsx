@@ -1,17 +1,19 @@
 import React from 'react'
 import Head from 'next/head'
-import Header from './chakra-header'
+import Header from './header'
+import {Flex} from '@chakra-ui/core'
 
 const Layout = ({children}) => (
   <React.Fragment>
     <Head>
-      <title>JWT auth example</title>
+      <title>PlayTwin</title>
     </Head>
     <Header />
-
-    <main>
-      <div className="container">{children}</div>
-    </main>
+    <Flex as="main" flex={1} p={8} bg="pink">
+      <Flex flex={1} className="container">
+        {children}
+      </Flex>
+    </Flex>
   </React.Fragment>
 )
 
