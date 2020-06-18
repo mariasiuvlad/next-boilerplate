@@ -1,31 +1,38 @@
-import {useEffect, useContext} from 'react'
-import Router from 'next/router'
-import LoginForm from '@components/form/login'
-import AuthStore from '@state/auth'
-import LoginButton from '@components/LoginButton'
-import {Flex} from '@chakra-ui/core'
+import LoginForm from '@components/form/LoginForm'
+import Link from 'next/link'
+import withPlatformRedirect from '@components/util/withPlatformRedirect'
+import {useAuthActions} from '@lib/hooks'
+import {GetServerSideProps} from 'next'
+import {refreshAuth} from '@lib/ssr'
+import Layout from '@components/Layout'
 
-// Redirects to `/platform` if the user is logged in
-const withRedirect = (WrappedComponent) => (props) => {
-  const {state} = useContext(AuthStore)
-  const {isLoggedIn} = state
-  useEffect(() => {
-    if (isLoggedIn) {
-      Router.push('/platform', undefined, {shallow: true})
-    }
-  }, [isLoggedIn])
-  return isLoggedIn ? (
-    <p>Already logged in. Redirecting to app...</p>
-  ) : (
-    <WrappedComponent {...props} />
+const AutoLoginButton = () => {
+  const {login} = useAuthActions()
+  return (
+    <button
+      onClick={() => login('mariasiuvlad@gmail.com', 'secret12')}
+      className="inline-block align-baseline font-light text-sm text-indigo-600 hover:text-indigo-500"
+    >
+      or Auto Login
+    </button>
   )
 }
 
 const Login = () => (
-  <Flex flex={1} alignItems="flex-start" justifyContent="space-between">
+  <Layout>
     <LoginForm />
-    <LoginButton />
-  </Flex>
+    <Link href="/register">
+      <a className="inline-block align-baseline font-light text-sm text-indigo-600 hover:text-indigo-500 mr-6">
+        or Register
+      </a>
+    </Link>
+    <AutoLoginButton />
+  </Layout>
 )
 
-export default withRedirect(Login)
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  let props: any = await refreshAuth(ctx)
+  return {props}
+}
+
+export default withPlatformRedirect(Login)

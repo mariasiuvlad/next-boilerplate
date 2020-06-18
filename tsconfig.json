@@ -4,6 +4,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    "noUnusedLocals": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
@@ -16,7 +17,8 @@
     "baseUrl": "./src",
     "paths": {
       "@lib/*": ["lib/*"],
-      "@state/*": ["state/*"],
+      "@store/*": ["store/*"],
+      "@context/*": ["context/*"],
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"]
     }

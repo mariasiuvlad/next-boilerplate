@@ -1,7 +1,9 @@
+import Layout from '@components/Layout'
+
 const IndexPage = () => (
-  <div>
+  <Layout>
     <h1>Landing Page</h1>
-  </div>
+  </Layout>
 )
 
 export default IndexPage
