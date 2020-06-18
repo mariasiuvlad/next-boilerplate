@@ -5,6 +5,9 @@ module.exports = {
       container: {
         center: true,
       },
+      colors: {
+        playtwinGray: '#323335',
+      },
     },
   },
   variants: {},
