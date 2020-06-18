@@ -5,7 +5,4 @@ module.exports = withPWA({
     disable: true,
     dest: 'public',
   },
-  env: {
-    customKey: 'my-value',
-  },
 })
