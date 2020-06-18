@@ -1,12 +1,9 @@
 import React from 'react'
 
-export default function Button({text}) {
+export default function Button({children}) {
   return (
-    <button
-      className="bg-indigo-600 hover:bg-blue-700 text-white font-light py-2 px-6 rounded focus:outline-none focus:shadow-outline"
-      type="submit"
-    >
-      {text}
+    <button className="bg-transparent font-thin text-sm text-yellow-500 hover:text-white py-2 px-8 border border-yellow-500 rounded-full">
+      {children}
     </button>
   )
 }
