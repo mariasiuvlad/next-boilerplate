@@ -6,7 +6,9 @@
     "dev": "next -p 8080",
     "build": "next build",
     "start": "next start -p 8080",
-    "prod": "NODE_ENV=production next start -p 8080"
+    "prod": "NODE_ENV=production next start -p 8080",
+    "storybook": "IS_STORYBOOK=true start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
@@ -26,9 +28,15 @@
     "react-hook-form": "^5.7.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/react": "^5.3.19",
     "@types/debug": "^4.1.5",
     "@types/node": "^14.0.12",
     "@types/react": "^16.9.35",
+    "babel-loader": "^8.1.0",
     "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^1.4.6",
     "typescript": "^4.0.0-dev.20200610"
