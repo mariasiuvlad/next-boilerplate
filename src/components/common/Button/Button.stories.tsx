@@ -6,4 +6,4 @@ export default {
   title: 'Button Example',
 }
 
-export const text = () => <Button>WIN NOW</Button>
+export const Basic = () => <Button onClick={() => {}}>WIN NOW</Button>

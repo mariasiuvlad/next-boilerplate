@@ -2,7 +2,7 @@ import {ApolloClient} from 'apollo-client'
 import {InMemoryCache, NormalizedCacheObject} from 'apollo-cache-inmemory'
 import {HttpLink} from 'apollo-link-http'
 import {ApolloLink, concat} from 'apollo-link'
-import {GQL_API} from 'config'
+import {GQL_API} from '@config/index'
 
 let apolloClient: ApolloClient<NormalizedCacheObject>
 let token: string
