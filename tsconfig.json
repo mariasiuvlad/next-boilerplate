@@ -21,7 +21,8 @@
       "@context/*": ["context/*"],
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
-      "@config/*": ["config/*"]
+      "@config/*": ["config/*"],
+      "@config": ["config/index"]
     }
   },
   "exclude": ["node_modules"],

@@ -18,5 +18,7 @@ module.exports = {
     '@components/(.*)': '<rootDir>/src/components/$1',
     '@pages/(.*)': '<rootDir>/src/pages/$1',
     '@config/(.*)': '<rootDir>/src/config/$1',
+    '@config': '<rootDir>/src/config/index',
+    '__generated__/(.*)': '<rootDir>/src/__generated__/$1',
   },
 }

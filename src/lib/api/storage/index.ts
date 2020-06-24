@@ -1,5 +1,5 @@
 import axios, {AxiosRequestConfig} from 'axios'
-import {HBP_API} from 'config'
+import {HBP_API} from '@config'
 
 const httpClient = axios.create({
   baseURL: HBP_API,
