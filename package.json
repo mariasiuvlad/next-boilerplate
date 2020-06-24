@@ -11,7 +11,8 @@
     "test:ci": "yarn jest --ci",
     "test:coverage": "yarn jest --coverage",
     "storybook": "IS_STORYBOOK=true start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "codegen": "graphql-codegen --config codegen.js --watch"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
@@ -32,6 +33,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
+    "@graphql-codegen/cli": "^1.15.4",
+    "@graphql-codegen/introspection": "^1.15.4",
+    "@graphql-codegen/typescript": "^1.15.4",
+    "@graphql-codegen/typescript-operations": "^1.15.4",
+    "@graphql-codegen/typescript-react-apollo": "^1.15.4",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addons": "^5.3.19",

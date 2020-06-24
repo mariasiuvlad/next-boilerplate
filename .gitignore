@@ -32,3 +32,6 @@ yarn-error.log*
 # pwa
 **/public/sw.js
 **/public/workbox-*.js
+
+# @graphql-codegen
+__generated__

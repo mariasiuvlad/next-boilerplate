@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export const GET_USER = gql`
-  query GetUser123 {
+  query GetUser {
     users {
       id
       display_name
@@ -12,7 +12,7 @@ export const GET_USER = gql`
   }
 `
 export const UPDATE_AVATAR = gql`
-  mutation MyMutation($avatar_url: String = "") {
+  mutation UpdateAvatar($avatar_url: String = "") {
     update_users(_set: {avatar_url: $avatar_url}, where: {}) {
       affected_rows
     }

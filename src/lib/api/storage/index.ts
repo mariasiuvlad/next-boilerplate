@@ -7,12 +7,12 @@ const httpClient = axios.create({
   // timeout: 10000,
 })
 
-type TProgressEvent = {
+type ProgressEvent = {
   loaded: number
   total: number
 }
 
-type TOnUploadProgress = (progressEvent: TProgressEvent) => void
+type OnUploadProgress = (progressEvent: ProgressEvent) => void
 
 /**
  * @description Upload user avatar image
@@ -20,7 +20,7 @@ type TOnUploadProgress = (progressEvent: TProgressEvent) => void
 export const uploadAvatar = (
   file: Blob,
   userId: string,
-  onUploadProgress: TOnUploadProgress
+  onUploadProgress: OnUploadProgress
 ) => {
   const URL = `/storage/o/user/${userId}/avatar`
   const payload = new FormData()

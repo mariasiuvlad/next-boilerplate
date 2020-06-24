@@ -1,9 +1,12 @@
-import {useMutation, useQuery} from '@apollo/react-hooks'
 import {useState, useEffect, useCallback} from 'react'
 import * as FileAPI from '@lib/api/storage'
 import {AxiosError} from 'axios'
 import {ApolloError} from 'apollo-client'
-import {UPDATE_AVATAR, GET_USER} from '@lib/graphql/queries'
+import {
+  useUpdateAvatarMutation,
+  useGetUserQuery,
+  GetUserDocument,
+} from '__generated__/graphql'
 
 type AvatarUploadError = AxiosError | ApolloError
 
@@ -11,11 +14,13 @@ export function useAvatarUpload() {
   const [progress, setProgress] = useState(0)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<AvatarUploadError>(null)
-  const [updateUserAvatar, {error: apolloError}] = useMutation(UPDATE_AVATAR)
+  const [updateUserAvatar, {error: apolloError}] = useUpdateAvatarMutation()
+
   useEffect(() => {
     setError(apolloError)
   }, [apolloError])
-  const {data} = useQuery(GET_USER)
+
+  const {data} = useGetUserQuery()
   const userId = data?.users[0]?.id
 
   const onUploadProgress = ({loaded, total}) =>
@@ -27,7 +32,7 @@ export function useAvatarUpload() {
       await FileAPI.uploadAvatar(file, userId, onUploadProgress)
         .then(({request: {responseURL: avatar_url}}) => {
           updateUserAvatar({
-            refetchQueries: [{query: GET_USER}],
+            refetchQueries: [{query: GetUserDocument}],
             variables: {avatar_url},
           })
         })
