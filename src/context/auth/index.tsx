@@ -3,7 +3,7 @@ import {withReducerLogger} from '@lib/log'
 import AuthReducer from './reducer'
 import initialState, {IState} from './initialState'
 import ActionCreators from './actionCreators'
-import {IActionCreators} from './IActionCreators'
+import {IActionCreators} from './types'
 import {TAction} from './actions'
 
 export const AuthContext = createContext<IState>(initialState())

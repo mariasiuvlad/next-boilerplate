@@ -8,7 +8,7 @@ import {
 } from './actions'
 import * as AuthAPI from '@lib/api/auth'
 import {Dispatch} from 'react'
-import {IActionCreators} from './IActionCreators'
+import {IActionCreators} from './types'
 
 const ActionCreators = (dispatch: Dispatch<TAction>): IActionCreators => ({
   login: (email: string, password: string) => {
