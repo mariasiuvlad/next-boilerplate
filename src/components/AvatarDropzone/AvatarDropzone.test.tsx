@@ -4,6 +4,7 @@ import AvatarDropzone from './AvatarDropzone'
 import {MockedProvider} from '@apollo/react-testing'
 import {GetUserDocument} from '__generated__/graphql'
 
+// @TODO move somewhere else
 const mocks = [
   {
     request: {
