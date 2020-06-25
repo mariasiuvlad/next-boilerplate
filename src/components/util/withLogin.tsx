@@ -1,6 +1,7 @@
 import {useEffect} from 'react'
 import Router from 'next/router'
 import {useAuth, useAuthActions} from '@lib/hooks'
+import Loading from '@components/common/Loading'
 
 const withLogin = (WrappedComponent) => (props) => {
   const {initialized, isLoggedIn} = useAuth()
@@ -18,7 +19,7 @@ const withLogin = (WrappedComponent) => (props) => {
   }, [isLoggedIn])
 
   if (!initialized || !isLoggedIn) {
-    return <div>init...</div>
+    return <Loading />
   }
   return <WrappedComponent {...props} />
 }
