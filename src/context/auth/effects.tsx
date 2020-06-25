@@ -18,6 +18,9 @@ const refreshTokenBeforeExpiry: AuthEffectCreator = (state, authActions) => {
   const {isLoggedIn, data} = state
   const refreshHandle = useRef(null)
 
+  /**
+   * @TODO better logging
+   */
   const effect: EffectCallback = () => {
     if (isLoggedIn) {
       const timeToRefresh = data.jwt_expires_in - 1000 * 30 // 30s before expiry

@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next -p 9000",
     "build": "next build",
-    "start": "next start -p 8080",
-    "prod": "NODE_ENV=production next start -p 8080",
+    "start": "next start -p 9000",
+    "prod": "NODE_ENV=production next start -p 9000",
     "test": "yarn jest",
     "test:ci": "yarn jest --ci",
     "test:coverage": "yarn jest --coverage",

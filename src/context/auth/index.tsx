@@ -1,12 +1,4 @@
-import {
-  createContext,
-  useReducer,
-  Reducer,
-  useEffect,
-  useRef,
-  EffectCallback,
-  DependencyList,
-} from 'react'
+import {createContext, useReducer, Reducer, useEffect} from 'react'
 import {withReducerLogger} from '@lib/log'
 import AuthReducer from './reducer'
 import initialState, {IState} from './initialState'

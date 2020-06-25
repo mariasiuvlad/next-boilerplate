@@ -33,6 +33,7 @@ services:
       S3_ACCESS_KEY_ID: minio_access_key
       S3_SECRET_ACCESS_KEY: '${S3_SECRET_ACCESS_KEY:?S3_SECRET_ACCESS_KEY}'
       AUTO_MIGRATE: 'true'
+      MAX_REQUESTS: 1000
   minio:
     image: minio/minio
     restart: always
