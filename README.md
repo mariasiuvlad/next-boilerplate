@@ -1,4 +1,5 @@
 # Getting Started
+Checkout `package.json` for available commands
 
 ## Development
 1. Install dependencies: `yarn`
@@ -11,6 +12,9 @@
 
 ## Testing
 `yarn test`
+
+## Front-end development
+[Storybook](https://storybook.js.org)
 
 ## Learn More
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
