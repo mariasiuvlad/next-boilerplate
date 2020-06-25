@@ -1,4 +1,4 @@
-import {createContext, useReducer, Reducer} from 'react'
+import {createContext, useReducer, Reducer, useEffect, useRef} from 'react'
 import {withReducerLogger} from '@lib/log'
 import AuthReducer from './reducer'
 import initialState, {IState} from './initialState'
@@ -16,9 +16,26 @@ export const AuthProvider = ({initialAuthState, children}) => {
     initial
   )
 
+  const authActions = ActionCreators(dispatch)
+
+  const refreshHandle = useRef(null)
+  const {isLoggedIn, data} = state
+
+  /**
+   * @TODO find a way to generalize side effects
+   */
+  useEffect(() => {
+    if (isLoggedIn) {
+      const timeToRefresh = data.jwt_expires_in - 1000 * 30 // 30s before expiry
+      refreshHandle.current = setTimeout(authActions.refresh, timeToRefresh)
+    } else {
+      clearTimeout(refreshHandle.current)
+    }
+  }, [data])
+
   return (
     <AuthContext.Provider value={state}>
-      <AuthActionsContext.Provider value={ActionCreators(dispatch)}>
+      <AuthActionsContext.Provider value={authActions}>
         {children}
       </AuthActionsContext.Provider>
     </AuthContext.Provider>

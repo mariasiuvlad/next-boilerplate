@@ -31,7 +31,7 @@ const AuthReducer = (state: IState, action: TAction) => {
       return {...state, initialized: true, loading: false, error: data}
     // logout
     case ActionTypes.Logout:
-      return {...state, jwtToken: null, isLoggedIn: false}
+      return {...state, data: null, isLoggedIn: false}
     default:
       console.warn('invalid action provided to auth state', action)
       return state
