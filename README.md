@@ -9,6 +9,9 @@
 6. Acces on http://localhost:9009
 
 
+## Testing
+`yarn test`
+
 ## Learn More
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
