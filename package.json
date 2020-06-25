@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next -p 9000",
+    "dev": "next -p 9009",
     "build": "next build",
-    "start": "next start -p 9000",
-    "prod": "NODE_ENV=production next start -p 9000",
+    "start": "next start -p 9009",
+    "prod": "NODE_ENV=production next start -p 9009",
     "test": "yarn jest",
     "test:ci": "yarn jest --ci",
     "test:coverage": "yarn jest --coverage",
