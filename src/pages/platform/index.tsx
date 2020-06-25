@@ -18,10 +18,10 @@ const DashboardPage = () => {
  * @link https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
  *
  */
-// export const getServerSideProps: GetServerSideProps = async (ctx) => {
-//   let props: any = await refreshAuth(ctx)
-//   props = await preloadApolloData(props, [GET_USER])
-//   return {props}
-// }
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  let props: any = await refreshAuth(ctx)
+  props = await preloadApolloData(props, [GET_USER])
+  return {props}
+}
 
 export default withLogin(DashboardPage)
