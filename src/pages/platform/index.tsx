@@ -2,8 +2,8 @@ import User from '@components/User'
 import withLogin from '@components/util/withLogin'
 import {GetServerSideProps} from 'next'
 import {refreshAuth, preloadApolloData} from '@lib/ssr'
-import {GET_USER} from '@lib/graphql/queries'
 import Layout from '@components/Layout'
+import {GetUserDocument} from '__generated__/graphql'
 
 const DashboardPage = () => {
   return (
@@ -20,7 +20,7 @@ const DashboardPage = () => {
  */
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   let props: any = await refreshAuth(ctx)
-  props = await preloadApolloData(props, [GET_USER])
+  props = await preloadApolloData(props, [GetUserDocument])
   return {props}
 }
 
