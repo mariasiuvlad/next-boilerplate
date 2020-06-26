@@ -6,7 +6,7 @@ export default function UserCredentialsForm({register, onSubmit, type}) {
           Email
         </label>
         <input
-          className="w-full bg-drabya-gray border-gray-500 appearance-none border p-4 font-light leading-tight focus:outline-none focus:shadow-outline"
+          className="input"
           id="loginEmail"
           type="email"
           name="email"
@@ -19,7 +19,7 @@ export default function UserCredentialsForm({register, onSubmit, type}) {
           Password
         </label>
         <input
-          className="w-full bg-drabya-gray border-gray-500 appearance-none border p-4 font-light leading-tight focus:outline-none focus:shadow-outline"
+          className="input"
           id="loginPassword"
           type="password"
           name="password"

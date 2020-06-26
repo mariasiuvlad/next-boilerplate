@@ -51,5 +51,5 @@ test("it loads and renders the user's display name", async () => {
   })
 
   // test final state
-  expect(wrapper.find('p').text()).toBe(mockUser.display_name)
+  expect(wrapper.find('p').text()).toBe('mariasiuvlad@gmail.com')
 })
