@@ -37,6 +37,7 @@ export function useAvatarUpload() {
           })
         })
         .catch((e) => setError(e))
+      setProgress(0)
       setLoading(false)
     },
     [userId]

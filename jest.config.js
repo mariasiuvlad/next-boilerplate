@@ -1,5 +1,10 @@
 module.exports = {
-  collectCoverageFrom: ['**/*.{ts,tsx}', '!**/*.d.ts', '!**/node_modules/**'],
+  collectCoverageFrom: [
+    '**/*.{ts,tsx}',
+    '!**/*.d.ts',
+    '!**/node_modules/**',
+    '!src/**/*.stories.tsx',
+  ],
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   transform: {
@@ -20,5 +25,6 @@ module.exports = {
     '@config/(.*)': '<rootDir>/src/config/$1',
     '@config': '<rootDir>/src/config/index',
     '__generated__/(.*)': '<rootDir>/src/__generated__/$1',
+    __mocks__: '<rootDir>/src/__mocks__/index',
   },
 }
