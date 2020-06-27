@@ -1,21 +1,12 @@
 import React from 'react'
 import {mount} from 'enzyme'
 import Header from './Header'
-import {AuthActionsContext} from '@context/auth'
+import {withAuthProvider} from '__mocks__'
 
-const mockAuthActions = {
-  logout: () => {},
-  login: (email, password) => {},
-  register: (email, password) => {},
-  refresh: () => {},
-}
+const Mocked = withAuthProvider(Header)
 
-test('Testing suite is set up correctly', () => {
-  const wrapper = mount(
-    <AuthActionsContext.Provider value={mockAuthActions}>
-      <Header />
-    </AuthActionsContext.Provider>
-  )
+test('it renders a logout button', () => {
+  const wrapper = mount(<Mocked />)
   // renders logout button
   expect(wrapper.find('button#logoutButton').text()).toBe('Logout')
 })

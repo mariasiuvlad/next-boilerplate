@@ -2,13 +2,7 @@ import React from 'react'
 import {mount} from 'enzyme'
 import Layout from './Layout'
 import {AuthActionsContext} from '@context/auth'
-
-const mockAuthActions = {
-  logout: () => {},
-  login: (email, password) => {},
-  register: (email, password) => {},
-  refresh: () => {},
-}
+import {mockAuthActions} from '__mocks__'
 
 test('renders correctly', () => {
   const wrapper = mount(

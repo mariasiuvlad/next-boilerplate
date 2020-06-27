@@ -10,10 +10,10 @@ import effects from './effects'
 export const AuthContext = createContext<IState>(initialState())
 export const AuthActionsContext = createContext<IActionCreators>(null)
 
-export const AuthProvider = ({initialAuthState, children}) => {
+export const AuthProvider = ({initialAuthState = initialState(), children}) => {
   const [state, dispatch] = useReducer<Reducer<IState, TAction>>(
     withReducerLogger(AuthReducer, 'Auth/Reducer'),
-    initialAuthState || initialState()
+    initialAuthState
   )
   const authActions = ActionCreators(dispatch)
 

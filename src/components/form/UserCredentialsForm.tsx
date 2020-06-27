@@ -2,28 +2,31 @@ export default function UserCredentialsForm({register, onSubmit, type}) {
   return (
     <form onSubmit={onSubmit}>
       <div className="mb-4">
-        <label className="block text-md font-light mb-2" htmlFor="email">
+        <label className="block text-md font-light mb-2" htmlFor="email-input">
           Email
         </label>
         <input
           className="input"
-          id="loginEmail"
           type="email"
           name="email"
           placeholder="email@example.com"
           ref={register}
+          id="email-input"
         />
       </div>
       <div className="mb-4">
-        <label className="block text-md font-light mb-2" htmlFor="email">
+        <label
+          className="block text-md font-light mb-2"
+          htmlFor="password-input"
+        >
           Password
         </label>
         <input
           className="input"
-          id="loginPassword"
           type="password"
           name="password"
           ref={register({required: true})}
+          id="password-input"
         />
       </div>
 

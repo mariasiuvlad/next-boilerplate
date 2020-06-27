@@ -1,16 +1,14 @@
 // const mockAxios = jest.genMockFromModule('axios')
 import {login, refresh, register, logout} from '.'
 import httpClient from '@lib/api/httpClient'
+import {LoginResponseMock} from '__mocks__'
 
 jest.mock('@lib/api/httpClient')
 let mockPost = httpClient.post as jest.Mock
 let mockGet = httpClient.get as jest.Mock
 
 const response = {
-  data: {
-    jwt_token: '<Mock JWTToken>',
-    jwt_expires_in: 900000,
-  },
+  data: LoginResponseMock,
   headers: {
     refresh_token: '<Mock Refresh Token>',
   },

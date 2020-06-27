@@ -5,6 +5,8 @@ module.exports = {
     '!**/node_modules/**',
     '!src/**/*.stories.tsx',
     '!src/lib/graphql/**',
+    '!src/lib/log/**',
+    '!src/pages/**',
     '!src/lib/ssr.tsx',
   ],
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'],

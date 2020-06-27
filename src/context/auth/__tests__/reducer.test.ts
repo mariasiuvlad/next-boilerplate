@@ -8,19 +8,14 @@ import {
   RefreshStart,
   RefreshError,
 } from '../actions'
+import {LoginResponseMock} from '__mocks__'
 
 test('it works', () => {
   let state = AuthReducer(initialState(), LoginStart())
   expect(state.loading).toBe(true)
   expect(state.error).toBe(null)
 
-  state = AuthReducer(
-    state,
-    LoginSuccess({
-      jwt_token: '<Mock JWTToken>',
-      jwt_expires_in: 900000,
-    })
-  )
+  state = AuthReducer(state, LoginSuccess(LoginResponseMock))
   expect(state.loading).toBe(false)
   expect(state.isLoggedIn).toBe(true)
   expect(state.initialized).toBe(true)
