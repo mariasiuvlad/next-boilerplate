@@ -1,11 +1,8 @@
 import {renderHook} from '@testing-library/react-hooks'
 import {useAuth} from './useAuth'
-import {MockedProvider} from '@apollo/react-testing'
-
-const wrapper = ({children}) => <MockedProvider>{children}</MockedProvider>
 
 test('use auth', async () => {
-  const {result: auth} = renderHook(() => useAuth(), {wrapper})
+  const {result: auth} = renderHook(() => useAuth())
 
   // test initial state
   expect(auth.current.initialized).toBe(false)
