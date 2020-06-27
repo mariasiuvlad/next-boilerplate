@@ -4,6 +4,8 @@ module.exports = {
     '!**/*.d.ts',
     '!**/node_modules/**',
     '!src/**/*.stories.tsx',
+    '!src/lib/graphql/**',
+    '!src/lib/ssr.tsx',
   ],
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],

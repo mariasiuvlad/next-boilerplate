@@ -1,17 +1,10 @@
-import axios from 'axios'
-import {HBP_API} from '@config'
+import httpClient from '@lib/api/httpClient'
 import {
   TLoginRequestData,
   TLoginResponseData,
   TRefreshResponse,
   TRegisterRequestData,
 } from './types'
-
-const httpClient = axios.create({
-  baseURL: HBP_API,
-  timeout: 10000,
-  withCredentials: true,
-})
 
 /**
  * @description Make a login request
@@ -28,7 +21,7 @@ export function login(payload: TLoginRequestData) {
  * @param payload Contains registration credentials
  */
 export function register(payload: TRegisterRequestData) {
-  httpClient
+  return httpClient
     .post<TLoginResponseData>('/auth/register', payload)
     .then(({data}) => data)
 }
@@ -38,7 +31,9 @@ export function register(payload: TRegisterRequestData) {
  * @param all Indicate whether to delete all refresh tokens to this user or not
  */
 export function logout(all = false) {
-  return httpClient.post<{}>('/auth/logout', {all})
+  return httpClient
+    .post<{}>('/auth/logout', {all})
+    .then(({data}) => data)
 }
 
 /**

@@ -1,11 +1,5 @@
-import axios, {AxiosRequestConfig} from 'axios'
-import {HBP_API} from '@config'
-
-const httpClient = axios.create({
-  baseURL: HBP_API,
-  withCredentials: true,
-  // timeout: 10000,
-})
+import {AxiosRequestConfig} from 'axios'
+import httpClient from '../httpClient'
 
 type ProgressEvent = {
   loaded: number

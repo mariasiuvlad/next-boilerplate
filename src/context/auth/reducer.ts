@@ -23,12 +23,18 @@ const AuthReducer = (state: IState, action: TAction) => {
         error,
         initialized: true,
         loading: false,
+        isLoggedIn: false,
       }
     // Refresh
     case ActionTypes.RefreshStart:
       return {...state, loading: true, error: null}
     case ActionTypes.RefreshError:
-      return {...state, initialized: true, loading: false, error: data}
+      return {
+        ...state,
+        initialized: true,
+        loading: false,
+        error: action.payload,
+      }
     // logout
     case ActionTypes.Logout:
       return {...state, data: null, isLoggedIn: false}
