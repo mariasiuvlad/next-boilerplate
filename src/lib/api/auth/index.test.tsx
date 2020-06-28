@@ -1,4 +1,3 @@
-// const mockAxios = jest.genMockFromModule('axios')
 import {login, refresh, register, logout} from '.'
 import httpClient from '@lib/api/httpClient'
 import {LoginResponseMock} from '__mocks__'

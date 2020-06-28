@@ -7,8 +7,13 @@ import {
   Logout,
   RefreshStart,
   RefreshError,
+  TAction,
 } from '../actions'
 import {LoginResponseMock} from '__mocks__'
+import {AxiosError} from 'axios'
+
+const mockError = new Error('<Mock Error>') as AxiosError
+const mockBadAction = ('<Bad acton>' as unknown) as TAction
 
 test('it works', () => {
   let state = AuthReducer(initialState(), LoginStart())
@@ -27,8 +32,8 @@ test('it works', () => {
   expect(state.data).toBe(null)
 
   state = AuthReducer(state, LoginStart())
-  state = AuthReducer(state, LoginError(new Error('error')))
-  expect(state.error.message).toBe('error')
+  state = AuthReducer(state, LoginError(mockError))
+  expect(state.error.message).toBe('<Mock Error>')
   expect(state.loading).toBe(false)
   expect(state.isLoggedIn).toBe(false)
   expect(state.initialized).toBe(true)
@@ -37,13 +42,13 @@ test('it works', () => {
   expect(state.loading).toBe(true)
   expect(state.error).toBe(null)
 
-  state = AuthReducer(state, RefreshError(new Error('error')))
-  expect(state.error.message).toBe('error')
+  state = AuthReducer(state, RefreshError(mockError))
+  expect(state.error.message).toBe('<Mock Error>')
   expect(state.loading).toBe(false)
   expect(state.isLoggedIn).toBe(false)
   expect(state.initialized).toBe(true)
 
   const prevState = state
-  state = AuthReducer(state, 'random stuff')
+  state = AuthReducer(state, mockBadAction)
   expect(state).toEqual(prevState)
 })

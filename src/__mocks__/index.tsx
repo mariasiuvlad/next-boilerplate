@@ -1,4 +1,4 @@
-import {UpdateAvatarDocument, GetUserDocument} from '__generated__/graphql'
+import {UpdateAvatarDocument, GetUserDocument, Users} from '__generated__/graphql'
 import {TLoginResponseData} from '@lib/api/auth/types'
 import {AuthActionsContext} from '@context/auth'
 
@@ -10,7 +10,7 @@ export const mockUser = {
   updated_at: '2020-06-24T13:15:50.444491+00:00',
   created_at: '2020-06-24T12:13:37.887102+00:00',
   __typename: 'users',
-}
+} as Users
 
 export const LoginResponseMock: TLoginResponseData = {
   jwt_token: '<Mock JWTToken>',

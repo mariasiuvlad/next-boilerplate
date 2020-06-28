@@ -5,6 +5,7 @@ import * as FileAPI from '@lib/api/storage'
 import {UpdateAvatarMock, GetUserMock} from '__mocks__'
 
 jest.mock('@lib/api/storage')
+const uploadAvatarMock = FileAPI.uploadAvatar as jest.Mock
 
 // Get user gets refetched after update avatar
 const mocks = [UpdateAvatarMock, GetUserMock, GetUserMock]
@@ -14,7 +15,7 @@ const wrapper = ({children}) => (
 )
 
 test('should correctly handle file upload', async () => {
-  FileAPI.uploadAvatar.mockImplementation((file, userId, onUploadProgress) => {
+  uploadAvatarMock.mockImplementation((file, userId, onUploadProgress) => {
     onUploadProgress({loaded: 200, total: 1000})
     return Promise.resolve({request: {responseURL: '<Avatar URL>'}})
   })
@@ -41,7 +42,7 @@ test('should correctly handle file upload', async () => {
 })
 
 test('should correctly handle errors', async () => {
-  FileAPI.uploadAvatar.mockImplementation((file, userId, onUploadProgress) => {
+  uploadAvatarMock.mockImplementation((file, userId, onUploadProgress) => {
     onUploadProgress({loaded: 200, total: 1000})
     return Promise.reject(new Error('Test Error'))
   })
