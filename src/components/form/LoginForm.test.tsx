@@ -2,12 +2,12 @@ import React from 'react'
 import LoginForm from './LoginForm'
 import {mockAuthActions} from '__mocks__'
 import {AuthActionsContext} from '@context/auth'
-import {render, fireEvent, screen} from '@testing-library/react'
+import {render, fireEvent} from '@testing-library/react'
 import {useForm} from 'react-hook-form'
 
 jest.mock('react-hook-form')
 const mockUseForm = useForm as jest.Mock
-const mockHandleSubmit = jest.fn()
+const mockHandleSubmit = jest.fn((e) => e.preventDefault)
 
 mockUseForm.mockImplementation(() => ({
   register: jest.fn(),
@@ -21,14 +21,7 @@ const Mocked = () => (
 )
 
 test('renders correctly', async () => {
-  render(<Mocked />)
-
-  await fireEvent.change(screen.getByLabelText('Email'), {
-    target: {value: 'email@test.com'},
-  })
-  await fireEvent.change(screen.getByLabelText('Password'), {
-    target: {value: 'secret12'},
-  })
-  await fireEvent.click(screen.getByRole('button'))
-  expect(mockHandleSubmit).toBeCalled()
+  const {container} = render(<Mocked />)
+  fireEvent.submit(container.querySelector('form'))
+  expect(mockHandleSubmit).toHaveBeenCalledTimes(1)
 })

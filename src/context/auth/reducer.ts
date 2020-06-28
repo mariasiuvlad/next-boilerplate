@@ -39,7 +39,7 @@ const AuthReducer = (state: IState, action: TAction) => {
     case ActionTypes.Logout:
       return {...state, data: null, isLoggedIn: false}
     default:
-      console.warn('invalid action provided to auth state', action)
+      /** @TODO log action exception */
       return state
   }
 }
