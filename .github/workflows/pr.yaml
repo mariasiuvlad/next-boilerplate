@@ -1,0 +1,23 @@
+name: Run tests
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    # CACHE
+    - name: Cache node_modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+
+    - name: Install libs
+      run: yarn
+    
+    - name: Run tests
+      run: yarn test:ci
