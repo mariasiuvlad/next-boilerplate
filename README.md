@@ -5,7 +5,7 @@ Checkout `package.json` for available commands
 
 ## Development
 1. Install dependencies: `yarn`
-2. Start local infrstructure environment: `cd infrastructure && ./start.sh`
+2. Start local infrstructure environment: `cd infrastructure && ./start.sh && cd ..`
 3. Setup DB schema: `yarn hasura:init` @todo - automate this step
 4. Start codegen watcher fro graphQl: `yarn codegen`
 5. Start next dev `yarn dev`
