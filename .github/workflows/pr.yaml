@@ -24,3 +24,10 @@ jobs:
     
     - name: Run tests
       run: yarn test:ci
+
+    - name: Codecov
+      uses: codecov/codecov-action
+      with:
+        name: PR test
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: coverage/clover.xml
