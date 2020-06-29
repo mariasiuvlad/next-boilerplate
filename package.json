@@ -8,11 +8,15 @@
     "start": "next start -p 9009",
     "prod": "NODE_ENV=production next start -p 9009",
     "test": "yarn jest",
-    "test:ci": "yarn jest --ci",
+    "test:ci": "yarn jest --ci --coverage",
     "test:coverage": "yarn jest --coverage",
     "storybook": "IS_STORYBOOK=true start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "codegen": "graphql-codegen --config codegen.js --watch"
+    "codegen": "graphql-codegen --config codegen.js --watch",
+    "codegen:ci": "graphql-codegen --config codegen.js",
+    "codegen:update": "graphql-codegen --config codegen-update.js --watch",
+    "hasura:init": "hasura metadata apply",
+    "postinstall": "yarn codegen:ci"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
@@ -58,6 +62,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "fork-ts-checker-webpack-plugin": "^5.0.2",
+    "hasura-cli": "^1.2.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
     "postcss-preset-env": "^6.7.0",
