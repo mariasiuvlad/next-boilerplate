@@ -20,7 +20,7 @@ jobs:
       run: yarn
 
     - name: Run codegen
-      run: codegen
+      run: yarn codegen
     
     - name: Run tests
       run: yarn test:ci
