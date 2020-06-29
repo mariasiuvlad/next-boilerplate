@@ -12,7 +12,8 @@
     "test:coverage": "yarn jest --coverage",
     "storybook": "IS_STORYBOOK=true start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "codegen": "graphql-codegen --config codegen.js",
+    "codegen": "graphql-codegen --config codegen.js --watch",
+    "codegen:ci": "graphql-codegen --config codegen.js",
     "codegen:update": "graphql-codegen --config codegen-update.js --watch"
   },
   "dependencies": {
