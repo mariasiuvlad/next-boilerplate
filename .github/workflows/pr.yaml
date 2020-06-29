@@ -27,7 +27,7 @@ jobs:
       run: yarn test:ci
 
     - name: Codecov
-      uses: codecov/codecov-action
+      uses: codecov/codecov-action@v1
       with:
         name: PR test
         token: ${{ secrets.CODECOV_TOKEN }}
