@@ -8,7 +8,7 @@
     "start": "next start -p 9009",
     "prod": "NODE_ENV=production next start -p 9009",
     "test": "yarn jest",
-    "test:ci": "yarn jest --ci",
+    "test:ci": "yarn jest --ci --coverage",
     "test:coverage": "yarn jest --coverage",
     "storybook": "IS_STORYBOOK=true start-storybook -p 6006",
     "build-storybook": "build-storybook",
