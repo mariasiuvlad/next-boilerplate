@@ -1,6 +1,7 @@
 import RegisterForm from '@components/form/RegisterForm'
 import Link from 'next/link'
 import Layout from '@components/Layout'
+import withPlatformRedirect from '@components/util/withPlatformRedirect'
 
 const RegisterPage = () => {
   return (
@@ -13,4 +14,4 @@ const RegisterPage = () => {
   )
 }
 
-export default RegisterPage
+export default withPlatformRedirect(RegisterPage)

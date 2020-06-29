@@ -24,6 +24,10 @@ export const RefreshError = (payload: AxiosError): Actions.IRefreshError => ({
   type: ActionTypes.RefreshError,
   payload,
 })
+export const RegisterError = (payload: AxiosError): Actions.IRegisterError => ({
+  type: ActionTypes.RegisterError,
+  payload,
+})
 
 export type TAction =
   | Actions.ILogout
@@ -33,3 +37,4 @@ export type TAction =
   | Actions.IRefreshStart
   | Actions.IRefreshSuccess
   | Actions.IRefreshError
+  | Actions.IRegisterError

@@ -1,15 +1,6 @@
 import {TJWTToken} from '@lib/api/auth/types'
 import {AxiosError} from 'axios'
 
-export enum Action {
-  Logout = 'Logout',
-  LoginStart = 'Login/Start',
-  LoginSuccess = 'Login/Success',
-  LoginError = 'Login/Error',
-  RefreshStart = 'Refresh/Start',
-  RefreshError = 'Refresh/Error',
-}
-
 export namespace ActionTypes {
   export const Logout = 'Logout'
   export const LoginStart = 'Login/Start'
@@ -17,6 +8,7 @@ export namespace ActionTypes {
   export const LoginError = 'Login/Error'
   export const RefreshStart = 'Refresh/Start'
   export const RefreshError = 'Refresh/Error'
+  export const RegisterError = 'Register/Error'
 }
 
 export namespace Actions {
@@ -43,6 +35,10 @@ export namespace Actions {
   }
   export interface IRefreshError {
     type: typeof ActionTypes.RefreshError
+    payload: AxiosError
+  }
+  export interface IRegisterError {
+    type: typeof ActionTypes.RegisterError
     payload: AxiosError
   }
 }
