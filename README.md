@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/softatac/pt-web/branch/master/graph/badge.svg?token=B3PKAWJQU1)](https://codecov.io/gh/softatac/pt-web)
+
 # Getting Started
 Checkout `package.json` for available commands
 
