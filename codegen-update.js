@@ -1,5 +1,14 @@
 module.exports = {
-  schema: 'graphql.schema.json',
+  schema: [
+    {
+      'http://localhost:8080/v1/graphql': {
+        headers: {
+          'x-hasura-role': 'user',
+          'x-hasura-admin-secret': 'secret12',
+        },
+      },
+    },
+  ],
   documents: ['./src/**/*.tsx', './src/**/*.ts'],
   overwrite: true,
   generates: {

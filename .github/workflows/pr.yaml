@@ -18,6 +18,9 @@ jobs:
 
     - name: Install libs
       run: yarn
+
+    - name: Run codegen
+      run: codegen
     
     - name: Run tests
       run: yarn test:ci

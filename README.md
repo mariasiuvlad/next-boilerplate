@@ -10,6 +10,9 @@ Checkout `package.json` for available commands
 6. Acces on http://localhost:9009
 
 
+### Codegen
+Update GraphQL schema from Backend with: `yarn codegen:update` (setup secret accordingly in _codegen-update.js_)
+
 ## Testing
 `yarn test`
 
