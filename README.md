@@ -6,7 +6,7 @@ Checkout `package.json` for available commands
 ## Development
 1. Install dependencies: `yarn`
 2. Start local infrstructure environment: `cd infrastructure && ./start.sh`
-3. Setup user with permissions for select&update (id, avatr_url, display_name, updated_at, created_at): http://localhost:8080/console/data/schema/public/tables/users/permissions // @todo - automate
+3. Setup DB schema: `yarn hasura:init` @todo - automate this step
 4. Start codegen watcher fro graphQl: `yarn codegen`
 5. Start next dev `yarn dev`
 6. Acces on http://localhost:9009
