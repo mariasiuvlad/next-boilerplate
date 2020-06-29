@@ -14,3 +14,7 @@ pre {
   white-space: -o-pre-wrap;
   word-wrap: break-word;
 }
+
+.input {
+  @apply w-full border-gray-500 appearance-none border p-4 font-light leading-tight;
+}

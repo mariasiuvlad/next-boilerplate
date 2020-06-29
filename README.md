@@ -1,20 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Getting Started
+Checkout `package.json` for available commands
 
-## Getting Started
+## Development
+1. Install dependencies: `yarn`
+2. Start local infrstructure environment: `cd infrastructure && ./start.sh`
+3. Setup user with permissions for select&update (id, avatr_url, display_name, updated_at, created_at): http://localhost:8080/console/data/schema/public/tables/users/permissions // @todo - automate
+4. Start codegen watcher fro graphQl: `yarn codegen`
+5. Start next dev `yarn dev`
+6. Acces on http://localhost:9009
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Testing
+`yarn test`
 
-Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Front-end development
+[Storybook](https://storybook.js.org)
 
 ## Learn More
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 To learn more about Next.js, take a look at the following resources:
 
@@ -22,3 +25,5 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+

@@ -1,14 +1,14 @@
 import {IState} from './initialState'
 import {TAction} from './actions'
-import {Action} from './types'
+import {ActionTypes} from './types'
 
 const AuthReducer = (state: IState, action: TAction) => {
-  const {type, payload: data} = action
-  switch (type) {
+  switch (action.type) {
     // Login
-    case Action.LoginStart:
+    case ActionTypes.LoginStart:
       return {...state, loading: true, error: null}
-    case Action.LoginSuccess:
+    case ActionTypes.LoginSuccess:
+      const {payload: data} = action
       return {
         ...state,
         data,
@@ -16,23 +16,30 @@ const AuthReducer = (state: IState, action: TAction) => {
         isLoggedIn: true,
         loading: false,
       }
-    case Action.LoginError:
+    case ActionTypes.LoginError:
+      const {payload: error} = action
+      return {
+        ...state,
+        error,
+        initialized: true,
+        loading: false,
+        isLoggedIn: false,
+      }
+    // Refresh
+    case ActionTypes.RefreshStart:
+      return {...state, loading: true, error: null}
+    case ActionTypes.RefreshError:
       return {
         ...state,
         initialized: true,
         loading: false,
-        error: data,
+        error: action.payload,
       }
-    // Refresh
-    case Action.RefreshStart:
-      return {...state, loading: true, error: null}
-    case Action.RefreshError:
-      return {...state, initialized: true, loading: false, error: data}
     // logout
-    case Action.Logout:
-      return {...state, jwtToken: null, isLoggedIn: false}
+    case ActionTypes.Logout:
+      return {...state, data: null, isLoggedIn: false}
     default:
-      console.warn('invalid action provided to auth state', action)
+      /** @TODO log action exception */
       return state
   }
 }

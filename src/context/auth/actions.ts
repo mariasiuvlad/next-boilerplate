@@ -1,57 +1,40 @@
-import {Action} from './types'
+import {Actions, ActionTypes} from './types'
 import {TJWTToken} from '@lib/api/auth/types'
 import {AxiosError} from 'axios'
 
-export interface ILogout {
-  type: Action
-}
-export interface ILoginStart {
-  type: Action
-}
-export interface ILoginSuccess {
-  type: Action
-  payload: TJWTToken
-}
-export interface ILoginError {
-  type: Action
-  payload: AxiosError
-}
-export interface IRefreshStart {
-  type: Action
-}
-export interface IRefreshSuccess {
-  type: Action
-  payload: TJWTToken
-}
-export interface IRefreshError {
-  type: Action
-  payload: AxiosError
-}
-
 // Basic action creators
-export const Logout = (): ILogout => ({
-  type: Action.Logout,
+export const Logout = (): Actions.ILogout => ({
+  type: ActionTypes.Logout,
 })
-export const LoginStart = (): ILoginStart => ({
-  type: Action.LoginStart,
+export const LoginStart = (): Actions.ILoginStart => ({
+  type: ActionTypes.LoginStart,
 })
-export const LoginSuccess = (payload: TJWTToken): ILoginSuccess => ({
-  type: Action.LoginSuccess,
+export const LoginSuccess = (payload: TJWTToken): Actions.ILoginSuccess => ({
+  type: ActionTypes.LoginSuccess,
   payload,
 })
-export const LoginError = (payload: AxiosError): ILoginError => ({
-  type: Action.LoginError,
+export const LoginError = (payload: AxiosError): Actions.ILoginError => ({
+  type: ActionTypes.LoginError,
   payload,
 })
-export const RefreshStart = (): IRefreshStart => ({
-  type: Action.RefreshStart,
+export const RefreshStart = (): Actions.IRefreshStart => ({
+  type: ActionTypes.RefreshStart,
 })
-export const RefreshError = (payload: AxiosError): IRefreshError => ({
-  type: Action.RefreshError,
+export const RefreshError = (payload: AxiosError): Actions.IRefreshError => ({
+  type: ActionTypes.RefreshError,
+  payload,
+})
+export const RegisterError = (payload: AxiosError): Actions.IRegisterError => ({
+  type: ActionTypes.RegisterError,
   payload,
 })
 
-export type TAction = {
-  type: Action
-  payload?: any
-}
+export type TAction =
+  | Actions.ILogout
+  | Actions.ILoginStart
+  | Actions.ILoginSuccess
+  | Actions.ILoginError
+  | Actions.IRefreshStart
+  | Actions.IRefreshSuccess
+  | Actions.IRefreshError
+  | Actions.IRegisterError

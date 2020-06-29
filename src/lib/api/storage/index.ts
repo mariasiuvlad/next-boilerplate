@@ -1,18 +1,12 @@
-import axios, {AxiosRequestConfig} from 'axios'
-import {HBP_API} from 'config'
+import {AxiosRequestConfig} from 'axios'
+import httpClient from '../httpClient'
 
-const httpClient = axios.create({
-  baseURL: HBP_API,
-  withCredentials: true,
-  // timeout: 10000,
-})
-
-type TProgressEvent = {
+type ProgressEvent = {
   loaded: number
   total: number
 }
 
-type TOnUploadProgress = (progressEvent: TProgressEvent) => void
+type OnUploadProgress = (progressEvent: ProgressEvent) => void
 
 /**
  * @description Upload user avatar image
@@ -20,7 +14,7 @@ type TOnUploadProgress = (progressEvent: TProgressEvent) => void
 export const uploadAvatar = (
   file: Blob,
   userId: string,
-  onUploadProgress: TOnUploadProgress
+  onUploadProgress: OnUploadProgress
 ) => {
   const URL = `/storage/o/user/${userId}/avatar`
   const payload = new FormData()

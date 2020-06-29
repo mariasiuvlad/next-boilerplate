@@ -1,10 +1,10 @@
-import Header from './Header'
+import Header from '@components/Header'
 
 export default function Layout({children}) {
   return (
     <div className="h-screen w-screen">
       <Header />
-      <div className="container p-16">{children}</div>
+      <main className="container p-16">{children}</main>
     </div>
   )
 }

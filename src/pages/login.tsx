@@ -1,13 +1,13 @@
 import LoginForm from '@components/form/LoginForm'
 import Link from 'next/link'
 import withPlatformRedirect from '@components/util/withPlatformRedirect'
-import {useAuthActions} from '@lib/hooks'
-import {GetServerSideProps} from 'next'
-import {refreshAuth} from '@lib/ssr'
+import {useAuth} from '@lib/hooks'
 import Layout from '@components/Layout'
 
 const AutoLoginButton = () => {
-  const {login} = useAuthActions()
+  const {
+    actions: {login},
+  } = useAuth()
   return (
     <button
       onClick={() => login('mariasiuvlad@gmail.com', 'secret12')}
@@ -29,10 +29,5 @@ const Login = () => (
     <AutoLoginButton />
   </Layout>
 )
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  let props: any = await refreshAuth(ctx)
-  return {props}
-}
 
 export default withPlatformRedirect(Login)

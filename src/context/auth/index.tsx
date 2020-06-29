@@ -1,24 +1,28 @@
-import {createContext, useReducer, Reducer} from 'react'
+import {createContext, useReducer, Reducer, useEffect} from 'react'
 import {withReducerLogger} from '@lib/log'
 import AuthReducer from './reducer'
 import initialState, {IState} from './initialState'
 import ActionCreators from './actionCreators'
-import {IActionCreators} from './IActionCreators'
+import {IActionCreators} from './types'
 import {TAction} from './actions'
+import effects from './effects'
 
 export const AuthContext = createContext<IState>(initialState())
 export const AuthActionsContext = createContext<IActionCreators>(null)
 
-export const AuthProvider = ({initialAuthState, children}) => {
-  const initial = initialAuthState || initialState()
+export const AuthProvider = ({initialAuthState = initialState(), children}) => {
   const [state, dispatch] = useReducer<Reducer<IState, TAction>>(
     withReducerLogger(AuthReducer, 'Auth/Reducer'),
-    initial
+    initialAuthState
   )
+  const authActions = ActionCreators(dispatch)
+
+  // enable effects
+  effects(state, authActions).forEach((effect) => useEffect(...effect))
 
   return (
     <AuthContext.Provider value={state}>
-      <AuthActionsContext.Provider value={ActionCreators(dispatch)}>
+      <AuthActionsContext.Provider value={authActions}>
         {children}
       </AuthActionsContext.Provider>
     </AuthContext.Provider>

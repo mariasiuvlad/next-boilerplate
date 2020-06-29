@@ -1,5 +1,14 @@
 module.exports = {
-  collectCoverageFrom: ['**/*.{ts,tsx}', '!**/*.d.ts', '!**/node_modules/**'],
+  collectCoverageFrom: [
+    '**/*.{ts,tsx}',
+    '!**/*.d.ts',
+    '!**/node_modules/**',
+    '!src/**/*.stories.tsx',
+    '!src/lib/graphql/**',
+    '!src/lib/log/**',
+    '!src/pages/**',
+    '!src/lib/ssr.tsx',
+  ],
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   transform: {
@@ -18,5 +27,8 @@ module.exports = {
     '@components/(.*)': '<rootDir>/src/components/$1',
     '@pages/(.*)': '<rootDir>/src/pages/$1',
     '@config/(.*)': '<rootDir>/src/config/$1',
+    '@config': '<rootDir>/src/config/index',
+    '__generated__/(.*)': '<rootDir>/src/__generated__/$1',
+    __mocks__: '<rootDir>/src/__mocks__/index',
   },
 }

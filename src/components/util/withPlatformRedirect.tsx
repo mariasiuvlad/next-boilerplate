@@ -1,6 +1,7 @@
 import Router from 'next/router'
 import {useEffect} from 'react'
 import {useAuth, useAuthActions} from '@lib/hooks'
+import Loading from '@components/common/Loading'
 
 // Redirect logged in users to platform
 const withPlatformRedirect = (WrappedComponent) => (props) => {
@@ -13,10 +14,10 @@ const withPlatformRedirect = (WrappedComponent) => (props) => {
   }, [])
   useEffect(() => {
     if (isLoggedIn) {
-      Router.push('/platform')
+      Router.replace('/platform')
     }
   }, [isLoggedIn])
-  if (!initialized) return <div>init...</div>
+  if (!initialized || isLoggedIn) return <Loading />
   return <WrappedComponent {...props} />
 }
 
