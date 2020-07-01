@@ -2,26 +2,30 @@
 ![Tests](https://github.com/softatac/pt-web/workflows/Run%20tests/badge.svg)
 
 # Getting Started
+
 Checkout `package.json` for available commands
 
 ## Development
+
 1. Install dependencies: `yarn`
 2. Start local infrstructure environment: `cd infrastructure && ./start.sh && cd ..`
-3. Setup DB schema: `yarn hasura:init` @todo - automate this step
-4. Start next dev `yarn dev`
-5. Acces on http://localhost:9009
-
+3. Start next dev `yarn dev`
+4. Acces on http://localhost:9009
 
 ### Codegen
+
 Update GraphQL schema from Backend with: `yarn codegen:update` (setup secret accordingly in _codegen-update.js_)
 
 ## Testing
+
 `yarn test`
 
 ## Front-end development
+
 [Storybook](https://storybook.js.org)
 
 ## Learn More
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 To learn more about Next.js, take a look at the following resources:
@@ -30,5 +34,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-
