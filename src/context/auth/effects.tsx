@@ -14,7 +14,10 @@ type AuthEffectsCreator = (
  * @param state
  * @param authActions
  */
-const refreshTokenBeforeExpiry: AuthEffectCreator = (state, authActions) => {
+export const refreshTokenBeforeExpiry: AuthEffectCreator = (
+  state,
+  authActions
+) => {
   const {isLoggedIn, data} = state
   const refreshHandle = useRef(null)
 

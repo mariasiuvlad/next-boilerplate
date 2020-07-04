@@ -5,9 +5,7 @@ import {AuthActionsContext} from '@context/auth'
 import {render, fireEvent, screen, waitFor} from '@testing-library/react'
 
 mockAuthActions.login
-  .mockImplementationOnce(
-    jest.fn((email, password) => Promise.resolve({email, password}))
-  )
+  .mockImplementationOnce(jest.fn(() => Promise.resolve()))
   .mockImplementationOnce(
     jest.fn(() => Promise.reject({message: 'api error message'}))
   )

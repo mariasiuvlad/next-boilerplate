@@ -14,7 +14,7 @@ export default function AvatarDropzone({children = null}) {
 
   return (
     <div {...getRootProps()}>
-      <input {...getInputProps()} />
+      <input data-testid="AvatarUpload-dropzone" {...getInputProps()} />
       <div>{children}</div>
     </div>
   )

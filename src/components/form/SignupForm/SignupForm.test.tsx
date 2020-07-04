@@ -3,15 +3,9 @@ import SignupForm from './container'
 import {mockAuthActions} from '__mocks__'
 import {AuthActionsContext} from '@context/auth'
 import {render, fireEvent, screen, waitFor} from '@testing-library/react'
-import * as AuthAPI from '@lib/api/auth'
 
-jest.mock('@lib/api/auth')
-const mockSignup = AuthAPI.signup as jest.Mock
-
-mockSignup
-  .mockImplementationOnce(
-    jest.fn((email, password) => Promise.resolve({email, password}))
-  )
+mockAuthActions.signup
+  .mockImplementationOnce(jest.fn(() => Promise.resolve()))
   .mockImplementationOnce(
     jest.fn(() => Promise.reject({message: 'api error message'}))
   )
@@ -43,14 +37,13 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-  mockAuthActions.login.mockClear()
+  mockAuthActions.signup.mockClear()
 })
 
 test('should display required error when value is invalid', async () => {
   submit()
   expect(await screen.findAllByRole('alert')).toHaveLength(2)
-  expect(mockSignup).not.toBeCalled()
-  expect(mockAuthActions.login).not.toBeCalled()
+  expect(mockAuthActions.signup).not.toBeCalled()
 })
 
 test('should display matching error when email is invalid', async () => {
@@ -59,8 +52,7 @@ test('should display matching error when email is invalid', async () => {
   submit()
 
   expect(await screen.findAllByRole('alert')).toHaveLength(1)
-  expect(mockSignup).not.toBeCalled()
-  expect(mockAuthActions.login).not.toBeCalled()
+  expect(mockAuthActions.signup).not.toBeCalled()
   expect(getEmail()).toBe('test')
   expect(getPassword()).toBe('Password12')
 })
@@ -71,8 +63,7 @@ test('should display min length error when password is invalid', async () => {
   submit()
 
   expect(await screen.findAllByRole('alert')).toHaveLength(1)
-  expect(mockSignup).not.toBeCalled()
-  expect(mockAuthActions.login).not.toBeCalled()
+  expect(mockAuthActions.signup).not.toBeCalled()
   expect(getEmail()).toBe('test@gmail.com')
   expect(getPassword()).toBe('pass')
 })
@@ -83,11 +74,7 @@ test('should not display errors when form is valid', async () => {
   submit()
 
   await waitFor(() => expect(screen.queryAllByRole('alert')).toHaveLength(0))
-  expect(mockSignup).toBeCalledWith({
-    email: 'test@gmail.com',
-    password: 'Password12',
-  })
-  expect(mockAuthActions.login).toBeCalledWith('test@gmail.com', 'Password12')
+  expect(mockAuthActions.signup).toBeCalledWith('test@gmail.com', 'Password12')
   expect(getEmail()).toBe('')
   expect(getPassword()).toBe('')
 })
@@ -98,16 +85,9 @@ test('should display signup errors when form is valid', async () => {
   submit()
 
   await waitFor(() => expect(screen.queryAllByRole('alert')).toHaveLength(0))
-  expect(mockSignup).toBeCalledWith({
-    email: 'test@gmail.com',
-    password: 'Password12',
-  })
+  expect(mockAuthActions.signup).toBeCalledWith('test@gmail.com', 'Password12')
   await waitFor(() => expect(screen.queryAllByRole('alert')).toHaveLength(1))
   expect(getEmail()).toBe('test@gmail.com')
   expect(getPassword()).toBe('Password12')
-  expect(mockSignup).toBeCalledWith({
-    email: 'test@gmail.com',
-    password: 'Password12',
-  })
-  expect(mockAuthActions.login).not.toBeCalled()
+  expect(mockAuthActions.signup).toBeCalledWith('test@gmail.com', 'Password12')
 })

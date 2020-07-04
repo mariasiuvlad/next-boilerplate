@@ -4,28 +4,32 @@ import {TRegisterRequestData} from '@lib/api/auth/types'
 import {ErrorMessage} from '@hookform/error-message'
 
 const SignupForm = ({signup}) => {
-  const {register, handleSubmit, setError, errors, reset} = useForm<
-    TRegisterRequestData
-  >()
+  const {
+    register,
+    handleSubmit,
+    setError,
+    errors,
+    reset,
+    formState: {isSubmitting},
+  } = useForm<TRegisterRequestData>()
 
   const onSubmit = useCallback(
-    async ({email, password}: TRegisterRequestData) => {
-      signup({email, password}).then(
+    async ({email, password}: TRegisterRequestData) =>
+      signup(email, password).then(
         () => reset(),
         ({message}) => setError('email', {type: 'manual', message})
-      )
-    },
+      ),
     []
   )
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4">
-        <label className="block text-md font-light mb-2" htmlFor="email-input">
-          Email
+        <label className="form-label" htmlFor="email-input">
+          email
         </label>
         <input
-          className="input"
+          className="form-input"
           type="email"
           name="email"
           id="email-input"
@@ -49,14 +53,11 @@ const SignupForm = ({signup}) => {
         />
       </div>
       <div className="mb-4">
-        <label
-          className="block text-md font-light mb-2"
-          htmlFor="password-input"
-        >
+        <label className="form-label" htmlFor="password-input">
           password
         </label>
         <input
-          className="input"
+          className="form-input"
           type="password"
           name="password"
           id="password-input"
@@ -80,11 +81,8 @@ const SignupForm = ({signup}) => {
       </div>
 
       <div className="flex items-center justify-between mb-5">
-        <button
-          className="bg-indigo-600 hover:bg-blue-700 text-white font-light py-2 px-6 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
-        >
-          REGISTER
+        <button className="submit-button" type="submit" disabled={isSubmitting}>
+          register
         </button>
       </div>
     </form>

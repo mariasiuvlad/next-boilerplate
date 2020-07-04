@@ -4,9 +4,14 @@ import {TRegisterRequestData} from '@lib/api/auth/types'
 import {ErrorMessage} from '@hookform/error-message'
 
 const LoginForm = ({login}) => {
-  const {register, handleSubmit, setError, errors, reset} = useForm<
-    TRegisterRequestData
-  >()
+  const {
+    register,
+    handleSubmit,
+    setError,
+    errors,
+    reset,
+    formState: {isSubmitting},
+  } = useForm<TRegisterRequestData>()
 
   const onSubmit = useCallback(
     async ({email, password}: TRegisterRequestData) => {
@@ -21,11 +26,11 @@ const LoginForm = ({login}) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4">
-        <label className="block text-md font-light mb-2" htmlFor="email-input">
+        <label className="form-label" htmlFor="email-input">
           Email
         </label>
         <input
-          className="input"
+          className="form-input"
           type="email"
           name="email"
           id="email-input"
@@ -49,14 +54,11 @@ const LoginForm = ({login}) => {
         />
       </div>
       <div className="mb-4">
-        <label
-          className="block text-md font-light mb-2"
-          htmlFor="password-input"
-        >
+        <label className="form-label" htmlFor="password-input">
           password
         </label>
         <input
-          className="input"
+          className="form-input"
           type="password"
           name="password"
           id="password-input"
@@ -80,11 +82,8 @@ const LoginForm = ({login}) => {
       </div>
 
       <div className="flex items-center justify-between mb-5">
-        <button
-          className="bg-indigo-600 hover:bg-blue-700 text-white font-light py-2 px-6 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
-        >
-          LOGIN
+        <button className="submit-button" type="submit" disabled={isSubmitting}>
+          login
         </button>
       </div>
     </form>
