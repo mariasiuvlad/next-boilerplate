@@ -53,8 +53,8 @@ export const GetUserMockError = {
 
 export const mockAuthActions = {
   logout: jest.fn(() => Promise.resolve()),
-  login: jest.fn((email, password) => Promise.resolve({email, password})),
-  register: jest.fn((email, password) => Promise.resolve({email, password})),
+  login: jest.fn((email, password) => Promise.resolve()),
+  register: jest.fn((email, password) => Promise.resolve()),
   refresh: jest.fn(() => Promise.resolve()),
 }
 
