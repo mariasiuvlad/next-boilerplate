@@ -8,6 +8,7 @@ module.exports = {
     '!src/lib/log/**',
     '!src/pages/**',
     '!src/lib/ssr.tsx',
+    '!src/lib/api/httpClient.ts',
   ],
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],

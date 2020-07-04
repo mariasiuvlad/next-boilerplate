@@ -18,3 +18,7 @@ pre {
 .input {
   @apply w-full border-gray-500 appearance-none border p-4 font-light leading-tight;
 }
+
+.form-error {
+  @apply text-red text-sm;
+}

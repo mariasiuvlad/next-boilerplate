@@ -21,7 +21,7 @@ const AutoLoginButton = () => {
 const Login = () => (
   <Layout>
     <LoginForm />
-    <Link href="/register">
+    <Link href="/signup">
       <a className="inline-block align-baseline font-light text-sm text-indigo-600 hover:text-indigo-500 mr-6">
         or Register
       </a>

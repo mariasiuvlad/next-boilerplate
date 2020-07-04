@@ -7,6 +7,7 @@ module.exports = {
       },
       colors: {
         playtwinGray: '#323335',
+        red: '#de3618',
       },
     },
   },

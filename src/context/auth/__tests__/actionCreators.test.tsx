@@ -7,6 +7,7 @@ import {
   LoginSuccess,
   LoginError,
   RefreshStart,
+  RegisterError,
 } from '../actions'
 import {AxiosError} from 'axios'
 
@@ -14,7 +15,7 @@ jest.mock('@lib/api/auth')
 let mockLogin = AuthAPI.login as jest.Mock
 let mockRefresh = AuthAPI.refresh as jest.Mock
 let mockLogout = AuthAPI.logout as jest.Mock
-let mockRegister = AuthAPI.register as jest.Mock
+let mockRegister = AuthAPI.signup as jest.Mock
 
 const mockError = new Error('<Mock Error>') as AxiosError
 
@@ -45,9 +46,12 @@ test('failed login works', async () => {
   let promise = actionCreators.login('email', 'password')
   expect(mockDispatch).toHaveBeenCalledTimes(1)
   expect(mockDispatch).toHaveBeenCalledWith(LoginStart())
-  await promise
-  expect(mockDispatch).toHaveBeenCalledTimes(2)
-  expect(mockDispatch).toHaveBeenCalledWith(LoginError(mockError))
+  try {
+    await promise
+  } catch (e) {
+    expect(mockDispatch).toHaveBeenCalledTimes(2)
+    expect(mockDispatch).toHaveBeenCalledWith(LoginError(mockError))
+  }
 })
 
 test('successful refresh works', async () => {
@@ -75,9 +79,12 @@ test('failed refresh works', async () => {
   let promise = actionCreators.refresh()
   expect(mockDispatch).toHaveBeenCalledTimes(1)
   expect(mockDispatch).toHaveBeenCalledWith(RefreshStart())
-  await promise
-  expect(mockDispatch).toHaveBeenCalledTimes(2)
-  expect(mockDispatch).toHaveBeenCalledWith(LoginError(mockError))
+  try {
+    await promise
+  } catch (e) {
+    expect(mockDispatch).toHaveBeenCalledTimes(2)
+    expect(mockDispatch).toHaveBeenCalledWith(LoginError(mockError))
+  }
 })
 
 test('logout works', async () => {
@@ -94,6 +101,7 @@ test('logout works', async () => {
 test('register works', async () => {
   let mockDispatch = jest.fn((action: TAction) => {})
   mockRegister.mockImplementationOnce(() => Promise.resolve())
+  mockLogin.mockImplementationOnce(() => Promise.resolve())
   let actionCreators = ActionCreators(mockDispatch)
 
   await actionCreators.register('email', 'password')
@@ -101,4 +109,25 @@ test('register works', async () => {
     email: 'email',
     password: 'password',
   })
+  expect(mockLogin).toHaveBeenCalledWith({
+    email: 'email',
+    password: 'password',
+  })
+})
+
+test('register handles error', async () => {
+  let mockDispatch = jest.fn((action: TAction) => {})
+  mockRegister.mockImplementationOnce(() => Promise.reject(mockError))
+  let actionCreators = ActionCreators(mockDispatch)
+
+  try {
+    await actionCreators.register('email', 'password')
+  } catch (error) {
+    expect(mockRegister).toHaveBeenCalledWith({
+      email: 'email',
+      password: 'password',
+    })
+    expect(mockDispatch).toHaveBeenCalledWith(RegisterError(mockError))
+  }
+  expect(mockLogin).not.toBeCalled()
 })

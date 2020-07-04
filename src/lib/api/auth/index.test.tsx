@@ -1,4 +1,4 @@
-import {login, refresh, register, logout} from '.'
+import {login, refresh, signup, logout} from '.'
 import httpClient from '@lib/api/httpClient'
 import {LoginResponseMock} from '__mocks__'
 
@@ -25,7 +25,7 @@ test('login API call', async () => {
 
 test('register API call', async () => {
   mockPost.mockImplementationOnce(() => Promise.resolve({data: {}}))
-  const res = await register({
+  const res = await signup({
     email: 'email',
     password: 'password',
   })

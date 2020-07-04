@@ -44,8 +44,8 @@ export namespace Actions {
 }
 
 export interface IActionCreators {
-  login: (email: string, password: string) => void
-  register: (email: string, password: string) => void
-  logout: () => void
-  refresh: () => void
+  login: (email: string, password: string) => Promise<void>
+  register: (email: string, password: string) => Promise<void>
+  logout: () => Promise<void>
+  refresh: () => Promise<void>
 }

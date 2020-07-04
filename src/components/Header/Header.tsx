@@ -36,7 +36,7 @@ export default function Header() {
               Login
             </span>
           </Link>
-          <Link href="/register">
+          <Link href="/signup">
             <span className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
               Register
             </span>

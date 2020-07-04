@@ -17,10 +17,10 @@ export function login(payload: TLoginRequestData) {
 }
 
 /**
- * @description Make a registration request
- * @param payload Contains registration credentials
+ * @description Make a signup request
+ * @param payload Contains signup credentials
  */
-export function register(payload: TRegisterRequestData) {
+export function signup(payload: TRegisterRequestData) {
   return httpClient
     .post<TLoginResponseData>('/auth/register', payload)
     .then(({data}) => data)

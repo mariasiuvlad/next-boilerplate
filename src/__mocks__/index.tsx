@@ -1,4 +1,8 @@
-import {UpdateAvatarDocument, GetUserDocument, Users} from '__generated__/graphql'
+import {
+  UpdateAvatarDocument,
+  GetUserDocument,
+  Users,
+} from '__generated__/graphql'
 import {TLoginResponseData} from '@lib/api/auth/types'
 import {AuthActionsContext} from '@context/auth'
 
@@ -48,10 +52,10 @@ export const GetUserMockError = {
 }
 
 export const mockAuthActions = {
-  logout: jest.fn(),
-  login: jest.fn((email, password) => {}),
-  register: jest.fn((email, password) => {}),
-  refresh: jest.fn(),
+  logout: jest.fn(() => Promise.resolve()),
+  login: jest.fn((email, password) => Promise.resolve({email, password})),
+  register: jest.fn((email, password) => Promise.resolve({email, password})),
+  refresh: jest.fn(() => Promise.resolve()),
 }
 
 export const withAuthProvider = (WrappedComponent) => (props) => {
