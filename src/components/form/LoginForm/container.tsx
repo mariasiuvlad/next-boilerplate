@@ -1,5 +1,5 @@
 import LoginForm from './LoginForm'
-import {useAuthActions} from '@lib/hooks'
+import {useAuthActions} from '@context/auth'
 
 const LoginFormContainer = () => {
   const {login} = useAuthActions()

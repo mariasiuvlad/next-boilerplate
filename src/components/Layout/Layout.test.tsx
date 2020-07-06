@@ -1,14 +1,13 @@
 import React from 'react'
 import {mount} from 'enzyme'
 import Layout from './Layout'
-import {AuthActionsContext} from '@context/auth'
-import {mockAuthActions} from '__mocks__'
+import ProvideAuth from '@context/auth'
 
 test('renders correctly', () => {
   const wrapper = mount(
-    <AuthActionsContext.Provider value={mockAuthActions}>
+    <ProvideAuth>
       <Layout>Mock Layout</Layout>
-    </AuthActionsContext.Provider>
+    </ProvideAuth>
   )
   // renders logout button
   expect(wrapper.find('main').text()).toBe('Mock Layout')

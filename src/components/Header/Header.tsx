@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import {useAuthActions} from '@lib/hooks'
+import {useAuthActions} from '@context/auth'
 
 export default function Header() {
   const {logout} = useAuthActions()

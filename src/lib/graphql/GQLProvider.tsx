@@ -1,6 +1,6 @@
 import {ApolloProvider} from '@apollo/react-hooks'
-import {useAuth} from '@lib/hooks/useAuth'
 import {useApollo} from '@lib/hooks/useApollo'
+import {useAuth} from '@context/auth'
 
 const GQLProvider = (props) => {
   const {initialApolloState, children} = props

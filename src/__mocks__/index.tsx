@@ -4,7 +4,6 @@ import {
   Users,
 } from '__generated__/graphql'
 import {TLoginResponseData} from '@lib/api/auth/types'
-import {AuthActionsContext} from '@context/auth'
 
 export const mockUser = {
   id: '6f8a29ef-b77d-468f-b0b3-51bd06dbb500',
@@ -56,12 +55,4 @@ export const mockAuthActions = {
   login: jest.fn((email, password) => Promise.resolve()),
   signup: jest.fn((email, password) => Promise.resolve()),
   refresh: jest.fn(() => Promise.resolve()),
-}
-
-export const withAuthProvider = (WrappedComponent) => (props) => {
-  return (
-    <AuthActionsContext.Provider value={mockAuthActions}>
-      <WrappedComponent {...props} />
-    </AuthActionsContext.Provider>
-  )
 }

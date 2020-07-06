@@ -1,30 +1,54 @@
-import {createContext, useReducer, Reducer, useEffect} from 'react'
-import {withReducerLogger} from '@lib/log'
-import AuthReducer from './reducer'
-import initialState, {IState} from './initialState'
-import ActionCreators from './actionCreators'
-import {IActionCreators} from './types'
-import {TAction} from './actions'
-import effects from './effects'
+import {useState, createContext, useContext} from 'react'
+import {TLoginResponseData} from '@lib/api/auth/types'
+import createAuthActions from './actions'
 
-export const AuthContext = createContext<IState>(initialState())
-export const AuthActionsContext = createContext<IActionCreators>(null)
+interface IProvideAuthState {
+  data: TLoginResponseData
+  initialized: boolean
+  isLoggedIn: boolean
+}
 
-export const AuthProvider = ({initialAuthState = initialState(), children}) => {
-  const [state, dispatch] = useReducer<Reducer<IState, TAction>>(
-    withReducerLogger(AuthReducer, 'Auth/Reducer'),
-    initialAuthState
-  )
-  const authActions = ActionCreators(dispatch)
+interface IProvideAuthActions {
+  login: (email: string, password: string) => Promise<void>
+  refresh: () => Promise<void>
+  logout: () => Promise<void>
+  signup: (email: string, password: string) => Promise<void>
+}
 
-  // enable effects
-  effects(state, authActions).forEach((effect) => useEffect(...effect))
+interface IProvideAuth {
+  state: IProvideAuthState
+  actions: IProvideAuthActions
+}
 
+export const iStateFactory = (
+  data: TLoginResponseData = null,
+  initialized = false
+): IProvideAuthState => ({
+  data,
+  initialized: !!data || initialized,
+  isLoggedIn: !!data,
+})
+
+const authContext = createContext<IProvideAuthState>(null)
+const authActionsContext = createContext<IProvideAuthActions>(null)
+
+export const useAuth = () => useContext(authContext)
+export const useAuthActions = () => useContext(authActionsContext)
+
+export function useProvideAuth(initial: IProvideAuthState): IProvideAuth {
+  const [state, setState] = useState(initial || iStateFactory())
+  const actions = createAuthActions(setState)
+
+  return {state, actions}
+}
+
+export default function ProvideAuth({children, value = null}) {
+  const {state, actions} = useProvideAuth(value)
   return (
-    <AuthContext.Provider value={state}>
-      <AuthActionsContext.Provider value={authActions}>
+    <authContext.Provider value={state}>
+      <authActionsContext.Provider value={actions}>
         {children}
-      </AuthActionsContext.Provider>
-    </AuthContext.Provider>
+      </authActionsContext.Provider>
+    </authContext.Provider>
   )
 }

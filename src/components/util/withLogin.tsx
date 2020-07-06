@@ -1,26 +1,27 @@
 import {useEffect} from 'react'
 import Router from 'next/router'
-import {useAuth} from '@lib/hooks'
 import Loading from '@components/common/Loading'
+import {useAuth, useAuthActions} from '@context/auth'
 
 const withLogin = (WrappedComponent) => (props) => {
-  const {initialized, isLoggedIn, actions} = useAuth()
+  const {initialized, isLoggedIn} = useAuth()
+  const {refresh} = useAuthActions()
 
   // attempt to refresh token once
   useEffect(() => {
-    if (!initialized) actions.refresh()
+    if (!initialized) refresh()
   }, [])
 
+  // redirect to login
   useEffect(() => {
-    if (initialized && !isLoggedIn) {
-      Router.replace('/login')
-    }
-  }, [isLoggedIn])
+    if (initialized && !isLoggedIn) Router.replace('/login')
+  }, [initialized, isLoggedIn])
 
-  if (!initialized || !isLoggedIn) {
-    return <Loading />
-  }
-  return <WrappedComponent {...props} />
+  return !initialized || !isLoggedIn ? (
+    <Loading />
+  ) : (
+    <WrappedComponent {...props} />
+  )
 }
 
 export default withLogin

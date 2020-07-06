@@ -1,54 +1,56 @@
 import React from 'react'
-import {mount} from 'enzyme'
 import withPlatformRedirect from './withPlatformRedirect'
-import {AuthContext, AuthActionsContext} from '@context/auth'
-import initialState from '@context/auth/initialState'
 import Router from 'next/router'
-import {LoginResponseMock, mockAuthActions} from '__mocks__'
+import {LoginResponseMock} from '__mocks__'
+import createAuthActions from '@context/auth/actions'
+import ProvideAuth, {iStateFactory} from '@context/auth'
+import {render} from '@testing-library/react'
 
 jest.mock('next/router')
 const mockRouterReplace = (Router.replace as jest.Mock).mockImplementationOnce(
   jest.fn()
 )
 
+jest.mock('@context/auth/actions')
+const mockCreateAuthActions = createAuthActions as jest.Mock
+const mockAuthActions = {
+  login: jest.fn(),
+  signup: jest.fn(),
+  logout: jest.fn(),
+  refresh: jest.fn(),
+}
+
+mockCreateAuthActions.mockImplementation(() => mockAuthActions)
+
 const MockedComponent = () => <div>Mock</div>
 const WithPlatformRedirect = withPlatformRedirect(MockedComponent)
-
-const Wrapper = ({children, initialState}) => (
-  <AuthContext.Provider value={initialState}>
-    <AuthActionsContext.Provider value={mockAuthActions}>
-      {children}
-    </AuthActionsContext.Provider>
-  </AuthContext.Provider>
-)
-
 test('it calls refresh if not initialized', async () => {
-  const wrapper = mount(
-    <Wrapper initialState={initialState()}>
+  const {container} = render(
+    <ProvideAuth>
       <WithPlatformRedirect />
-    </Wrapper>
+    </ProvideAuth>
   )
 
-  expect(wrapper.text()).toBe('loading...')
+  expect(container.textContent).toBe('loading...')
   expect(mockAuthActions.refresh).toHaveBeenCalledTimes(1)
 })
 
 test('it renders component if not logged in', async () => {
-  const wrapper = mount(
-    <Wrapper initialState={initialState(null, true)}>
+  const {container} = render(
+    <ProvideAuth value={iStateFactory(null, true)}>
       <WithPlatformRedirect />
-    </Wrapper>
+    </ProvideAuth>
   )
 
-  expect(wrapper.text()).toBe('Mock')
+  expect(container.textContent).toBe('Mock')
 })
 
 test('it redirects if logged in', async () => {
-  const wrapper = mount(
-    <Wrapper initialState={initialState(LoginResponseMock, true)}>
+  const {container} = render(
+    <ProvideAuth value={iStateFactory(LoginResponseMock, true)}>
       <WithPlatformRedirect />
-    </Wrapper>
+    </ProvideAuth>
   )
-  expect(wrapper.text()).toBe('loading...')
+  expect(container.textContent).toBe('loading...')
   expect(mockRouterReplace).toHaveBeenCalledTimes(1)
 })

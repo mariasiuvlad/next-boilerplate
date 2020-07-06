@@ -1,8 +1,19 @@
 import React from 'react'
 import LoginForm from './container'
-import {mockAuthActions} from '__mocks__'
-import {AuthActionsContext} from '@context/auth'
 import {render, fireEvent, screen, waitFor} from '@testing-library/react'
+import createAuthActions from '@context/auth/actions'
+import ProvideAuth from '@context/auth'
+
+jest.mock('@context/auth/actions')
+const mockCreateAuthActions = createAuthActions as jest.Mock
+const mockAuthActions = {
+  login: jest.fn(),
+  signup: jest.fn(),
+  logout: jest.fn(),
+  refresh: jest.fn(),
+}
+
+mockCreateAuthActions.mockImplementation(() => mockAuthActions)
 
 mockAuthActions.login
   .mockImplementationOnce(jest.fn(() => Promise.resolve()))
@@ -27,9 +38,9 @@ const setPassword = (value) =>
   })
 
 const MockLoginForm = () => (
-  <AuthActionsContext.Provider value={mockAuthActions}>
+  <ProvideAuth>
     <LoginForm />
-  </AuthActionsContext.Provider>
+  </ProvideAuth>
 )
 
 beforeEach(() => {
