@@ -1,7 +1,7 @@
 import React from 'react'
 import withLogin from './withLogin'
 import Router from 'next/router'
-import ProvideAuth, {iStateFactory} from '@context/auth'
+import ProvideAuth, {authStateFactory} from '@context/auth'
 import {render} from '@testing-library/react'
 import createAuthActions from '@context/auth/actions'
 import {LoginResponseMock} from '__mocks__'
@@ -38,7 +38,7 @@ test('it calls refresh if not initialized', async () => {
 
 test('it redirects if not logged in', async () => {
   const {container} = render(
-    <ProvideAuth value={iStateFactory(null, true)}>
+    <ProvideAuth value={authStateFactory(null, true)}>
       <WithLogin />
     </ProvideAuth>
   )
@@ -49,7 +49,7 @@ test('it redirects if not logged in', async () => {
 
 test('it renders component if logged in', async () => {
   const {container} = render(
-    <ProvideAuth value={iStateFactory(LoginResponseMock, true)}>
+    <ProvideAuth value={authStateFactory(LoginResponseMock, true)}>
       <WithLogin />
     </ProvideAuth>
   )

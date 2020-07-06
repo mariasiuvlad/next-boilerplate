@@ -1,10 +1,10 @@
 import * as AuthAPI from '@lib/api/auth'
-import {iStateFactory} from '.'
+import {authStateFactory} from '.'
 
 export default function createAuthActions(setAuthState) {
   const login = (email: string, password: string) =>
     AuthAPI.login({email, password}).then((data) =>
-      setAuthState(iStateFactory(data))
+      setAuthState(authStateFactory(data))
     )
 
   const signup = (email: string, password: string) =>
@@ -12,12 +12,12 @@ export default function createAuthActions(setAuthState) {
 
   const refresh = () =>
     AuthAPI.refresh().then(
-      ({token}) => setAuthState(iStateFactory(token)),
-      () => setAuthState(iStateFactory(null, true))
+      ({token}) => setAuthState(authStateFactory(token)),
+      () => setAuthState(authStateFactory(null, true))
     )
 
   const logout = () =>
-    AuthAPI.logout().then(() => setAuthState(iStateFactory(null, true)))
+    AuthAPI.logout().then(() => setAuthState(authStateFactory(null, true)))
 
   return {login, signup, refresh, logout}
 }

@@ -6,7 +6,6 @@ module.exports = {
     '!**/src/__generated__/**',
     '!src/**/*.stories.tsx',
     '!src/lib/graphql/**',
-    '!src/lib/hooks/useApollo.ts',
     '!src/lib/log/**',
     '!src/pages/**',
     '!src/lib/ssr.tsx',

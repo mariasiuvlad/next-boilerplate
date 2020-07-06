@@ -1,3 +1,4 @@
+import {useMemo} from 'react'
 import {ApolloClient} from 'apollo-client'
 import {InMemoryCache, NormalizedCacheObject} from 'apollo-cache-inmemory'
 import {HttpLink} from 'apollo-link-http'
@@ -6,6 +7,11 @@ import {GQL_API} from '@config/index'
 
 let apolloClient: ApolloClient<NormalizedCacheObject>
 let token: string
+
+type ApolloInitOptions = {
+  initialState?: any
+  jwtToken?: string
+}
 
 const authLink = (jwtToken: string) =>
   new ApolloLink((operation, forward) => {
@@ -29,11 +35,6 @@ function createApolloClient(jwtToken = '') {
   })
 }
 
-type ApolloInitOptions = {
-  initialState?: any
-  jwtToken?: string
-}
-
 export function initializeApollo({initialState, jwtToken}: ApolloInitOptions) {
   const _apolloClient = jwtToken
     ? createApolloClient(jwtToken)
@@ -52,4 +53,11 @@ export function initializeApollo({initialState, jwtToken}: ApolloInitOptions) {
   token = jwtToken
 
   return _apolloClient
+}
+
+export function useApollo(initialState = {}, jwtToken = '') {
+  const store = useMemo(() => initializeApollo({initialState, jwtToken}), [
+    jwtToken,
+  ])
+  return store
 }

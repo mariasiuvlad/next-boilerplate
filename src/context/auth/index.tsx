@@ -1,26 +1,12 @@
 import {useState, createContext, useContext} from 'react'
 import {TLoginResponseData} from '@lib/api/auth/types'
 import createAuthActions from './actions'
+import {IProvideAuthState, IProvideAuthActions, IProvideAuth} from './types'
+import {logger, useStateLogger} from '@lib/log'
 
-interface IProvideAuthState {
-  data: TLoginResponseData
-  initialized: boolean
-  isLoggedIn: boolean
-}
+const log = logger.extend('auth:context')
 
-interface IProvideAuthActions {
-  login: (email: string, password: string) => Promise<void>
-  refresh: () => Promise<void>
-  logout: () => Promise<void>
-  signup: (email: string, password: string) => Promise<void>
-}
-
-interface IProvideAuth {
-  state: IProvideAuthState
-  actions: IProvideAuthActions
-}
-
-export const iStateFactory = (
+export const authStateFactory = (
   data: TLoginResponseData = null,
   initialized = false
 ): IProvideAuthState => ({
@@ -36,13 +22,12 @@ export const useAuth = () => useContext(authContext)
 export const useAuthActions = () => useContext(authActionsContext)
 
 export function useProvideAuth(initial: IProvideAuthState): IProvideAuth {
-  const [state, setState] = useState(initial || iStateFactory())
-  const actions = createAuthActions(setState)
-
+  const [state, setState] = useState(initial)
+  const actions = createAuthActions(useStateLogger(state, setState, log))
   return {state, actions}
 }
 
-export default function ProvideAuth({children, value = null}) {
+export default function ProvideAuth({children, value = authStateFactory()}) {
   const {state, actions} = useProvideAuth(value)
   return (
     <authContext.Provider value={state}>

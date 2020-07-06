@@ -1,5 +1,5 @@
 import {ApolloProvider} from '@apollo/react-hooks'
-import {useApollo} from '@lib/hooks/useApollo'
+import {useApollo} from './apolloClient'
 import {useAuth} from '@context/auth'
 
 const GQLProvider = (props) => {

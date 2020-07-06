@@ -1,7 +1,7 @@
 import {initializeApollo} from '@lib/graphql/apolloClient'
 import {TJWTToken} from '@lib/api/auth/types'
 import * as AuthAPI from '@lib/api/auth'
-import {iStateFactory} from '@context/auth'
+import {authStateFactory} from '@context/auth'
 
 /**
  * @description Refresh the token server side and set cookies on the response
@@ -34,7 +34,7 @@ export const refreshAuth = async (ctx, props = {}) => {
   const response = await refreshToken(ctx)
   return {
     ...props,
-    initialAuthState: iStateFactory(response, true),
+    initialAuthState: authStateFactory(response, true),
   }
 }
 

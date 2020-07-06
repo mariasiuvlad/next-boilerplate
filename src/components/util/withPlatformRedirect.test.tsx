@@ -3,7 +3,7 @@ import withPlatformRedirect from './withPlatformRedirect'
 import Router from 'next/router'
 import {LoginResponseMock} from '__mocks__'
 import createAuthActions from '@context/auth/actions'
-import ProvideAuth, {iStateFactory} from '@context/auth'
+import ProvideAuth, {authStateFactory} from '@context/auth'
 import {render} from '@testing-library/react'
 
 jest.mock('next/router')
@@ -37,7 +37,7 @@ test('it calls refresh if not initialized', async () => {
 
 test('it renders component if not logged in', async () => {
   const {container} = render(
-    <ProvideAuth value={iStateFactory(null, true)}>
+    <ProvideAuth value={authStateFactory(null, true)}>
       <WithPlatformRedirect />
     </ProvideAuth>
   )
@@ -47,7 +47,7 @@ test('it renders component if not logged in', async () => {
 
 test('it redirects if logged in', async () => {
   const {container} = render(
-    <ProvideAuth value={iStateFactory(LoginResponseMock, true)}>
+    <ProvideAuth value={authStateFactory(LoginResponseMock, true)}>
       <WithPlatformRedirect />
     </ProvideAuth>
   )
