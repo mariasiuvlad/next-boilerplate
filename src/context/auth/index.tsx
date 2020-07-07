@@ -1,4 +1,4 @@
-import {useState, createContext, useContext} from 'react'
+import {useState, createContext, useContext, useEffect, useRef} from 'react'
 import {TLoginResponseData} from '@lib/api/auth/types'
 import createAuthActions from './actions'
 import {IProvideAuthState, IProvideAuthActions, IProvideAuth} from './types'
@@ -22,8 +22,22 @@ export const useAuth = () => useContext(authContext)
 export const useAuthActions = () => useContext(authActionsContext)
 
 export function useProvideAuth(initial: IProvideAuthState): IProvideAuth {
+  const refreshHandle = useRef(null)
   const [state, setState] = useState(initial)
   const actions = createAuthActions(useStateLogger(state, setState, log))
+
+  // refresh jwt token before expiry
+  useEffect(() => {
+    if (state.initialized && !!state.data) {
+      refreshHandle.current = setTimeout(
+        actions.refresh,
+        state.data.jwt_expires_in - 30 * 1000
+      )
+    } else {
+      clearTimeout(refreshHandle.current)
+    }
+  }, [state.data])
+
   return {state, actions}
 }
 

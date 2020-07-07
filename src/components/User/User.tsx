@@ -1,12 +1,12 @@
 import AvatarDropzone from '@components/AvatarDropzone/AvatarDropzone'
 import {Users} from '__generated__/graphql'
-import {SFC} from 'react'
+import {FC} from 'react'
 
 interface UserProps {
   user: Users
 }
 
-const User: SFC<UserProps> = ({user}) => (
+const User: FC<UserProps> = ({user}) => (
   <div className="text-sm p-8 bg-white border border-gray-300 rounded-lg">
     <AvatarDropzone>
       <img

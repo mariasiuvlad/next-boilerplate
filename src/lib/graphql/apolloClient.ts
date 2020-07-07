@@ -2,8 +2,12 @@ import {useMemo} from 'react'
 import {ApolloClient} from 'apollo-client'
 import {InMemoryCache, NormalizedCacheObject} from 'apollo-cache-inmemory'
 import {HttpLink} from 'apollo-link-http'
-import {ApolloLink, concat} from 'apollo-link'
+import {onError} from 'apollo-link-error'
+import {ApolloLink} from 'apollo-link'
 import {GQL_API} from '@config/index'
+import {logger} from '@lib/log'
+
+const log = logger.extend('gql')
 
 let apolloClient: ApolloClient<NormalizedCacheObject>
 let token: string
@@ -27,10 +31,20 @@ const httpLink = new HttpLink({
   credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
 })
 
+const errorLink = onError(({graphQLErrors, networkError}) => {
+  if (graphQLErrors)
+    graphQLErrors.forEach(({message, locations, path}) =>
+      log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+      )
+    )
+  if (networkError) log(`[Network error]: ${networkError}`)
+})
+
 function createApolloClient(jwtToken = '') {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
-    link: concat(authLink(jwtToken || token), httpLink),
+    link: ApolloLink.from([authLink(jwtToken || token), errorLink, httpLink]),
     cache: new InMemoryCache(),
   })
 }
