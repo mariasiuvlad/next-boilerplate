@@ -16,6 +16,7 @@
     "codegen:ci": "graphql-codegen --config codegen.js",
     "codegen:update": "graphql-codegen --config codegen-update.js --watch",
     "hasura:init": "hasura metadata apply",
+    "tsc:build": "yarn tsc --build tsconfig.json",
     "postinstall": "yarn codegen:ci"
   },
   "dependencies": {
@@ -70,13 +71,22 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "fork-ts-checker-webpack-plugin": "^5.0.2",
     "hasura-cli": "^1.2.2",
+    "husky": "3.1.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
     "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
     "react-test-renderer": "^16.13.1",
     "tailwindcss": "^1.4.6",
     "ts-loader": "^7.0.5",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^4.0.0-dev.20200610"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn pretty-quick --staged",
+      "pre-push": "yarn tsc:build && yarn test"
+    }
   }
 }
