@@ -26,18 +26,20 @@ HttpClient.interceptors.response.use(
     return response
   },
   ({request, response}) => {
+    if (!response) {
+      log('request failed')
+      return Promise.reject({
+        message: 'The request was made but no response was received',
+        context: {request},
+      })
+    }
     log(
       '%s %s | %s',
-      response.status,
-      response.statusText,
-      response.data?.message
+      response?.status,
+      response?.statusText,
+      response?.data?.message
     )
-    return response
-      ? Promise.reject({context: response, message: response.data?.message})
-      : Promise.reject({
-          message: 'The request was made but no response was received',
-          context: {request},
-        })
+    return Promise.reject({context: response, message: response.data?.message})
   }
 )
 

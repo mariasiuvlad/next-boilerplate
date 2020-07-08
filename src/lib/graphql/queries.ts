@@ -18,3 +18,15 @@ export const UPDATE_AVATAR = gql`
     }
   }
 `
+
+export const GET_USER_SUBSCRIPTION = gql`
+  subscription MyUser {
+    users {
+      id
+      display_name
+      avatar_url
+      updated_at
+      created_at
+    }
+  }
+`

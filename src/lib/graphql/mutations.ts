@@ -7,3 +7,11 @@ export const UPDATE_AVATAR = gql`
     }
   }
 `
+
+export const UPDATE_DISPLAY_NAME = gql`
+  mutation UpdateDisplayName($display_name: String = "") {
+    update_users(_set: {display_name: $display_name}, where: {}) {
+      affected_rows
+    }
+  }
+`

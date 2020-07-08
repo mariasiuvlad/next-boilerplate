@@ -1,7 +1,7 @@
 import Loading from '@components/common/Loading'
 import Error from '@components/common/Error'
 import User from './User'
-import { useGetUserQuery } from '__generated__/graphql'
+import {useGetUserQuery} from '__generated__/graphql'
 
 const UserContainer = () => {
   const {data, loading, error} = useGetUserQuery()
