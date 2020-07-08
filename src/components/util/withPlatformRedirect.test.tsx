@@ -3,7 +3,7 @@ import withPlatformRedirect from './withPlatformRedirect'
 import Router from 'next/router'
 import {LoginResponseMock} from '__mocks__'
 import createAuthActions from '@context/auth/actions'
-import ProvideAuth, {authStateFactory} from '@context/auth'
+import ProvideAuth, {authStateFactory, withProvideAuth} from '@context/auth'
 import {render} from '@testing-library/react'
 
 jest.mock('next/router')
@@ -24,12 +24,10 @@ mockCreateAuthActions.mockImplementation(() => mockAuthActions)
 
 const MockedComponent = () => <div>Mock</div>
 const WithPlatformRedirect = withPlatformRedirect(MockedComponent)
+
 test('it calls refresh if not initialized', async () => {
-  const {container} = render(
-    <ProvideAuth>
-      <WithPlatformRedirect />
-    </ProvideAuth>
-  )
+  const Component = withProvideAuth(withPlatformRedirect(MockedComponent))
+  const {container} = render(<Component />)
 
   expect(container.textContent).toBe('loading...')
   expect(mockAuthActions.refresh).toHaveBeenCalledTimes(1)

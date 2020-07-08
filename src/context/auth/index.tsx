@@ -51,3 +51,12 @@ export default function ProvideAuth({children, value = authStateFactory()}) {
     </authContext.Provider>
   )
 }
+
+export const withProvideAuth = (Component) => ({
+  initialAuthState = authStateFactory(),
+  ...rest
+}) => (
+  <ProvideAuth value={initialAuthState}>
+    <Component {...rest} />
+  </ProvideAuth>
+)

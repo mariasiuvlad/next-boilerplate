@@ -2,6 +2,7 @@ import SignupForm from '@components/form/SignupForm'
 import Link from 'next/link'
 import Layout from '@components/Layout'
 import withPlatformRedirect from '@components/util/withPlatformRedirect'
+import {withProvideAuth} from '@context/auth'
 
 const RegisterPage = () => {
   return (
@@ -16,4 +17,4 @@ const RegisterPage = () => {
   )
 }
 
-export default withPlatformRedirect(RegisterPage)
+export default withProvideAuth(withPlatformRedirect(RegisterPage))

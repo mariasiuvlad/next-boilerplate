@@ -1,4 +1,5 @@
 import Layout from '@components/Layout'
+import {withProvideAuth} from '@context/auth'
 
 const IndexPage = () => (
   <Layout>
@@ -6,4 +7,4 @@ const IndexPage = () => (
   </Layout>
 )
 
-export default IndexPage
+export default withProvideAuth(IndexPage)

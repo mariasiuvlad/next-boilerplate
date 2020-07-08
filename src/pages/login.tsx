@@ -2,6 +2,7 @@ import LoginForm from '@components/form/LoginForm'
 import Link from 'next/link'
 import withPlatformRedirect from '@components/util/withPlatformRedirect'
 import Layout from '@components/Layout'
+import {withProvideAuth} from '@context/auth'
 
 const Login = () => (
   <Layout>
@@ -14,4 +15,4 @@ const Login = () => (
   </Layout>
 )
 
-export default withPlatformRedirect(Login)
+export default withProvideAuth(withPlatformRedirect(Login))

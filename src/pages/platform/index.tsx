@@ -1,6 +1,7 @@
 import User from '@components/User'
-import withLogin from '@components/util/withLogin'
 import Layout from '@components/Layout'
+import {withAuthApollo} from '@lib/graphql/GQLProvider'
+import withLogin from '@components/util/withLogin'
 
 const DashboardPage = () => {
   return (
@@ -21,4 +22,4 @@ const DashboardPage = () => {
 //   return {props}
 // }
 
-export default withLogin(DashboardPage)
+export default withAuthApollo(withLogin(DashboardPage))
