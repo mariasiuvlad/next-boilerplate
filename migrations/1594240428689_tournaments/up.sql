@@ -48,3 +48,4 @@ ALTER TABLE ONLY public.tournament
     ADD CONSTRAINT tournament_state_fkey FOREIGN KEY (state) REFERENCES public.tournament_state_enum(value) ON UPDATE RESTRICT ON DELETE RESTRICT;
 ALTER TABLE ONLY public.tournament
     ADD CONSTRAINT tournament_type_fkey FOREIGN KEY (type) REFERENCES public.tournament_type_enum(value) ON UPDATE RESTRICT ON DELETE RESTRICT;
+
