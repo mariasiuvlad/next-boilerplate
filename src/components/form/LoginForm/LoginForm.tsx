@@ -26,10 +26,11 @@ const LoginForm = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <TextInput
-        label="Email"
+        label="email"
         placeholder="email@example.com"
         type="email"
         name="email"
+        id="email"
         errors={errors}
         bind={register({
           required: 'Email is required',
@@ -40,9 +41,10 @@ const LoginForm = ({
         })}
       />
       <TextInput
-        label="Password"
+        label="password"
         type="password"
         name="password"
+        id="password"
         errors={errors}
         bind={register({
           required: 'Password is required.',
