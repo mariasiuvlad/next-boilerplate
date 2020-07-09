@@ -1,5 +1,5 @@
 import React from 'react'
-import {render} from '@testing-library/react'
+import {render, waitFor} from '@testing-library/react'
 import Icon from './Icon'
 
 test('renders correctly', async () => {
@@ -11,11 +11,13 @@ test('renders correctly', async () => {
 })
 
 // @todo - finish this test
-// test('invlid link renders fallback', async () => {
-//   const {findByAltText} = render(
-//     <Icon src="httpXY://invalid image" alt="Invalid image" />
-//   )
-//   const img = await findByAltText('Invalid image')
+test('invlid link renders fallback', async () => {
+  const {findByAltText} = render(
+    <Icon src="httpXY://invalid image" alt="Invalid image" />
+  )
+  const img = await findByAltText('Invalid image')
 
-//   expect(img).toHaveProperty('src', '/images/icons/icon-128x128.png')
-// })
+  waitFor(() =>
+    expect(img).toHaveProperty('src', '/images/icons/icon-128x128.png')
+  )
+})
