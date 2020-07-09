@@ -18,9 +18,12 @@ Update GraphQL schema from Backend with: `yarn codegen:update` (setup secret acc
 
 ## Testing
 
-`yarn test`
+- full suite: `yarn test`
+- individual file: `npx jest -i src/components/Icon/Icon.test.tsx`
 
 ## Front-end development
+
+[Components guidelines](src/components/README.md)
 
 [Storybook](https://storybook.js.org)
 
