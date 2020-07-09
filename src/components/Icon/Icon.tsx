@@ -10,7 +10,7 @@ export default function Icon({src, alt}) {
     <img
       className="bg-gray-400 rounded-full"
       src={error ? ERROR_URL : src}
-      alt={error ? `Error loading: ${alt}` : alt}
+      alt={alt}
       onError={handleError}
     />
   )
