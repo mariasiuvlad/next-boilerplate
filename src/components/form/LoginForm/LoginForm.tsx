@@ -1,59 +1,28 @@
-import {useCallback} from 'react'
-import {TRegisterRequestData} from '@lib/api/auth/types'
-import TextInput from '../fields/TextInput'
+import {LoginFormProps} from './config'
+import {ErrorMessage} from '@hookform/error-message'
+import FormError from '../components/FormError'
 
-const LoginForm = ({
-  login,
+export default function LoginForm({
+  inputs,
+  onSubmit,
   form: {
-    register,
-    handleSubmit,
-    setError,
     errors,
-    reset,
     formState: {isSubmitting},
   },
-}) => {
-  const onSubmit = useCallback(
-    async ({email, password}: TRegisterRequestData) => {
-      login(email, password).then(
-        () => reset(),
-        ({message}) => setError('email', {type: 'manual', message})
-      )
-    },
-    []
-  )
+}: LoginFormProps) {
+  const {email, password} = inputs
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <TextInput
-        label="email"
-        placeholder="email@example.com"
-        type="email"
-        name="email"
-        id="email"
-        errors={errors}
-        bind={register({
-          required: 'Email is required',
-          pattern: {
-            value: /\S+@\S+\.\S+/,
-            message: 'Entered value does not match email format',
-          },
-        })}
-      />
-      <TextInput
-        label="password"
-        type="password"
-        name="password"
-        id="password"
-        errors={errors}
-        bind={register({
-          required: 'Password is required.',
-          minLength: {
-            value: 5,
-            message: 'min length is 5',
-          },
-        })}
-      />
+    <form onSubmit={onSubmit}>
+      <section className="mb-4">
+        <ErrorMessage errors={errors} name="api" render={FormError} />
+      </section>
+      <section className="mb-4">
+        {email.Label}
+        {email.Input}
+        {email.Error}
+      </section>
+      <section className="mb-4">{password.Control}</section>
       <div className="flex items-center justify-between mb-5">
         <button className="submit-button" type="submit" disabled={isSubmitting}>
           login
@@ -62,5 +31,3 @@ const LoginForm = ({
     </form>
   )
 }
-
-export default LoginForm
