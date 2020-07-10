@@ -1,6 +1,20 @@
 const path = require('path')
 
-module.exports = async ({config, mode}) => {
+const AppSourceDir = path.join(__dirname, '..', 'src')
+
+module.exports = async ({config}) => {
+  // Disable the Storybook internal-`.svg`-rule for components loaded from our app.
+  const svgRule = config.module.rules.find((rule) =>
+    'test.svg'.match(rule.test)
+  )
+  svgRule.exclude = [AppSourceDir]
+
+  config.module.rules.push({
+    test: /\.svg$/,
+    include: AppSourceDir,
+    use: '@svgr/webpack',
+  })
+
   config.module.rules.push({
     test: /\.css$/,
     use: [
@@ -14,5 +28,6 @@ module.exports = async ({config, mode}) => {
     ],
     include: path.resolve(__dirname, '../'),
   })
+
   return config
 }
