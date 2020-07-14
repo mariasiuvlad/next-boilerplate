@@ -1,7 +1,8 @@
 // nextjs wants deps without require while storybook wants them with require
-const withStorybook = (dep) => (process.env.IS_STORYBOOK ? require(dep) : dep)
+const withStorybook = (plugins) =>
+  process.env.IS_STORYBOOK ? plugins.map((p) => require(p)) : p
 
-const plugins = ['tailwindcss', 'postcss-preset-env'].map(withStorybook)
+const plugins = withStorybook(['tailwindcss', 'postcss-preset-env'])
 
 module.exports = {
   plugins,

@@ -1,0 +1,9 @@
+.container {
+  @apply text-sm p-8 bg-orange-200 border border-gray-300 rounded-lg;
+}
+.avatar {
+  @apply w-10 h-10 rounded-full mb-4;
+}
+.name {
+  @apply text-gray-900 leading-none;
+}
