@@ -1,0 +1,32 @@
+.btn {
+  @apply font-thin text-sm py-2 px-8 border rounded-full border-yellow-500;
+}
+
+.btn:focus {
+  @apply outline-none;
+}
+
+.btn.outline {
+  @apply bg-transparent font-light text-yellow-500;
+}
+
+.btn.primary {
+  @apply bg-yellow-500 font-medium text-white;
+}
+
+.btn.default {
+  @apply bg-transparent font-normal text-white border-white;
+}
+
+.btn.outline:hover {
+  @apply text-white;
+}
+
+.btn.primary:hover {
+  background-color: rgba(236, 201, 75, 0.9);
+  border-color: rgba(236, 201, 75, 0.95);
+}
+
+.btn.default:hover {
+  @apply border-yellow-500;
+}

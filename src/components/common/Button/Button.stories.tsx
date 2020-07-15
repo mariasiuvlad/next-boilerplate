@@ -1,9 +1,25 @@
 import React from 'react'
-import Button from './Button'
+import {Button} from './Button'
 
 export default {
   component: Button,
   title: 'Button Example',
 }
 
-export const Basic = () => <Button onClick={() => {}}>WIN NOW</Button>
+export const Outline = () => (
+  <Button className="btn outline" onClick={() => {}}>
+    Outline
+  </Button>
+)
+
+export const Default = () => (
+  <Button className="btn default" onClick={() => {}}>
+    Default
+  </Button>
+)
+
+export const Primary = () => (
+  <Button className="btn primary" onClick={() => {}}>
+    Primary
+  </Button>
+)

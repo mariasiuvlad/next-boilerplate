@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from './Header'
+import LogStatus from './LogStatus'
 import ProvideAuth from '@context/auth'
 import {render, screen, fireEvent, waitFor} from '@testing-library/react'
 import createAuthActions from '@context/auth/actions'
@@ -20,7 +20,7 @@ const logout = () => fireEvent.submit(screen.getByText('Logout'))
 test('it renders a logout button', () => {
   const {getByText} = render(
     <ProvideAuth>
-      <Header />
+      <LogStatus />
     </ProvideAuth>
   )
   // renders logout button
@@ -30,7 +30,7 @@ test('it renders a logout button', () => {
 test('logout button works', () => {
   render(
     <ProvideAuth>
-      <Header />
+      <LogStatus />
     </ProvideAuth>
   )
   // renders logout button

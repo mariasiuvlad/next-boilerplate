@@ -1,11 +1,20 @@
-import React from 'react'
+import React, {FunctionComponent} from 'react'
 
-export default function Button({onClick, children}) {
+interface ButtonPropTypes {
+  onClick(): void
+  className: string
+  id?: string
+  children: string
+}
+
+export const Button: FunctionComponent<ButtonPropTypes> = ({
+  onClick,
+  className,
+  id,
+  children,
+}) => {
   return (
-    <button
-      onClick={onClick}
-      className="bg-transparent font-thin text-sm text-yellow-500 hover:text-white py-2 px-8 border border-yellow-500 rounded-full"
-    >
+    <button onClick={onClick} className={className} id={id}>
       {children}
     </button>
   )

@@ -1,11 +1,12 @@
 import '../styles/index.css'
+
 import Head from 'next/head'
 
 export default function App({Component, pageProps}) {
   return (
     <>
       <Head>
-        <title>(Playtwin)</title>
+        <title>Playtwin</title>
       </Head>
       <Component {...pageProps} />
     </>

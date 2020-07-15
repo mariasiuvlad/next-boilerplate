@@ -3,7 +3,9 @@ import {withProvideAuth} from '@context/auth'
 
 const IndexPage = () => (
   <Layout>
-    <h1>Landing Page</h1>
+    <div className="bg-gray-100">
+      <h1>Landing Page</h1>
+    </div>
   </Layout>
 )
 
