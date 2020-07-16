@@ -1,13 +1,7 @@
 import AvatarDropzone from '@components/AvatarDropzone/AvatarDropzone'
-import {Users} from '__generated__/graphql'
-import {FC} from 'react'
 import styles from './User.module.css'
 
-interface UserProps {
-  user: Users
-}
-
-const User: FC<UserProps> = ({user}) => (
+const User = ({user}) => (
   <div className={styles.container}>
     <AvatarDropzone>
       <img

@@ -88,26 +88,6 @@
             name: accounts
 - table:
     schema: public
-    name: tournament
-  object_relationships:
-    - name: owner
-      using:
-        manual_configuration:
-          remote_table:
-            schema: public
-            name: users
-          column_mapping:
-            owner_id: id
-- table:
-    schema: public
-    name: tournament_state_enum
-  is_enum: true
-- table:
-    schema: public
-    name: tournament_type_enum
-  is_enum: true
-- table:
-    schema: public
     name: users
   object_relationships:
     - name: account
@@ -118,6 +98,21 @@
             name: accounts
           column_mapping:
             id: user_id
+  array_relationships:
+    - name: tournaments_hosted
+      using:
+        foreign_key_constraint_on:
+          column: owner_id
+          table:
+            schema: tournaments
+            name: tournament
+    - name: tournaments_participated
+      using:
+        foreign_key_constraint_on:
+          column: user_id
+          table:
+            schema: tournaments
+            name: tournament_participants
   select_permissions:
     - role: user
       permission:
@@ -127,9 +122,7 @@
           - updated_at
           - display_name
           - avatar_url
-        filter:
-          id:
-            _eq: X-Hasura-User-Id
+        filter: {}
   update_permissions:
     - role: user
       permission:
@@ -140,3 +133,115 @@
           id:
             _eq: X-Hasura-User-Id
         check: null
+- table:
+    schema: tournaments
+    name: tournament
+  object_relationships:
+    - name: owner
+      using:
+        manual_configuration:
+          remote_table:
+            schema: public
+            name: users
+          column_mapping:
+            owner_id: id
+  array_relationships:
+    - name: participants
+      using:
+        foreign_key_constraint_on:
+          column: tournament_id
+          table:
+            schema: tournaments
+            name: tournament_participants
+  insert_permissions:
+    - role: user
+      permission:
+        check: {}
+        columns:
+          - start_date
+          - entry_fee
+          - participants_limit
+          - description
+          - status
+          - title
+          - type
+          - id
+          - owner_id
+        backend_only: false
+  select_permissions:
+    - role: user
+      permission:
+        columns:
+          - start_date
+          - entry_fee
+          - participants_limit
+          - description
+          - status
+          - title
+          - type
+          - id
+          - owner_id
+        filter: {}
+  update_permissions:
+    - role: user
+      permission:
+        columns:
+          - start_date
+          - entry_fee
+          - participants_limit
+          - description
+          - status
+          - title
+          - type
+          - id
+          - owner_id
+        filter: {}
+        check: {}
+  delete_permissions:
+    - role: user
+      permission:
+        filter: {}
+- table:
+    schema: tournaments
+    name: tournament_participants
+  object_relationships:
+    - name: tournament
+      using:
+        foreign_key_constraint_on: tournament_id
+    - name: user
+      using:
+        foreign_key_constraint_on: user_id
+  insert_permissions:
+    - role: user
+      permission:
+        check:
+          user_id:
+            _eq: X-Hasura-User-Id
+        set:
+          user_id: x-hasura-User-Id
+        columns:
+          - tournament_id
+        backend_only: false
+  select_permissions:
+    - role: user
+      permission:
+        columns:
+          - tournament_id
+          - user_id
+          - place
+        filter: {}
+        allow_aggregations: true
+  delete_permissions:
+    - role: user
+      permission:
+        filter:
+          user_id:
+            _eq: X-Hasura-User-Id
+- table:
+    schema: tournaments
+    name: tournament_status_enum
+  is_enum: true
+- table:
+    schema: tournaments
+    name: tournament_type_enum
+  is_enum: true
