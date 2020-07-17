@@ -1,0 +1,27 @@
+.input {
+  @apply w-full border-gray-500 appearance-none border p-4 font-light leading-tight;
+}
+
+.label {
+  @apply block font-light mb-2 capitalize;
+}
+
+.submit {
+  @apply bg-indigo-600 text-white font-light py-2 px-6 rounded uppercase;
+}
+
+.submit:hover {
+  @apply bg-blue-700;
+}
+
+.submit:focus {
+  @apply outline-none shadow-outline;
+}
+
+.submit:disabled {
+  @apply opacity-50;
+}
+
+.error {
+  @apply text-red-500 text-sm;
+}

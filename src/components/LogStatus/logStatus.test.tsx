@@ -12,8 +12,13 @@ const mockAuthActions = {
   logout: jest.fn(),
   refresh: jest.fn(),
 }
-
 mockCreateAuthActions.mockImplementation(() => mockAuthActions)
+
+jest.mock('next/link', () => {
+  return ({children}) => {
+    return children
+  }
+})
 
 const logout = () => fireEvent.submit(screen.getByText('Logout'))
 

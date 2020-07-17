@@ -5,7 +5,7 @@ import {Button} from './Button'
 test('fires callback', () => {
   const onClick = jest.fn()
   const wrapper = mount(
-    <Button className="btn outline" onClick={onClick}>
+    <Button variant="outline" onClick={onClick}>
       Test Button
     </Button>
   )

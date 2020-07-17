@@ -20,8 +20,8 @@ services:
       HASURA_GRAPHQL_JWT_SECRET: '{"type": "RS256", "jwk_url": "http://hasura-backend-plus:3000/auth/jwks"}'
       HASURA_GRAPHQL_ENABLE_CONSOLE: 'true'
     volumes:
-      - ../migrations:/hasura-migrations
-      - ../metadata:/hasura-metadata
+      - ./migrations:/hasura-migrations
+      - ./metadata:/hasura-metadata
   hasura-backend-plus:
     image: nhost/hasura-backend-plus:latest
     ports:

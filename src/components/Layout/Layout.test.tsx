@@ -3,6 +3,12 @@ import {mount} from 'enzyme'
 import Layout from './Layout'
 import ProvideAuth from '@context/auth'
 
+jest.mock('next/link', () => {
+  return ({children}) => {
+    return children
+  }
+})
+
 test('renders correctly', () => {
   const wrapper = mount(
     <ProvideAuth>

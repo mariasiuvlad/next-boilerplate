@@ -13,7 +13,7 @@ export default function LogStatus() {
       <Link href={'/register'}>
         <span>REGISTER</span>
       </Link>
-      <Button id="logoutButton" onClick={logout} className="btn outline">
+      <Button id="logoutButton" onClick={logout} variant="outline">
         Logout
       </Button>
     </div>

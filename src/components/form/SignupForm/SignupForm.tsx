@@ -1,6 +1,7 @@
 import {SignupFormProps} from './config'
 import {ErrorMessage} from '@hookform/error-message'
 import FormError from '../components/FormError'
+import SubmitButton from '../components/SubmitButton'
 
 const SignupForm = ({
   inputs,
@@ -19,9 +20,7 @@ const SignupForm = ({
       <section className="mb-4">{email.Control}</section>
       <section className="mb-4">{password.Control}</section>
       <div className="flex items-center justify-between mb-5">
-        <button className="submit-button" type="submit" disabled={isSubmitting}>
-          register
-        </button>
+        <SubmitButton isSubmitting={isSubmitting}>signup</SubmitButton>
       </div>
     </form>
   )

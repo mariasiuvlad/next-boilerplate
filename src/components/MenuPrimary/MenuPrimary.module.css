@@ -1,11 +1,11 @@
-.primaryMenu {
+.container {
   @apply flex flex-row content-between left-0;
 }
 
-.primaryMenu .menuItem {
+.item {
   @apply mr-5 text-white;
 }
 
-.primaryMenu .menuItem:hover {
+.item:hover {
   @apply text-yellow-500;
 }

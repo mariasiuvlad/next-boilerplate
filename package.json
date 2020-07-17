@@ -16,7 +16,6 @@
     "codegen": "graphql-codegen --config codegen.js --watch",
     "codegen:ci": "graphql-codegen --config codegen.js",
     "codegen:update": "graphql-codegen --config codegen-update.js --watch",
-    "hasura:init": "hasura metadata apply",
     "tsc:build": "yarn tsc --build tsconfig.json",
     "postinstall": "yarn codegen:ci"
   },
@@ -72,7 +71,6 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "fork-ts-checker-webpack-plugin": "^5.0.2",
-    "hasura-cli": "^1.2.2",
     "husky": "3.1.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",

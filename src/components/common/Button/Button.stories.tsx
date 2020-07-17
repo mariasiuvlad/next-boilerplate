@@ -7,19 +7,19 @@ export default {
 }
 
 export const Outline = () => (
-  <Button className="btn outline" onClick={() => {}}>
+  <Button variant="outline" onClick={() => {}}>
     Outline
   </Button>
 )
 
 export const Default = () => (
-  <Button className="btn default" onClick={() => {}}>
+  <Button variant="default" onClick={() => {}}>
     Default
   </Button>
 )
 
 export const Primary = () => (
-  <Button className="btn primary" onClick={() => {}}>
+  <Button variant="primary" onClick={() => {}}>
     Primary
   </Button>
 )

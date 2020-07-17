@@ -1,6 +1,7 @@
 import {LoginFormProps} from './config'
 import {ErrorMessage} from '@hookform/error-message'
 import FormError from '../components/FormError'
+import SubmitButton from '../components/SubmitButton'
 
 export default function LoginForm({
   inputs,
@@ -24,9 +25,7 @@ export default function LoginForm({
       </section>
       <section className="mb-4">{password.Control}</section>
       <div className="flex items-center justify-between mb-5">
-        <button className="submit-button" type="submit" disabled={isSubmitting}>
-          login
-        </button>
+        <SubmitButton isSubmitting={isSubmitting}>login</SubmitButton>
       </div>
     </form>
   )

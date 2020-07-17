@@ -1,5 +1,7 @@
+import style from './Form.module.css'
+
 const FormLabel = ({id, label}) => (
-  <label className="form-label" htmlFor={id}>
+  <label className={style.label} htmlFor={id}>
     {label}
   </label>
 )
