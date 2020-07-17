@@ -14,8 +14,5 @@ RUN yarn build
 # Build storybook
 RUN yarn storybook:build
 
-# Serve storybook -- @TODO find different place
-RUN yarn storybook:serve &
-
 # Running the app
-CMD ./scripts/start.sh
+CMD ["yarn", "start"]

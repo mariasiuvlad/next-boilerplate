@@ -6,7 +6,7 @@
     "dev": "next -p 9009",
     "build": "next build",
     "serve": "NODE_ENV=production next start -p 8080",
-    "start": "[ \"$IS_STORYBOOK\" == true ] && yarn storybook:serve || yarn serve",
+    "start": "./scripts/start.sh",
     "test": "yarn jest",
     "test:ci": "yarn jest --ci --coverage",
     "test:coverage": "yarn jest --coverage",
