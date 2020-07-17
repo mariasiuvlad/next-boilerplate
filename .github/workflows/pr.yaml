@@ -10,24 +10,30 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-    - uses: actions/checkout@v1
+      - uses: actions/checkout@v1
 
-    # CACHE
-    - name: Cache node_modules
-      uses: actions/cache@v1
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+      # CACHE
+      - name: Cache node_modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
 
-    - name: Install libs
-      run: yarn
-    
-    - name: Run tests
-      run: yarn test:ci
+      - name: Install libs
+        run: yarn
 
-    - name: Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        name: PR test
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: coverage/clover.xml
+      - name: Build Storybook
+        run: yarn storybook:build
+
+      - name: Build Next app
+        run: yarn build
+
+      - name: Run tests
+        run: yarn test:ci
+
+      - name: Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          name: PR test
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage/clover.xml
