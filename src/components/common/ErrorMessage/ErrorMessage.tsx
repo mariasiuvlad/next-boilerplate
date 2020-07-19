@@ -1,4 +1,4 @@
-export default function Error({error}) {
+export default function ErrorMessage({error}) {
   return (
     <div>
       error: <pre>{JSON.stringify(error)}</pre>

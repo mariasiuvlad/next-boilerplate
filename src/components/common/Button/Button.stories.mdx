@@ -1,0 +1,71 @@
+import {Meta, Story, Preview, Props} from '@storybook/addon-docs/blocks'
+import {action, decorate} from '@storybook/addon-actions'
+import {withKnobs, text, boolean, number} from '@storybook/addon-knobs'
+import Button from './Button'
+import CoinIcon from '@components/Icons/ptw_coin2.svg'
+
+<Meta
+  title="Buttons"
+  component={Button}
+  decorators={[
+    (storyFn) => (
+      <div className="bg-base p-10 flex justify-center">{storyFn()}</div>
+    ),
+    withKnobs,
+  ]}
+/>
+
+# Button
+
+Use a `Button` for user initiated actions.
+
+## Props
+
+<Props of={Button} />
+
+## Example Usage
+
+```tsx
+<Button disabled variant="primary" onClick={() => {}}>
+  Click me!
+</Button>
+```
+
+<Preview>
+  <Story name="Default">
+    <React.Fragment>
+      <Button
+        disabled={boolean('Disable', false)}
+        variant="primary"
+        onClick={action('click')}
+      >
+        {text('Label', 'Click me!')}
+      </Button>
+      &nbsp;
+      <Button
+        disabled={boolean('Disable')}
+        variant="outline"
+        onClick={action('click')}
+      >
+        {text('Label')}
+      </Button>
+      &nbsp;
+      <Button
+        disabled={boolean('Disable')}
+        variant="default"
+        onClick={action('click')}
+      >
+        {text('Label')}
+      </Button>
+      &nbsp;
+      <Button
+        disabled={boolean('Disable')}
+        icon={CoinIcon}
+        variant="sharp"
+        onClick={action('click')}
+      >
+        45
+      </Button>
+    </React.Fragment>
+  </Story>
+</Preview>

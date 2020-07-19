@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ['./src/**/*.tsx'],
+  purge: ['./src/**/*.tsx', './.storybook/**/*.js'],
   theme: {
     extend: {
       container: {
@@ -12,8 +12,7 @@ module.exports = {
         xl: '1280px',
       },
       fontFamily: {
-        display: ['Roboto', 'sans-serif'],
-        body: ['Roboto', 'sans-serif'],
+        sans: ['Gotham Rounded', 'Roboto', 'sans-serif'],
       },
       colors: {
         base: '#323335',
@@ -24,7 +23,6 @@ module.exports = {
       },
       variants: {
         gridTemplateColumns: ['responsive', 'hover', 'focus'],
-        outline: 'false',
       },
     },
   },

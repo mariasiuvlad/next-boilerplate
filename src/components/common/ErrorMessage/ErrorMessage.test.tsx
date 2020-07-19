@@ -1,6 +1,6 @@
 import React from 'react'
 import {mount} from 'enzyme'
-import Error from './Error'
+import Error from './ErrorMessage'
 
 test('renders the error', () => {
   const wrapper = mount(<Error error={{message: '<Error message>'}} />)

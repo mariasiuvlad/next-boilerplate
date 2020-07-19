@@ -1,22 +1,35 @@
-import React, {FunctionComponent} from 'react'
+import React from 'react'
 import style from './Button.module.css'
+import CoinIcon from '@components/Icons/ptw_coin2.svg'
 
-interface ButtonPropTypes {
-  onClick(): void
-  id?: string
+export interface ButtonPropTypes {
   children: string
-  variant: 'outline' | 'primary' | 'default'
+  disabled?: boolean
+  icon?: SVGElement
+  /** `outline` `primary` `sharp` `default` */
+  variant?: 'outline' | 'primary' | 'sharp' | 'default'
+  /**
+   * Action handler
+   * @param e MouseEvent
+   */
+  onClick: (e) => void
 }
 
-export const Button: FunctionComponent<ButtonPropTypes> = ({
-  onClick,
-  id,
+export default function Button({
   children,
   variant = 'default',
-}) => {
+  disabled = false,
+  icon,
+  onClick,
+}: ButtonPropTypes) {
   return (
-    <button onClick={onClick} className={style[variant]} id={id}>
-      {children}
+    <button
+      disabled={disabled}
+      onClick={onClick}
+      className={style.button + ' ' + style[variant]}
+    >
+      <span className="whitespace-no-wrap truncate">{children}</span>
+      {icon && <CoinIcon className={style.icon} />}
     </button>
   )
 }

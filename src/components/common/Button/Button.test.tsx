@@ -1,6 +1,6 @@
 import React from 'react'
 import {mount} from 'enzyme'
-import {Button} from './Button'
+import Button from './Button'
 
 test('fires callback', () => {
   const onClick = jest.fn()

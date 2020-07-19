@@ -1,19 +1,24 @@
-.btn {
-  @apply font-thin text-sm py-2 px-8 border rounded-full border-yellow-500;
+.button {
+  @apply font-medium text-sm px-4 border rounded-full border-yellow-500 bg-base flex items-center justify-between h-10;
 }
-.btn:focus {
+
+.button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.button:focus {
   @apply outline-none;
 }
 
 .outline {
-  @apply btn bg-transparent font-light text-yellow-500;
+  @apply text-yellow-500;
 }
 .outline:hover {
   @apply text-white;
 }
 
 .primary {
-  @apply btn bg-yellow-500 font-medium text-white;
+  @apply bg-yellow-500 text-white;
 }
 .primary:hover {
   background-color: rgba(236, 201, 75, 0.9);
@@ -21,8 +26,19 @@
 }
 
 .default {
-  @apply btn bg-transparent font-normal text-white border-white;
+  @apply text-white border-white;
 }
 .default:hover {
   @apply border-yellow-500;
+}
+
+.sharp {
+  @apply outline rounded-tr-none;
+}
+.sharp:hover {
+  @apply text-white;
+}
+
+.icon {
+  @apply w-4 h-4 ml-2 text-yellow-500 fill-current;
 }

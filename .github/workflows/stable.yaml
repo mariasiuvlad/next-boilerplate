@@ -19,10 +19,16 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           tags: latest
 
-      - name: Deploy to cluster
+      - name: Upgrade pt-web
         uses: steebchen/kubectl@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_BASE64 }}
         with:
           args: rollout restart deployment pt-web
-            rollout restart deployment pt-storybook
+
+      - name: Upgrade pt-storybook
+        uses: steebchen/kubectl@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_BASE64 }}
+        with:
+          args: rollout restart deployment pt-storybook

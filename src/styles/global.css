@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply font-sans bg-base text-default;
+@font-face {
+  font-family: Gotham Rounded;
+  src: url('/fonts/GothamRnd-Medium.ttf'), format('otf');
 }
 
 pre {
