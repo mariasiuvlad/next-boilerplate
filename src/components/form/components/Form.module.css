@@ -1,9 +1,5 @@
-.input {
-  @apply w-full border-gray-500 appearance-none border p-4 font-light leading-tight;
-}
-
 .label {
-  @apply block font-light mb-2 capitalize;
+  @apply block text-white mb-2 capitalize;
 }
 
 .submit {

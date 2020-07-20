@@ -1,17 +1,6 @@
-import {useState} from 'react'
+import * as Icons from '@components/Icons'
 
-const ERROR_URL = '/images/icons/icon-128x128.png'
-
-export default function Icon({src, alt}) {
-  const [error, setError] = useState(false)
-  const handleError = () => setError(true)
-
-  return (
-    <img
-      className="bg-gray-400 rounded-full"
-      src={error ? ERROR_URL : src}
-      alt={alt}
-      onError={handleError}
-    />
-  )
+export default function Icon({name, ...rest}) {
+  const Icon = Icons[name]
+  return <Icon {...rest} />
 }

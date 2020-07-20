@@ -1,0 +1,23 @@
+.container {
+  @apply text-gray-600 transition-colors duration-500 ease-in-out flex items-center border-2 border-gray-600 bg-gray-700 rounded-full overflow-hidden;
+}
+
+.container:focus-within {
+  @apply border-white text-white;
+}
+
+.icon {
+  @apply mx-4 w-5 h-5 fill-current;
+}
+
+.input {
+  @apply bg-gray-700 p-4 w-full;
+}
+
+.input:placeholder {
+  @apply text-gray-400;
+}
+
+.input:focus {
+  @apply outline-none;
+}

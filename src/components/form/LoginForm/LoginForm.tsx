@@ -1,7 +1,7 @@
 import {LoginFormProps} from './config'
 import {ErrorMessage} from '@hookform/error-message'
 import FormError from '../components/FormError'
-import SubmitButton from '../components/SubmitButton'
+import Button from '@components/common/Button'
 
 export default function LoginForm({
   inputs,
@@ -14,7 +14,8 @@ export default function LoginForm({
   const {email, password} = inputs
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className="bg-gray-800 rounded-lg p-8" onSubmit={onSubmit}>
+      <h1 className="text-4xl text-center text-white mb-8">Welcome Back</h1>
       <section className="mb-4">
         <ErrorMessage errors={errors} name="api" render={FormError} />
       </section>
@@ -24,8 +25,8 @@ export default function LoginForm({
         {email.Error}
       </section>
       <section className="mb-4">{password.Control}</section>
-      <div className="flex items-center justify-between mb-5">
-        <SubmitButton isSubmitting={isSubmitting}>login</SubmitButton>
+      <div className="flex items-center justify-center mt-8">
+        <Button disabled={isSubmitting} variant="primary" label="Login" />
       </div>
     </form>
   )

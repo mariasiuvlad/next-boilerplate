@@ -1,26 +1,42 @@
-export const PRIMARYMENU = [
+export interface MenuItem {
+  label: string
+  href: string
+}
+
+export const MainNavigation: MenuItem[] = [
   {
-    name: 'GAMES',
+    label: 'games',
     href: '/games',
   },
   {
-    name: 'LIVE PLAY',
+    label: 'live play',
     href: '/live',
   },
   {
-    name: 'JACKPOT',
+    label: 'jackpot',
     href: '/jackpot',
   },
   {
-    name: 'CHAT',
+    label: 'chat',
     href: '/chat',
   },
   {
-    name: 'PROMOTIONS',
+    label: 'promotions',
     href: '/promotions',
   },
   {
-    name: 'NEWS',
+    label: 'news',
     href: '/news',
+  },
+]
+
+export const AuthLinks: MenuItem[] = [
+  {
+    label: 'login',
+    href: '/login',
+  },
+  {
+    label: 'sign up',
+    href: '/signup',
   },
 ]

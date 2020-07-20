@@ -9,6 +9,12 @@ jest.mock('next/link', () => {
   }
 })
 
+jest.mock('next/router', () => ({
+  useRouter: () => ({
+    pathname: '<pathname>',
+  }),
+}))
+
 test('renders correctly', () => {
   const wrapper = mount(
     <ProvideAuth>

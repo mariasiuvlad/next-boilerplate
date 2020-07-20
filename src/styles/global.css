@@ -7,6 +7,10 @@
   src: url('/fonts/GothamRnd-Medium.ttf'), format('otf');
 }
 
+body {
+  @apply font-medium;
+}
+
 pre {
   overflow-x: auto;
   white-space: pre-wrap;

@@ -1,13 +1,37 @@
 import Link from 'next/link'
-import {PRIMARYMENU} from '@config/constants'
 import style from './MenuPrimary.module.css'
 
-export const MenuPrimary = () => {
-  const items: JSX.Element[] = PRIMARYMENU.map((item) => (
-    <Link href={item.href} key={item.name}>
-      <p className={style.item}>{item.name}</p>
-    </Link>
-  ))
+interface MenuPrimaryProps {
+  /** `[{label: string, href: string}]` */
+  menu?: MenuItem[]
+  /** used to highlight current item */
+  pathname?: string
+}
 
-  return <div className={style.container}>{items}</div>
+interface MenuItem {
+  href: string
+  label: string
+}
+
+const MenuItem = ({label, href, active}) => (
+  <li key={href} className={style.itemContainer}>
+    <Link href={href}>
+      <a className={[style.item, active && style.active].join(' ')}>{label}</a>
+    </Link>
+  </li>
+)
+
+export default function MenuPrimary({menu, pathname}: MenuPrimaryProps) {
+  return (
+    <ul className={style.container}>
+      {menu.map(({label, href}) => (
+        <MenuItem
+          active={href === pathname}
+          label={label}
+          href={href}
+          key={href}
+        />
+      ))}
+    </ul>
+  )
 }

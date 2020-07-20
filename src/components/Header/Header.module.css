@@ -1,0 +1,3 @@
+.nav {
+  @apply px-16 flex items-center border-b-4 border-gray-500 justify-between;
+}

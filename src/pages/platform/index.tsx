@@ -6,7 +6,9 @@ import withLogin from '@components/util/withLogin'
 const DashboardPage = () => {
   return (
     <Layout>
-      <User />
+      <div className="mt-16 container max-w-sm">
+        <User />
+      </div>
     </Layout>
   )
 }

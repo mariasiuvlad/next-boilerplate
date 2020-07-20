@@ -1,11 +1,20 @@
 .container {
-  @apply flex flex-row content-between left-0;
+  @apply flex content-between items-center;
+}
+
+.itemContainer {
+  @apply flex;
 }
 
 .item {
-  @apply mr-5 text-white;
+  @apply mr-5 text-white cursor-pointer py-8 leading-loose border-b-4 border-transparent uppercase duration-200 ease-in-out;
+  transition-property: border-color;
+  margin-bottom: -4px;
 }
 
+.active {
+  @apply text-white border-white;
+}
 .item:hover {
-  @apply text-yellow-500;
+  @apply text-yellow-500  border-yellow-500;
 }

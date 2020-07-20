@@ -17,17 +17,14 @@ mockCreateAuthActions.mockImplementation(() => mockAuthActions)
 
 mockAuthActions.signup
   .mockImplementationOnce(jest.fn(() => Promise.resolve()))
-  .mockImplementationOnce(
-    jest.fn(() => Promise.reject({message: 'api error message'}))
-  )
+  .mockImplementationOnce(jest.fn(() => Promise.reject({message: 'api error message'})))
 
-const submit = () => fireEvent.submit(screen.getByRole('button'))
+const submit = () => fireEvent.submit(screen.getByText('Create Account'))
 const getEmail = () =>
   (screen.getByRole('textbox', {
     name: /email/i,
   }) as HTMLInputElement).value
-const getPassword = () =>
-  (screen.getByLabelText('password') as HTMLInputElement).value
+const getPassword = () => (screen.getByLabelText('password') as HTMLInputElement).value
 const setEmail = (value) =>
   fireEvent.input(screen.getByRole('textbox', {name: /email/i}), {
     target: {value},

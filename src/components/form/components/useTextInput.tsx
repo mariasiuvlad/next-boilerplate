@@ -1,8 +1,8 @@
 import {ErrorMessage} from '@hookform/error-message'
 import {UseTextInput} from '../types'
 import FormLabel from './FormLabel'
-import FormInput from './FormInput'
 import FormError from './FormError'
+import TextInput from '@components/TextInput'
 
 // creates components specific to a text input
 const useTextInput = ({register, errors}) => ({
@@ -15,16 +15,7 @@ const useTextInput = ({register, errors}) => ({
 }): UseTextInput => {
   const ref = register(bind)
   const Label = <FormLabel id={id} label={label} />
-  const Input = (
-    <FormInput
-      id={id}
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      label={label}
-      bind={ref}
-    />
-  )
+  const Input = <TextInput id={id} type={type} name={name} placeholder={placeholder} ref={ref} />
   const Error = <ErrorMessage errors={errors} name={name} render={FormError} />
   const Control = (
     <>

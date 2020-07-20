@@ -8,20 +8,17 @@ import useTextInput from '../components/useTextInput'
 
 const LoginFormContainer = () => {
   const {login} = useAuthActions()
-  const form = useForm<LoginFormValues, any>()
 
+  const form = useForm<LoginFormValues, any>()
   const {handleSubmit, reset, setError} = form
   const textInput = useTextInput(form)
 
-  const onSubmit = useCallback(
-    async ({email, password}: TRegisterRequestData) => {
-      login(email, password).then(
-        () => reset(),
-        ({message}) => setError('api', {type: 'manual', message})
-      )
-    },
-    []
-  )
+  const onSubmit = useCallback(async ({email, password}: TRegisterRequestData) => {
+    login(email, password).then(
+      () => reset(),
+      ({message}) => setError('api', {type: 'manual', message})
+    )
+  }, [])
 
   return (
     <LoginForm

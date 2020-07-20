@@ -10,6 +10,7 @@ module.exports = {
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-knobs/register',
+    '@storybook/addon-backgrounds/register',
     '@storybook/addon-links',
     '@storybook/preset-typescript',
     '@storybook/addon-viewport',
