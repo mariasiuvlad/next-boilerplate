@@ -30,6 +30,33 @@ export const MainNavigation: MenuItem[] = [
   },
 ]
 
+export const FOOTERMENU = [
+  {
+    name: 'ABOUT',
+    href: '/',
+  },
+  {
+    name: 'CONTACT',
+    href: '/',
+  },
+  {
+    name: 'TERM OF USE',
+    href: '/',
+  },
+  {
+    name: 'HELP',
+    href: '/',
+  },
+  {
+    name: 'FAQ',
+    href: '/',
+  },
+  {
+    name: 'PRIVACY POLICY',
+    href: '/',
+  },
+]
+
 export const AuthLinks: MenuItem[] = [
   {
     label: 'login',

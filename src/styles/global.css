@@ -1,5 +1,8 @@
 @tailwind base;
 @tailwind components;
+
+@import './footer.css';
+
 @tailwind utilities;
 
 @font-face {
