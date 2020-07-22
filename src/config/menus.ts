@@ -1,6 +1,7 @@
 export interface MenuItem {
-  label: string
   href: string
+  label?: string
+  icon?: string
 }
 
 export const MainNavigation: MenuItem[] = [
@@ -65,5 +66,40 @@ export const AuthLinks: MenuItem[] = [
   {
     label: 'sign up',
     href: '/signup',
+  },
+]
+
+export const SidebarNavigation: MenuItem[] = [
+  {
+    href: '#',
+    icon: 'menu',
+  },
+  {
+    href: '#',
+    icon: 'home',
+  },
+  {
+    href: '#',
+    icon: 'alien',
+  },
+  {
+    href: '#',
+    icon: 'rocket',
+  },
+  {
+    href: '#',
+    icon: 'facebook',
+  },
+  {
+    href: '#',
+    icon: 'instagram',
+  },
+  {
+    href: '#',
+    icon: 'youtube',
+  },
+  {
+    href: '#',
+    icon: 'info',
   },
 ]

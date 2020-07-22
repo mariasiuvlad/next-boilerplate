@@ -1,7 +1,7 @@
 import React from 'react'
 import {withKnobs, text} from '@storybook/addon-knobs'
 import MenuPrimary from './MenuPrimary'
-import {MainNavigation, AuthLinks} from '@config/constants'
+import {MainNavigation, AuthLinks} from '@config/menus'
 
 export default {
   component: MenuPrimary,

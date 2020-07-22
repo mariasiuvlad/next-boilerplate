@@ -2,6 +2,9 @@ module.exports = {
   purge: ['./src/**/*.tsx', './.storybook/**/*.js'],
   theme: {
     extend: {
+      borderRadius: {
+        xl: '1rem',
+      },
       container: {
         center: true,
       },

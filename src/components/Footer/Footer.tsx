@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import {FooterLinks} from '@config/constants'
+import {FooterLinks} from '@config/menus'
 import Logo from '@components/Logo'
 import Icon from '@components/Icon'
 
