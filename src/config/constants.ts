@@ -30,29 +30,29 @@ export const MainNavigation: MenuItem[] = [
   },
 ]
 
-export const FOOTERMENU = [
+export const FooterLinks: MenuItem[] = [
   {
-    name: 'ABOUT',
+    label: 'ABOUT',
     href: '/',
   },
   {
-    name: 'CONTACT',
+    label: 'CONTACT',
     href: '/',
   },
   {
-    name: 'TERM OF USE',
+    label: 'TERM OF USE',
     href: '/',
   },
   {
-    name: 'HELP',
+    label: 'HELP',
     href: '/',
   },
   {
-    name: 'FAQ',
+    label: 'FAQ',
     href: '/',
   },
   {
-    name: 'PRIVACY POLICY',
+    label: 'PRIVACY POLICY',
     href: '/',
   },
 ]

@@ -33,12 +33,7 @@ HttpClient.interceptors.response.use(
         context: {request},
       })
     }
-    log(
-      '%s %s | %s',
-      response?.status,
-      response?.statusText,
-      response?.data?.message
-    )
+    log('%s %s | %s', response?.status, response?.statusText, response?.data?.message)
     return Promise.reject({context: response, message: response.data?.message})
   }
 )

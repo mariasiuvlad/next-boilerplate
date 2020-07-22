@@ -14,5 +14,7 @@ export type TRegisterRequestData = TLoginRequestData
 
 export type TRefreshResponse = {
   token: TJWTToken
-  headers: any
+  headers: {
+    refresh_token: string
+  }
 }

@@ -1,38 +1,28 @@
 import React from 'react'
 import Link from 'next/link'
-
-import FacebookIcon from '@components/Icons/ptw_fb.svg'
-import InstagramIcon from '@components/Icons/ptw_insta.svg'
-import TwitterIcon from '@components/Icons/ptw_twitter.svg'
-import {FOOTERMENU} from '@config/constants'
+import {FooterLinks} from '@config/constants'
 import Logo from '@components/Logo'
+import Icon from '@components/Icon'
 
-export const Footer = () => {
-  const date = new Date()
-  const year = date.getFullYear()
+import style from './Footer.module.css'
 
-  const items: JSX.Element[] = FOOTERMENU.map((item) => (
-    <Link href={item.href} key={item.name}>
-      <p className="menuItem">{item.name}</p>
+export default function Footer() {
+  const items: JSX.Element[] = FooterLinks.map((item) => (
+    <Link href={item.href} key={item.label}>
+      <p className="mx-4">{item.label}</p>
     </Link>
   ))
 
   return (
-    <div className="footer">
-      <div className="logo-container">
-        <Logo />
+    <div className={style.container}>
+      <Logo />
+      <div className="flex mt-8">
+        <Icon name="facebook" className={style.icon} />
+        <Icon name="twitter" className={style.icon} />
+        <Icon name="instagram" className={style.icon} />
       </div>
-      <div className="social mt-4">
-        <FacebookIcon className="w-8 h-8 mr-4" />
-        <InstagramIcon className="w-8 h-8 mr-4" />
-        <TwitterIcon className="w-8 h-8" />
-      </div>
-      <div className="menu">{items}</div>
-      <div className="copyrights mt-4">
-        <span>
-          &copy; {year} | &reg; <Link href="/">All rights reserved.</Link>
-        </span>
-      </div>
+      <div className={style.links}>{items}</div>
+      <span className={style.legal}>&copy; 2020 Playtwin™ | &reg; All rights reserved.</span>
     </div>
   )
 }

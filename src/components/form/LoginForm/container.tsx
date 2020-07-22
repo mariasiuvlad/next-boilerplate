@@ -9,7 +9,7 @@ import useTextInput from '../components/useTextInput'
 const LoginFormContainer = () => {
   const {login} = useAuthActions()
 
-  const form = useForm<LoginFormValues, any>()
+  const form = useForm<LoginFormValues>()
   const {handleSubmit, reset, setError} = form
   const textInput = useTextInput(form)
 

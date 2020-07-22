@@ -6,8 +6,7 @@ import User from '.'
 import {MockedProvider} from '@apollo/react-testing'
 import {GetUserMock, GetUserMockError} from '__mocks__'
 
-const wait = (amount = 0) =>
-  new Promise((resolve) => setTimeout(resolve, amount))
+const wait = (amount = 0) => new Promise((resolve) => setTimeout(resolve, amount))
 
 test("it loads and renders the user's display name", async () => {
   const wrapper = mount(

@@ -8,6 +8,6 @@ export interface UseTextInput {
 }
 
 export interface FormProps<T> {
-  onSubmit: () => Promise<any>
+  onSubmit: () => Promise<void>
   form: UseFormMethods<T>
 }

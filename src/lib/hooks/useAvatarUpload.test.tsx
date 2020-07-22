@@ -10,9 +10,7 @@ const uploadAvatarMock = FileAPI.uploadAvatar as jest.Mock
 // Get user gets refetched after update avatar
 const mocks = [UpdateAvatarMock, GetUserMock, GetUserMock]
 
-const wrapper = ({children}) => (
-  <MockedProvider mocks={mocks}>{children}</MockedProvider>
-)
+const wrapper = ({children}) => <MockedProvider mocks={mocks}>{children}</MockedProvider>
 
 test('should correctly handle file upload', async () => {
   uploadAvatarMock.mockImplementation((file, userId, onUploadProgress) => {

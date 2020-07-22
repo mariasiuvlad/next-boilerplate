@@ -7,9 +7,7 @@ import ProvideAuth, {authStateFactory, withProvideAuth} from '@context/auth'
 import {render} from '@testing-library/react'
 
 jest.mock('next/router')
-const mockRouterReplace = (Router.replace as jest.Mock).mockImplementationOnce(
-  jest.fn()
-)
+const mockRouterReplace = (Router.replace as jest.Mock).mockImplementationOnce(jest.fn())
 
 jest.mock('@context/auth/actions')
 const mockCreateAuthActions = createAuthActions as jest.Mock

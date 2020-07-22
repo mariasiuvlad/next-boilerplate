@@ -3,7 +3,7 @@ import {uploadAvatar} from '.'
 import httpClient from '@lib/api/httpClient'
 
 jest.mock('@lib/api/httpClient')
-let mockPost = httpClient.post as jest.Mock
+const mockPost = httpClient.post as jest.Mock
 
 const data = {
   AcceptRanges: 'bytes',
@@ -22,7 +22,5 @@ test('upload avatar API call', async () => {
   const mockFn = jest.fn()
   const response = await uploadAvatar(null, '<userId>', mockFn)
   expect(response.data.Metadata.filename).toBe('avatar.jpg')
-  expect(response.data.Metadata.token).toBe(
-    'df44ca3a-fc1d-42d7-9336-28954db88c1f'
-  )
+  expect(response.data.Metadata.token).toBe('df44ca3a-fc1d-42d7-9336-28954db88c1f')
 })

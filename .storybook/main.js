@@ -28,9 +28,7 @@ module.exports = {
     // 'PRODUCTION' is used when building the static version of storybook.
 
     // Disable the Storybook internal-`.svg`-rule for components loaded from our app.
-    config.module.rules.find((rule) => 'test.svg'.match(rule.test)).exclude = [
-      AppSourceDir,
-    ]
+    config.module.rules.find((rule) => 'test.svg'.match(rule.test)).exclude = [AppSourceDir]
     // Configure SVG loader
     config.module.rules.push({
       test: /\.svg$/,
@@ -39,9 +37,7 @@ module.exports = {
     })
 
     // First we prevent webpack from using Storybook CSS rules to process CSS modules
-    config.module.rules.find(
-      (rule) => rule.test.toString() === '/\\.css$/'
-    ).exclude = /\.css$/
+    config.module.rules.find((rule) => rule.test.toString() === '/\\.css$/').exclude = /\.css$/
 
     /**
      * Configure CSS modules

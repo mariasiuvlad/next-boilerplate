@@ -21,11 +21,7 @@ export const withApollo = (Component) => ({initialApolloState, ...rest}) => {
   )
 }
 
-export const withAuthApollo = (Component) => ({
-  initialAuthState,
-  initialApolloState,
-  ...rest
-}) => {
+export const withAuthApollo = (Component) => ({initialAuthState, initialApolloState, ...rest}) => {
   return (
     <ProvideAuth value={initialAuthState}>
       <GQLProvider initialApolloState={initialApolloState}>

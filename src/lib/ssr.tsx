@@ -2,15 +2,16 @@ import {initializeApollo} from '@lib/graphql/apolloClient'
 import {TJWTToken} from '@lib/api/auth/types'
 import * as AuthAPI from '@lib/api/auth'
 import {authStateFactory} from '@context/auth'
+import {NextPageContext} from 'next'
 
 /**
  * @description Refresh the token server side and set cookies on the response
  * @param ctx ServerSide NextPage context
  * @returns a new jwt token
  */
-export async function refreshToken(ctx): Promise<TJWTToken | null> {
+export async function refreshToken(ctx: NextPageContext): Promise<TJWTToken | null> {
   let tokenRef = null
-  let cookies = ctx?.req?.headers?.cookie
+  const cookies = ctx?.req?.headers?.cookie
   const extraHeaders = cookies ? {Cookie: cookies} : {}
   await AuthAPI.refresh(extraHeaders)
     .then(({token, headers}) => {
@@ -19,9 +20,7 @@ export async function refreshToken(ctx): Promise<TJWTToken | null> {
       // return token
       tokenRef = token
     })
-    .catch((e) => {
-      console.warn('failed to refresh token - skipping')
-    })
+    .catch(() => console.warn('failed to refresh token - skipping'))
   return tokenRef
 }
 
@@ -52,7 +51,6 @@ export const preloadApolloData = async (props, queries = []) => {
     await Promise.all(queries.map((query) => apolloClient.query({query})))
   } catch (error) {
     console.warn('Apollo data prefetch failed - skipped')
-    return props
   }
 
   return {...props, initialApolloState: apolloClient.cache.extract()}

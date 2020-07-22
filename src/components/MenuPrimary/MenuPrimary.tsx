@@ -25,12 +25,7 @@ export default function MenuPrimary({menu, pathname}: MenuPrimaryProps) {
   return (
     <ul className={style.container}>
       {menu.map(({label, href}) => (
-        <MenuItem
-          active={href === pathname}
-          label={label}
-          href={href}
-          key={href}
-        />
+        <MenuItem active={href === pathname} label={label} href={href} key={href} />
       ))}
     </ul>
   )

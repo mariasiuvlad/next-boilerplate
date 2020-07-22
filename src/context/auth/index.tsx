@@ -29,10 +29,7 @@ export function useProvideAuth(initial: IProvideAuthState): IProvideAuth {
   // refresh jwt token before expiry
   useEffect(() => {
     if (state.initialized && !!state.data) {
-      refreshHandle.current = setTimeout(
-        actions.refresh,
-        state.data.jwt_expires_in - 30 * 1000
-      )
+      refreshHandle.current = setTimeout(actions.refresh, state.data.jwt_expires_in - 30 * 1000)
     } else {
       clearTimeout(refreshHandle.current)
     }
@@ -45,9 +42,7 @@ export default function ProvideAuth({children, value = authStateFactory()}) {
   const {state, actions} = useProvideAuth(value)
   return (
     <authContext.Provider value={state}>
-      <authActionsContext.Provider value={actions}>
-        {children}
-      </authActionsContext.Provider>
+      <authActionsContext.Provider value={actions}>{children}</authActionsContext.Provider>
     </authContext.Provider>
   )
 }

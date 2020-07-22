@@ -6,7 +6,7 @@ import {withProvideAuth} from '@context/auth'
 const RegisterPage = () => {
   return (
     <Layout>
-      <div className="container max-w-md mt-16">
+      <div className="container max-w-md my-16">
         <SignupForm />
       </div>
     </Layout>

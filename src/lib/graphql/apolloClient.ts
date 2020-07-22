@@ -6,7 +6,7 @@ import {createClientLink} from './links'
 let apolloClient: ApolloClient<NormalizedCacheObject>
 
 type ApolloInitOptions = {
-  initialState?: any
+  initialState?: NormalizedCacheObject
   jwtToken?: string
 }
 
@@ -36,9 +36,5 @@ export function initializeApollo({initialState, jwtToken}: ApolloInitOptions) {
   return _apolloClient
 }
 
-export function useApollo(initialState = {}, jwtToken = '') {
-  const store = useMemo(() => initializeApollo({initialState, jwtToken}), [
-    jwtToken,
-  ])
-  return store
-}
+export const useApollo = (initialState = {}, jwtToken = '') =>
+  useMemo(() => initializeApollo({initialState, jwtToken}), [jwtToken])

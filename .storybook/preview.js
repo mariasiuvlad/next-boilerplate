@@ -26,6 +26,4 @@ addParameters({
   },
 })
 
-addDecorator((storyFn) => (
-  <div className="p-10 flex justify-center">{storyFn()}</div>
-))
+addDecorator((storyFn) => <div className="p-10 flex justify-center">{storyFn()}</div>)

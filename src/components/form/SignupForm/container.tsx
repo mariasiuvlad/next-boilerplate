@@ -27,9 +27,7 @@ const SignupFormContainer = () => {
     password: textInput(PASSWORD_CONFIG),
   }
 
-  return (
-    <SignupForm onSubmit={handleSubmit(onSubmit)} form={form} inputs={inputs} />
-  )
+  return <SignupForm onSubmit={handleSubmit(onSubmit)} form={form} inputs={inputs} />
 }
 
 export default SignupFormContainer

@@ -1,6 +1,6 @@
-import Logo from './Logo'
 import React from 'react'
 import {render} from '@testing-library/react'
+import Footer from './Footer'
 
 jest.mock('next/link', () => {
   return ({children}) => {
@@ -8,7 +8,7 @@ jest.mock('next/link', () => {
   }
 })
 
-test('Logo image render', () => {
-  const tree = render(<Logo />)
+test('it renders', () => {
+  const tree = render(<Footer />)
   expect(tree).toMatchSnapshot()
 })

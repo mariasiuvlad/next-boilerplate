@@ -3,8 +3,8 @@ import httpClient from '@lib/api/httpClient'
 import {LoginResponseMock} from '__mocks__'
 
 jest.mock('@lib/api/httpClient')
-let mockPost = httpClient.post as jest.Mock
-let mockGet = httpClient.get as jest.Mock
+const mockPost = httpClient.post as jest.Mock
+const mockGet = httpClient.get as jest.Mock
 
 const response = {
   data: LoginResponseMock,

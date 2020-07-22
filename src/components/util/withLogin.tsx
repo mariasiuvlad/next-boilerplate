@@ -17,11 +17,7 @@ const withLogin = (WrappedComponent) => (props) => {
     if (initialized && !isLoggedIn) Router.replace('/login')
   }, [initialized, isLoggedIn])
 
-  return !initialized || !isLoggedIn ? (
-    <Loading />
-  ) : (
-    <WrappedComponent {...props} />
-  )
+  return !initialized || !isLoggedIn ? <Loading /> : <WrappedComponent {...props} />
 }
 
 export default withLogin

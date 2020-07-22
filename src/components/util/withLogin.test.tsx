@@ -7,9 +7,7 @@ import createAuthActions from '@context/auth/actions'
 import {LoginResponseMock} from '__mocks__'
 
 jest.mock('next/router')
-const mockRouterReplace = (Router.replace as jest.Mock).mockImplementationOnce(
-  jest.fn()
-)
+const mockRouterReplace = (Router.replace as jest.Mock).mockImplementationOnce(jest.fn())
 
 jest.mock('@context/auth/actions')
 const mockCreateAuthActions = createAuthActions as jest.Mock

@@ -1,8 +1,5 @@
 @tailwind base;
 @tailwind components;
-
-@import './footer.css';
-
 @tailwind utilities;
 
 @font-face {
@@ -15,10 +12,5 @@ body {
 }
 
 pre {
-  overflow-x: auto;
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
+  @apply overflow-x-auto break-words;
 }

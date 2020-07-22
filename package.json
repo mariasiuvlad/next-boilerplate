@@ -10,13 +10,15 @@
     "test": "yarn jest",
     "test:ci": "yarn jest --ci --coverage",
     "test:coverage": "yarn jest --coverage",
-    "storybook": "IS_STORYBOOK=true start-storybook -p 6006",
-    "storybook:build": "IS_STORYBOOK=true build-storybook  -c .storybook -o .out",
+    "storybook": "IS_STORYBOOK=true start-storybook -s ./public -p 6006",
+    "storybook:build": "IS_STORYBOOK=true build-storybook -s ./public  -c .storybook -o .out",
     "storybook:serve": "npx http-server .out",
     "codegen": "graphql-codegen --config codegen.js --watch",
     "codegen:ci": "graphql-codegen --config codegen.js",
     "codegen:update": "graphql-codegen --config codegen-update.js --watch",
-    "postinstall": "yarn codegen:ci"
+    "postinstall": "yarn codegen:ci",
+    "lint": "eslint '*/**/*.{js,ts,tsx}'",
+    "lint:ci": "eslint '*/**/*.{js,ts,tsx}' --quiet"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
@@ -34,7 +36,7 @@
     "graphql": "^15.1.0",
     "graphql-tag": "^2.10.3",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "9.4.4",
+    "next": "^9.4.4",
     "next-fonts": "^1.4.0",
     "next-pwa": "^2.6.0",
     "nhost-js-sdk": "^2.0.4",
@@ -70,17 +72,23 @@
     "@types/jest": "^26.0.0",
     "@types/node": "^14.0.12",
     "@types/react": "^16.9.35",
+    "@typescript-eslint/eslint-plugin": "^3.7.0",
+    "@typescript-eslint/parser": "^3.7.0",
     "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.3",
     "fork-ts-checker-webpack-plugin": "^5.0.2",
-    "husky": "3.1.0",
+    "husky": ">=4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.0.1",
+    "lint-staged": ">=10",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.0.5",
-    "pretty-quick": "^2.0.1",
     "react-is": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "tailwindcss": "^1.4.6",
@@ -90,7 +98,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn pretty-quick --staged"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ]
   }
 }

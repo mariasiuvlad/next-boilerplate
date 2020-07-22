@@ -10,37 +10,31 @@ import {
  * @description Make a login request
  * @param payload Contains login credentials
  */
-export function login(payload: TLoginRequestData) {
-  return httpClient
-    .post<TLoginResponseData>('/auth/login', payload)
-    .then(({data}) => data)
+export async function login(payload: TLoginRequestData) {
+  return httpClient.post<TLoginResponseData>('/auth/login', payload).then(({data}) => data)
 }
 
 /**
  * @description Make a signup request
  * @param payload Contains signup credentials
  */
-export function signup(payload: TRegisterRequestData) {
-  return httpClient
-    .post<TLoginResponseData>('/auth/register', payload)
-    .then(({data}) => data)
+export async function signup(payload: TRegisterRequestData) {
+  return httpClient.post<TLoginResponseData>('/auth/register', payload).then(({data}) => data)
 }
 
 /**
  * @description Clear `refresh_token` and `permission_variables` cookies
  * @param all Indicate whether to delete all refresh tokens to this user or not
  */
-export function logout(all = false) {
-  return httpClient
-    .post<{}>('/auth/logout', {all})
-    .then(({data}) => data)
+export async function logout(all = false) {
+  return httpClient.post('/auth/logout', {all}).then(({data}) => data)
 }
 
 /**
  * @description Get a new token
  * @param all Indicate whether to delete all refresh tokens to this user or not
  */
-export function refresh(extraHeaders = {}) {
+export async function refresh(extraHeaders = {}) {
   return httpClient
     .get<TLoginResponseData>('/auth/token/refresh', {
       headers: {

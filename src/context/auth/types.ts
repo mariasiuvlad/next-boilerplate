@@ -1,4 +1,4 @@
-import { TLoginResponseData } from "@lib/api/auth/types";
+import {TLoginResponseData} from '@lib/api/auth/types'
 
 export interface IProvideAuthState {
   data: TLoginResponseData

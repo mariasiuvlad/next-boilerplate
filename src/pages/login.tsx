@@ -5,7 +5,7 @@ import {withProvideAuth} from '@context/auth'
 
 const Login = () => (
   <Layout>
-    <div className="container max-w-sm mt-16">
+    <div className="container max-w-sm my-16">
       <LoginForm />
     </div>
   </Layout>

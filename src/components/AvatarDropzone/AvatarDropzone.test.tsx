@@ -24,10 +24,7 @@ const createFile = (name, size, type) => ({
   type,
 })
 
-const files = [
-  createFile('foo.png', 200, 'image/png'),
-  createFile('bar.jpg', 200, 'image/jpeg'),
-]
+const files = [createFile('foo.png', 200, 'image/png'), createFile('bar.jpg', 200, 'image/jpeg')]
 
 test('it renders empty', async () => {
   const {container} = render(

@@ -20,12 +20,7 @@ const authLink = (jwtToken: string) =>
 const errorLink = onError(({graphQLErrors, networkError}) => {
   if (graphQLErrors)
     graphQLErrors.forEach(({message, locations, path}) =>
-      log(
-        '[GraphQL error]: Message: %s, Location: %s, Path: %s',
-        message,
-        locations,
-        path
-      )
+      log('[GraphQL error]: Message: %s, Location: %s, Path: %s', message, locations, path)
     )
   if (networkError) log('[Network error] %o', networkError)
 })
@@ -60,8 +55,7 @@ const transportLink = (jwtToken: string) =>
         ({query}) => {
           const definition = getMainDefinition(query)
           return (
-            definition.kind === 'OperationDefinition' &&
-            definition.operation === 'subscription'
+            definition.kind === 'OperationDefinition' && definition.operation === 'subscription'
           )
         },
         wsLink(jwtToken),
@@ -70,9 +64,5 @@ const transportLink = (jwtToken: string) =>
     : httpLink
 
 export const createClientLink = (jwtToken: string) => {
-  return ApolloLink.from([
-    errorLink,
-    authLink(jwtToken),
-    transportLink(jwtToken),
-  ])
+  return ApolloLink.from([errorLink, authLink(jwtToken), transportLink(jwtToken)])
 }
