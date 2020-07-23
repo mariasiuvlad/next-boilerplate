@@ -1,9 +1,9 @@
-import User from '@components/User'
-import Layout from '@components/Layout'
+import User from '@components/molecules/UserInfo'
+import Layout from '@components/organisms/Layout'
 import {withAuthApollo} from '@lib/graphql/GQLProvider'
 import withLogin from '@components/util/withLogin'
 import CreateTournament from '@components/form/CreateTournament'
-import ListTournaments from '@components/ListTournament'
+import ListTournaments from '@components/organisms/ListTournament'
 
 const DashboardPage = () => {
   return (

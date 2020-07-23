@@ -18,10 +18,7 @@ module.exports = {
     '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
     '^.+\\.css$': '<rootDir>/config/jest/cssTransform.js',
   },
-  transformIgnorePatterns: [
-    '/node_modules/',
-    '^.+\\.module\\.(css|sass|scss)$',
-  ],
+  transformIgnorePatterns: ['/node_modules/', '^.+\\.module\\.(css|sass|scss)$'],
   moduleNameMapper: {
     '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     '\\.svg$': '<rootDir>/src/__mocks__/svgrMock.ts',
@@ -32,6 +29,7 @@ module.exports = {
     '@pages/(.*)': '<rootDir>/src/pages/$1',
     '@config/(.*)': '<rootDir>/src/config/$1',
     '@config': '<rootDir>/src/config/index',
+    '@assets/(.*)': '<rootDir>/src/assets/$1',
     '__generated__/(.*)': '<rootDir>/src/__generated__/$1',
     __mocks__: '<rootDir>/src/__mocks__/index',
   },

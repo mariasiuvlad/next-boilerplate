@@ -1,6 +1,6 @@
 import Router from 'next/router'
 import {useEffect} from 'react'
-import Loading from '@components/common/Loading'
+import Loading from '@components/atoms/Loading'
 import {useAuth, useAuthActions} from '@context/auth'
 
 // Redirect logged in users to platform

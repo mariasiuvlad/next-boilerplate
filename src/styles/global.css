@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: Gotham Rounded;
-  src: url('/fonts/GothamRnd-Medium.ttf'), format('otf');
+  src: url('/fonts/GothamRnd-Medium.otf'), format('otf');
 }
 
 body {

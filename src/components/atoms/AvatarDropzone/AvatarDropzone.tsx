@@ -1,7 +1,7 @@
 import {useAvatarUpload} from '@lib/hooks'
 import {useCallback, PropsWithChildren} from 'react'
 import {useDropzone} from 'react-dropzone'
-import Loading from '@components/common/Loading'
+import Loading from '@components/atoms/Loading'
 
 interface AvatarDropzoneProps {
   className?: string

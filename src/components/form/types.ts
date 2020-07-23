@@ -1,5 +1,5 @@
 import {UseFormMethods} from 'react-hook-form'
-import {SelectOption} from './components/Select/types'
+import {SelectOption} from '../atoms/Select/types'
 
 export interface InputConfig {
   id: string

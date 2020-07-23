@@ -5,12 +5,12 @@ import {useForm} from 'react-hook-form'
 import useInput from '../components/useInput'
 import * as Config from './config'
 
+/** @TODO turn into form container template */
 export default function CreateTournamentContainer() {
-  const [createTournament] = useCreateTournamentMutation()
-
   const form = useForm<CreateTournamentMutationVariables>()
   const {handleSubmit, reset, setError} = form
-  const textInput = useInput(form)
+
+  const [createTournament] = useCreateTournamentMutation()
 
   const onSubmit = useCallback(async (variables: CreateTournamentMutationVariables) => {
     createTournament({variables}).then(
@@ -19,6 +19,7 @@ export default function CreateTournamentContainer() {
     )
   }, [])
 
+  const textInput = useInput(form)
   return (
     <CreateTournament
       inputs={Object.values(Config).map(textInput)}

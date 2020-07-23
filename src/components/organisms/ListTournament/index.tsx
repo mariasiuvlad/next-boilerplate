@@ -1,6 +1,6 @@
-import Loading from '@components/common/Loading'
-import ErrorMessage from '@components/common/ErrorMessage'
-import Button from '@components/common/Button'
+import Loading from '@components/atoms/Loading'
+import ErrorMessage from '@components/atoms/ErrorMessage'
+import Button from '@components/atoms/Button'
 import {useCallback} from 'react'
 import {
   useGetUserQuery,

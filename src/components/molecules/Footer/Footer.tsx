@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import {FooterLinks} from '@config/menus'
-import Logo from '@components/Logo'
-import Icon from '@components/Icon'
+import Logo from '@components/atoms/Logo'
+import Icon from '@components/atoms/Icon'
 
 import style from './Footer.module.css'
 
