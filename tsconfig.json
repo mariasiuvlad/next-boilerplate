@@ -20,9 +20,13 @@
       "@store/*": ["store/*"],
       "@context/*": ["context/*"],
       "@components/*": ["components/*"],
+      "@atom/": ["componets/atoms/"],
+      "@molecule/": ["componets/molecules/"],
+      "@organism/": ["componets/organims/"],
       "@pages/*": ["pages/*"],
       "@config/*": ["config/*"],
-      "@config": ["config/index"]
+      "@config": ["config/index"],
+      "@assets/*": ["assets/*"]
     }
   },
   "exclude": ["node_modules"],

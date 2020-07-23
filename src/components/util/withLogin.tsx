@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
 import Router from 'next/router'
-import Loading from '@components/common/Loading'
+import Loading from '@components/atoms/Loading'
 import {useAuth, useAuthActions} from '@context/auth'
 
 const withLogin = (WrappedComponent) => (props) => {

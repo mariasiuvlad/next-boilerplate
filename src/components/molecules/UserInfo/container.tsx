@@ -1,5 +1,5 @@
-import Loading from '@components/common/Loading'
-import Error from '@components/common/ErrorMessage'
+import Loading from '@components/atoms/Loading'
+import Error from '@components/atoms/ErrorMessage'
 import User from './User'
 import {useGetUserQuery} from '__generated__/graphql'
 
