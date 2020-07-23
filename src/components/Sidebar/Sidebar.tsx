@@ -7,7 +7,7 @@ export default function Sidebar() {
   return (
     <div className={style.container}>
       {SidebarNavigation.map(({href, icon}) => (
-        <Link key={href} href={href}>
+        <Link key={href + icon} href={href}>
           <Icon name={icon} className={style.icon} />
         </Link>
       ))}

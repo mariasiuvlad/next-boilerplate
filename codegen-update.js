@@ -1,3 +1,4 @@
+/** @TODO change to yml */
 module.exports = {
   schema: [
     {
@@ -9,15 +10,11 @@ module.exports = {
       },
     },
   ],
-  documents: ['./src/**/*.tsx', './src/**/*.ts'],
+  documents: ['./src/lib/graphql/queries.ts', './src/lib/graphql/mutations.ts'],
   overwrite: true,
   generates: {
     './src/__generated__/graphql.tsx': {
-      plugins: [
-        'typescript',
-        'typescript-operations',
-        'typescript-react-apollo',
-      ],
+      plugins: ['typescript', 'typescript-operations', 'typescript-react-apollo'],
       config: {
         skipTypename: false,
         withHooks: true,

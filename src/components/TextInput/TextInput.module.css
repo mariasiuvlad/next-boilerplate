@@ -7,7 +7,7 @@
 }
 
 .icon {
-  @apply mx-4 w-5 h-5 fill-current;
+  @apply ml-4 w-6 h-6 fill-current;
 }
 
 .input {

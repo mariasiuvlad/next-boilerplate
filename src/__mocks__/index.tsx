@@ -33,7 +33,7 @@ export const GetUserMock = {
   },
   result: {
     data: {
-      users: [mockUser],
+      me: [mockUser],
     },
   },
 }

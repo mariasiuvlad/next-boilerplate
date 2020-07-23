@@ -2,7 +2,7 @@
   @apply flex items-center justify-start text-sm p-8 bg-gray-800 border border-gray-900 rounded-lg text-white;
 }
 .avatar {
-  @apply w-16 h-16 rounded-full mb-4 mr-8;
+  @apply w-full h-full rounded-full;
 }
 .name {
   @apply text-2xl leading-none;

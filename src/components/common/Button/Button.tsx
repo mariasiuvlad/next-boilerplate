@@ -5,7 +5,7 @@ import Icon from '@components/Icon'
 export interface ButtonProps {
   label?: string
   disabled?: boolean
-  icon?: 'facebook' | 'google' | 'coin' | 'twitter'
+  icon?: 'facebook' | 'google' | 'coin' | 'twitter' | ''
   /** `primary` `secondary` `outline` `sharp` `default` */
   variant?: 'primary' | 'secondary' | 'outline' | 'sharp' | 'default'
   /**

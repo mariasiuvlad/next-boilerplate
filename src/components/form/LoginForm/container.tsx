@@ -4,14 +4,14 @@ import {useForm} from 'react-hook-form'
 import {TRegisterRequestData} from '@lib/api/auth/types'
 import {useCallback} from 'react'
 import {EMAIL_CONFIG, PASSWORD_CONFIG, LoginFormValues} from './config'
-import useTextInput from '../components/useTextInput'
+import useInput from '../components/useInput'
 
 const LoginFormContainer = () => {
   const {login} = useAuthActions()
 
   const form = useForm<LoginFormValues>()
   const {handleSubmit, reset, setError} = form
-  const textInput = useTextInput(form)
+  const textInput = useInput(form)
 
   const onSubmit = useCallback(async ({email, password}: TRegisterRequestData) => {
     login(email, password).then(

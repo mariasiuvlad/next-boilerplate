@@ -2,31 +2,54 @@ import gql from 'graphql-tag'
 
 export const GET_USER = gql`
   query GetUser {
-    users {
+    me {
       id
       display_name
       avatar_url
       updated_at
       created_at
-    }
-  }
-`
-export const UPDATE_AVATAR = gql`
-  mutation UpdateAvatar($avatar_url: String = "") {
-    update_users(_set: {avatar_url: $avatar_url}, where: {}) {
-      affected_rows
     }
   }
 `
 
-export const GET_USER_SUBSCRIPTION = gql`
-  subscription MyUser {
-    users {
-      id
+export const GetTournaments = gql`
+  fragment TournamentInfo on tournaments_tournament {
+    id
+    owner {
       display_name
       avatar_url
-      updated_at
-      created_at
+    }
+    participants {
+      user_id
+    }
+    entry_fee
+    description
+    participants_limit
+    start_date
+    status
+    title
+    type
+  }
+
+  query GetTournaments($limit: Int = 10, $offset: Int = 0) {
+    tournaments_tournament(limit: $limit, offset: $offset) {
+      ...TournamentInfo
+    }
+  }
+
+  query GetTournament($id: uuid!) {
+    tournaments_tournament_by_pk(id: $id) {
+      ...TournamentInfo
+    }
+  }
+`
+
+export const CountTournaments = gql`
+  query CountTournaments {
+    tournaments_tournament_aggregate {
+      aggregate {
+        count
+      }
     }
   }
 `

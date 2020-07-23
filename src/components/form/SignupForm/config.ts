@@ -1,4 +1,4 @@
-import {FormProps, UseTextInput} from '../types'
+import {FormProps, UseInput, InputConfig} from '../types'
 import {TRegisterRequestData} from '@lib/api/auth/types'
 
 export interface SignupFormValues extends TRegisterRequestData {
@@ -7,12 +7,12 @@ export interface SignupFormValues extends TRegisterRequestData {
 
 export interface SignupFormProps extends FormProps<SignupFormValues> {
   inputs: {
-    email: UseTextInput
-    password: UseTextInput
+    email: UseInput
+    password: UseInput
   }
 }
 
-export const EMAIL_CONFIG = {
+export const EMAIL_CONFIG: InputConfig = {
   label: 'email',
   placeholder: 'email@example.com',
   type: 'email',
@@ -27,7 +27,7 @@ export const EMAIL_CONFIG = {
   },
 }
 
-export const PASSWORD_CONFIG = {
+export const PASSWORD_CONFIG: InputConfig = {
   label: 'password',
   placeholder: 'Enter your password',
   type: 'password',

@@ -17,7 +17,7 @@ export function useAvatarUpload() {
   }, [apolloError])
 
   const {data} = useGetUserQuery()
-  const userId = data?.users[0]?.id
+  const userId = data?.me[0].id
 
   const onUploadProgress = ({loaded, total}) => setProgress(Math.round((loaded * 100) / total))
 

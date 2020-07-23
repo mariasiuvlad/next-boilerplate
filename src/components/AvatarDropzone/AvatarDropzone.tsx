@@ -1,9 +1,16 @@
 import {useAvatarUpload} from '@lib/hooks'
-import {useCallback} from 'react'
+import {useCallback, PropsWithChildren} from 'react'
 import {useDropzone} from 'react-dropzone'
 import Loading from '@components/common/Loading'
 
-export default function AvatarDropzone({children = null}) {
+interface AvatarDropzoneProps {
+  className?: string
+}
+
+export default function AvatarDropzone({
+  children = null,
+  className,
+}: PropsWithChildren<AvatarDropzoneProps>) {
   const {upload, loading} = useAvatarUpload()
   const onDrop = useCallback((acceptedFiles) => {
     upload(acceptedFiles[0])
@@ -15,7 +22,7 @@ export default function AvatarDropzone({children = null}) {
   return (
     <div {...getRootProps()}>
       <input data-testid="AvatarUpload-dropzone" {...getInputProps()} />
-      <div>{children}</div>
+      <div className={className}>{children}</div>
     </div>
   )
 }

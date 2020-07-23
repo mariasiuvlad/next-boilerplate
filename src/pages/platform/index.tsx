@@ -2,12 +2,16 @@ import User from '@components/User'
 import Layout from '@components/Layout'
 import {withAuthApollo} from '@lib/graphql/GQLProvider'
 import withLogin from '@components/util/withLogin'
+import CreateTournament from '@components/form/CreateTournament'
+import ListTournaments from '@components/ListTournament'
 
 const DashboardPage = () => {
   return (
     <Layout>
-      <div className="mt-16 container max-w-sm">
+      <div className="my-16 container max-w-2xl">
         <User />
+        <ListTournaments />
+        <CreateTournament />
       </div>
     </Layout>
   )
