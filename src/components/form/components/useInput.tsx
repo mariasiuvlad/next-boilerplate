@@ -1,9 +1,9 @@
 import {ErrorMessage} from '@hookform/error-message'
 import {UseInput, InputConfig} from '../types'
-import TextInput from '@components/atoms/TextInput'
-import Select from '@components/atoms/Select'
-import FormLabel from '@components/atoms/FormLabel'
-import FormError from '@components/atoms/FormError'
+import TextInput from '@atom/TextInput'
+import Select from '@atom/Select'
+import FormLabel from '@atom/FormLabel'
+import FormError from '@atom/FormError'
 
 function createInput(config: InputConfig, ref) {
   const {type, id, placeholder, name, options} = config

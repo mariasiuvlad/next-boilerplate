@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import {MainNavigation, AuthLinks} from '@config'
-import MenuPrimary from '@components/molecules/MenuPrimary'
-import Logo from '@components/atoms/Logo'
-import Button from '@components/atoms/Button'
+import MenuPrimary from '@molecule/MenuPrimary'
+import Logo from '@atom/Logo'
+import Button from '@atom/Button'
 import style from './Header.module.css'
 
 export default function Header({isLoggedIn, logout}) {

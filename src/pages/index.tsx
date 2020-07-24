@@ -1,4 +1,4 @@
-import Layout from '@components/organisms/Layout'
+import Layout from '@organism/Layout'
 import {withProvideAuth} from '@context/auth'
 
 const IndexPage = () => (

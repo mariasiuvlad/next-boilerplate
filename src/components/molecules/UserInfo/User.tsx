@@ -1,4 +1,4 @@
-import AvatarDropzone from '@components/atoms/AvatarDropzone/AvatarDropzone'
+import AvatarDropzone from '@atom/AvatarDropzone/AvatarDropzone'
 import style from './User.module.css'
 import {Users} from '__generated__/graphql'
 

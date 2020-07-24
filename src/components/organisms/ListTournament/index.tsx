@@ -1,6 +1,6 @@
-import Loading from '@components/atoms/Loading'
-import ErrorMessage from '@components/atoms/ErrorMessage'
-import Button from '@components/atoms/Button'
+import Loading from '@atom/Loading'
+import ErrorMessage from '@atom/ErrorMessage'
+import Button from '@atom/Button'
 import {useCallback} from 'react'
 import {
   useGetUserQuery,
@@ -11,12 +11,13 @@ import {
   TournamentInfoFragment,
   useGetTournamentsQuery,
 } from '__generated__/graphql'
+import Link from 'next/link'
 
 interface TournamentProps {
   tournament: TournamentInfoFragment
 }
 
-const Tournament = ({tournament}: TournamentProps) => {
+export const TournamentCard = ({tournament}: TournamentProps) => {
   const {
     data: {
       me: [{id}],
@@ -55,13 +56,18 @@ const Tournament = ({tournament}: TournamentProps) => {
           {tournament.participants.length}/{tournament.participants_limit}
         </p>
       </div>
-      <Button
-        disabled={joinLoading || leaveLoading}
-        icon={!isJoined && 'coin'}
-        variant={isJoined ? 'default' : 'sharp'}
-        label={isJoined ? 'Leave' : tournament.entry_fee}
-        onClick={isJoined ? handleLeave : handleJoin}
-      />
+      <div>
+        <Button
+          disabled={joinLoading || leaveLoading}
+          icon={!isJoined && 'coin'}
+          variant={isJoined ? 'default' : 'sharp'}
+          label={isJoined ? 'Leave' : tournament.entry_fee}
+          onClick={isJoined ? handleLeave : handleJoin}
+        />
+        <Link href={`/tournament/${tournament.id}`}>
+          <a>Go</a>
+        </Link>
+      </div>
     </div>
   )
 }
@@ -75,7 +81,7 @@ export default function ListTournaments() {
     <div>
       <h1 className="text-yellow-500 text-2xl my-8 text-center">Tournaments</h1>
       {data.tournaments_tournament.map((t) => (
-        <Tournament key={t.id} tournament={t} />
+        <TournamentCard key={t.id} tournament={t} />
       ))}
       <p className="text-yellow-500 my-4">
         {data.tournaments_tournament.length}/

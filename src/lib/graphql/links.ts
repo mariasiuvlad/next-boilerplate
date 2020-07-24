@@ -3,7 +3,7 @@ import {WebSocketLink} from 'apollo-link-ws'
 import {onError} from 'apollo-link-error'
 import {ApolloLink, split} from 'apollo-link'
 import {getMainDefinition} from 'apollo-utilities'
-import {GQL_API} from '@config/index'
+import {GQL_API} from '@config'
 import {logger} from '@lib/log'
 
 const log = logger.extend('gql')

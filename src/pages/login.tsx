@@ -1,6 +1,6 @@
 import LoginForm from '@components/form/LoginForm'
 import withPlatformRedirect from '@components/util/withPlatformRedirect'
-import Layout from '@components/organisms/Layout'
+import Layout from '@organism/Layout'
 import {withProvideAuth} from '@context/auth'
 
 const Login = () => (

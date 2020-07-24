@@ -1,5 +1,5 @@
 import SignupForm from '@components/form/SignupForm'
-import Layout from '@components/organisms/Layout'
+import Layout from '@organism/Layout'
 import withPlatformRedirect from '@components/util/withPlatformRedirect'
 import {withProvideAuth} from '@context/auth'
 

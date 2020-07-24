@@ -1,7 +1,7 @@
 import {LoginFormProps} from './config'
 import {ErrorMessage} from '@hookform/error-message'
-import Button from '@components/atoms/Button'
-import FormError from '@components/atoms/FormError'
+import Button from '@atom/Button'
+import FormError from '@atom/FormError'
 
 export default function LoginForm({
   inputs,

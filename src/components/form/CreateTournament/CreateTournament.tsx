@@ -1,9 +1,9 @@
-import Button from '@components/atoms/Button'
+import Button from '@atom/Button'
 import {ErrorMessage} from '@hookform/error-message'
 import {CreateTournamentMutationVariables} from '__generated__/graphql'
 import {UseFormMethods} from 'react-hook-form'
 import {UseInput} from '../types'
-import FormError from '@components/atoms/FormError'
+import FormError from '@atom/FormError'
 
 interface CreateTournamentProps {
   inputs: UseInput[]
