@@ -6,6 +6,10 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+          />
           <meta name="Description" content="Online tournaments." />
           <meta name="application-name" content="PWA App" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -15,17 +19,13 @@ export default class MyDocument extends Document {
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="theme-color" content="#000000" />
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-          />
-          <link rel="manifest" href="/manifest.json" />
-          <link rel="shortcut icon" href="/public/favicon.ico" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="PWA App" />
           <meta property="og:description" content="Best PWA App in the world" />
           <meta property="og:site_name" content="PWA App" />
           <meta property="og:url" content="https://web.playtwin.com" />
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
         <body>
           <Main />

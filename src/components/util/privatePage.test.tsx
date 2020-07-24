@@ -1,5 +1,5 @@
 import React from 'react'
-import withLogin from './withLogin'
+import privatePage from './privatePage'
 import Router from 'next/router'
 import ProvideAuth, {authStateFactory} from '@context/auth'
 import {render} from '@testing-library/react'
@@ -21,7 +21,7 @@ const mockAuthActions = {
 mockCreateAuthActions.mockImplementation(() => mockAuthActions)
 
 const MockedComponent = () => <div>Mock</div>
-const WithLogin = withLogin(MockedComponent)
+const WithLogin = privatePage(MockedComponent)
 
 test('it calls refresh if not initialized', async () => {
   const {container} = render(
@@ -30,7 +30,7 @@ test('it calls refresh if not initialized', async () => {
     </ProvideAuth>
   )
 
-  expect(container.textContent).toBe('loading...')
+  expect(container.textContent).toBe('')
   expect(mockAuthActions.refresh).toHaveBeenCalledTimes(1)
 })
 
@@ -41,7 +41,7 @@ test('it redirects if not logged in', async () => {
     </ProvideAuth>
   )
 
-  expect(container.textContent).toBe('loading...')
+  expect(container.textContent).toBe('')
   expect(mockRouterReplace).toHaveBeenCalledTimes(1)
 })
 

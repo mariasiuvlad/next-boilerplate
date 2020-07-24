@@ -1,9 +1,9 @@
 import {useEffect} from 'react'
 import Router from 'next/router'
-import Loading from '@atom/Loading'
 import {useAuth, useAuthActions} from '@context/auth'
+import Loading from '@atom/Loading'
 
-const withLogin = (WrappedComponent) => (props) => {
+const privatePage = (WrappedComponent) => (props) => {
   const {initialized, isLoggedIn} = useAuth()
   const {refresh} = useAuthActions()
 
@@ -17,7 +17,7 @@ const withLogin = (WrappedComponent) => (props) => {
     if (initialized && !isLoggedIn) Router.replace('/login')
   }, [initialized, isLoggedIn])
 
-  return !initialized || !isLoggedIn ? <Loading /> : <WrappedComponent {...props} />
+  return !initialized || !isLoggedIn ? <Loading size="large" /> : <WrappedComponent {...props} />
 }
 
-export default withLogin
+export default privatePage

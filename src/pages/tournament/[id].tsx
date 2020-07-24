@@ -2,9 +2,9 @@ import {useRouter} from 'next/router'
 import {TournamentInfoFragment, GetTournamentDocument} from '__generated__/graphql'
 import {initializeApollo} from '@lib/graphql/apolloClient'
 import {withProvideAuth} from '@context/auth'
-import withLogin from '@components/util/withLogin'
 import Loading from '@atom/Loading'
 import Layout from '@organism/Layout'
+import withSilentRefresh from '@components/util/withSilentRefresh'
 
 function TournamentPage({tournament}: {tournament: TournamentInfoFragment}) {
   const {isFallback} = useRouter()
@@ -57,4 +57,4 @@ export async function getStaticPaths() {
   }
 }
 
-export default withProvideAuth(withLogin(TournamentPage))
+export default withProvideAuth(withSilentRefresh(TournamentPage))

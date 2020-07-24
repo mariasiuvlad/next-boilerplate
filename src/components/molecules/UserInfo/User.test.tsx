@@ -15,7 +15,7 @@ test("it loads and renders the user's display name", async () => {
     </MockedProvider>
   )
   // test loading state
-  expect(wrapper.text()).toBe('loading...')
+  expect(wrapper.text()).toBe('')
 
   await act(async () => {
     await wait(0)
@@ -33,7 +33,7 @@ test('it handles errors', async () => {
     </MockedProvider>
   )
   // test loading state
-  expect(wrapper.text()).toBe('loading...')
+  expect(wrapper.text()).toBe('')
 
   await act(async () => {
     await wait(0)

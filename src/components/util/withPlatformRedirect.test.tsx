@@ -27,7 +27,7 @@ test('it calls refresh if not initialized', async () => {
   const Component = withProvideAuth(withPlatformRedirect(MockedComponent))
   const {container} = render(<Component />)
 
-  expect(container.textContent).toBe('loading...')
+  expect(container.textContent).toBe('')
   expect(mockAuthActions.refresh).toHaveBeenCalledTimes(1)
 })
 
@@ -47,6 +47,6 @@ test('it redirects if logged in', async () => {
       <WithPlatformRedirect />
     </ProvideAuth>
   )
-  expect(container.textContent).toBe('loading...')
+  expect(container.textContent).toBe('')
   expect(mockRouterReplace).toHaveBeenCalledTimes(1)
 })

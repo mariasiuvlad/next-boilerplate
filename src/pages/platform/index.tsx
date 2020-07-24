@@ -1,20 +1,20 @@
 import User from '@molecule/UserInfo'
-import Layout from '@organism/Layout'
+import {withLayout} from '@organism/Layout'
 import {withAuthApollo} from '@lib/graphql/GQLProvider'
-import withLogin from '@components/util/withLogin'
+import privatePage from '@components/util/privatePage'
 import CreateTournament from '@components/form/CreateTournament'
 import ListTournaments from '@organism/ListTournament'
 
+const Page = () => (
+  <div className="my-16 container max-w-2xl">
+    <User />
+    <ListTournaments />
+    <CreateTournament />
+  </div>
+)
+
 const DashboardPage = () => {
-  return (
-    <Layout>
-      <div className="my-16 container max-w-2xl">
-        <User />
-        <ListTournaments />
-        <CreateTournament />
-      </div>
-    </Layout>
-  )
+  return <Page />
 }
 
 /**
@@ -28,4 +28,4 @@ const DashboardPage = () => {
 //   return {props}
 // }
 
-export default withAuthApollo(withLogin(DashboardPage))
+export default withAuthApollo(withLayout(privatePage(DashboardPage)))
