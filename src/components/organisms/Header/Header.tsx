@@ -9,7 +9,9 @@ export default function Header({isLoggedIn, logout}) {
   return (
     <nav className={style.nav}>
       <Link href="/">
-        <Logo />
+        <a>
+          <Logo />
+        </a>
       </Link>
       <MenuPrimary menu={MainNavigation} />
       {!isLoggedIn ? (

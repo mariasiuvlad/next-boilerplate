@@ -1,11 +1,12 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @font-face {
   font-family: Gotham Rounded;
-  src: url('/fonts/GothamRnd-Medium.otf'), format('otf');
+  src: url('/fonts/GothamRnd-Medium.otf');
 }
+
+@tailwind components;
+@tailwind utilities;
 
 body {
   @apply font-medium;

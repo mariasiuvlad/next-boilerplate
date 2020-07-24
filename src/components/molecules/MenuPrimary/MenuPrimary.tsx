@@ -10,7 +10,7 @@ interface MenuPrimaryProps {
 }
 
 const Item = ({label, href, active}) => (
-  <li key={href} className={style.itemContainer}>
+  <li className={style.itemContainer}>
     <Link href={href}>
       <a className={[style.item, active && style.active].join(' ')}>{label}</a>
     </Link>
@@ -21,7 +21,7 @@ export default function MenuPrimary({menu, pathname}: MenuPrimaryProps) {
   return (
     <ul className={style.container}>
       {menu.map(({label, href}) => (
-        <Item active={href === pathname} label={label} href={href} key={href} />
+        <Item active={href === pathname} label={label} href={href} key={href + label} />
       ))}
     </ul>
   )

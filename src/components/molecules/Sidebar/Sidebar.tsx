@@ -8,7 +8,9 @@ export default function Sidebar() {
     <div className={style.container}>
       {SidebarNavigation.map(({href, icon}) => (
         <Link key={href + icon} href={href}>
-          <Icon name={icon} className={style.icon} />
+          <a>
+            <Icon name={icon} className={style.icon} />
+          </a>
         </Link>
       ))}
     </div>
