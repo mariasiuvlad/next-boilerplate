@@ -3,7 +3,7 @@ import Footer from '@molecule/Footer'
 import Sidebar from '@molecule/Sidebar'
 import style from './Layout.module.css'
 
-export default function Layout({children}) {
+function Layout({children}) {
   return (
     <div className={style.wrapper}>
       <Sidebar />
@@ -15,3 +15,5 @@ export default function Layout({children}) {
     </div>
   )
 }
+
+export default Layout

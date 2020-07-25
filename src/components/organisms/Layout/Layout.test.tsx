@@ -1,8 +1,9 @@
 import React from 'react'
-import {mount} from 'enzyme'
 import Layout from './Layout'
-import ProvideAuth, {authStateFactory} from '@context/auth'
+import ProvideAuth from '@context/auth'
 import {LoginResponseMock} from '__mocks__'
+import {render} from '@testing-library/react'
+import {AuthState} from '@context/auth/state'
 
 jest.mock('next/link', () => {
   return ({children}) => {
@@ -17,21 +18,22 @@ jest.mock('next/router', () => ({
 }))
 
 test('renders correctly when logged out', () => {
-  const wrapper = mount(
-    <ProvideAuth>
+  const {container} = render(
+    <ProvideAuth value={AuthState.Unauthenticated()}>
       <Layout>Mock Layout</Layout>
     </ProvideAuth>
   )
-  // renders logout button
-  expect(wrapper.find('main').text()).toBe('Mock Layout')
+  expect(container.textContent).not.toContain('logout')
+  expect(container.textContent).toContain('login')
+  expect(container.textContent).toContain('Mock Layout')
 })
 
 test('renders correctly when logged in', () => {
-  const wrapper = mount(
-    <ProvideAuth value={authStateFactory(LoginResponseMock, true)}>
+  const {container} = render(
+    <ProvideAuth value={AuthState.Authenticated(LoginResponseMock)}>
       <Layout>Mock Layout</Layout>
     </ProvideAuth>
   )
-  // renders logout button
-  expect(wrapper.find('main').text()).toBe('Mock Layout')
+  expect(container.textContent).toContain('logout')
+  expect(container.textContent).toContain('Mock Layout')
 })

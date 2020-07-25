@@ -1,10 +1,11 @@
 import React from 'react'
-import privatePage from './privatePage'
 import Router from 'next/router'
-import ProvideAuth, {authStateFactory} from '@context/auth'
+import ProvideAuth from '@context/auth'
 import {render} from '@testing-library/react'
 import createAuthActions from '@context/auth/actions'
 import {LoginResponseMock} from '__mocks__'
+import PrivateRoute from './PrivateRoute'
+import {AuthState} from '@context/auth/state'
 
 jest.mock('next/router')
 const mockRouterReplace = (Router.replace as jest.Mock).mockImplementationOnce(jest.fn())
@@ -20,13 +21,13 @@ const mockAuthActions = {
 
 mockCreateAuthActions.mockImplementation(() => mockAuthActions)
 
-const MockedComponent = () => <div>Mock</div>
-const WithLogin = privatePage(MockedComponent)
+const MockedComponent = () => <PrivateRoute render={() => <div>Mock</div>} />
+const WithLogin = MockedComponent
 
 test('it calls refresh if not initialized', async () => {
   const {container} = render(
     <ProvideAuth>
-      <WithLogin />
+      <PrivateRoute render={() => <div>Mock</div>} />
     </ProvideAuth>
   )
 
@@ -36,7 +37,7 @@ test('it calls refresh if not initialized', async () => {
 
 test('it redirects if not logged in', async () => {
   const {container} = render(
-    <ProvideAuth value={authStateFactory(null, true)}>
+    <ProvideAuth value={AuthState.Unauthenticated()}>
       <WithLogin />
     </ProvideAuth>
   )
@@ -47,7 +48,7 @@ test('it redirects if not logged in', async () => {
 
 test('it renders component if logged in', async () => {
   const {container} = render(
-    <ProvideAuth value={authStateFactory(LoginResponseMock, true)}>
+    <ProvideAuth value={AuthState.Authenticated(LoginResponseMock)}>
       <WithLogin />
     </ProvideAuth>
   )

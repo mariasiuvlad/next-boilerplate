@@ -75,7 +75,7 @@ export const SidebarNavigation: MenuItem[] = [
     icon: 'menu',
   },
   {
-    href: '#',
+    href: '/platform',
     icon: 'home',
   },
   {

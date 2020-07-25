@@ -1,5 +1,3 @@
-import {withProvideAuth} from '@context/auth'
-
 const Custom404 = () => {
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center bg-gray-700 text-white">
@@ -14,4 +12,4 @@ const Custom404 = () => {
   )
 }
 
-export default withProvideAuth(Custom404)
+export default Custom404

@@ -1,21 +1,18 @@
 import User from '@molecule/UserInfo'
-import {withLayout} from '@organism/Layout'
-import {withAuthApollo} from '@lib/graphql/GQLProvider'
-import privatePage from '@components/util/privatePage'
+import Layout from '@organism/Layout'
 import CreateTournament from '@components/form/CreateTournament'
 import ListTournaments from '@organism/ListTournament'
+import PrivateRoute from '@components/route/PrivateRoute'
 
-const Page = () => (
-  <div className="my-16 container max-w-2xl">
+const Dashboard = () => (
+  <div className="py-16 container max-w-2xl">
     <User />
     <ListTournaments />
     <CreateTournament />
   </div>
 )
 
-const DashboardPage = () => {
-  return <Page />
-}
+const DashboardPage = () => <PrivateRoute render={Dashboard} />
 
 /**
  * @example SSR auth and prefetch graphql data
@@ -28,4 +25,6 @@ const DashboardPage = () => {
 //   return {props}
 // }
 
-export default withAuthApollo(withLayout(privatePage(DashboardPage)))
+DashboardPage.getLayout = Layout
+
+export default DashboardPage

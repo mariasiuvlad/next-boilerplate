@@ -1,6 +1,4 @@
-import {withLayout} from '@organism/Layout'
-import {withProvideAuth} from '@context/auth'
-import withSilentRefresh from '@components/util/withSilentRefresh'
+import Layout from '@organism/Layout'
 
 const IndexPage = () => (
   <div className="flex flex-col items-center text-white mt-16">
@@ -9,4 +7,6 @@ const IndexPage = () => (
   </div>
 )
 
-export default withProvideAuth(withLayout(withSilentRefresh(IndexPage)))
+IndexPage.getLayout = Layout
+
+export default IndexPage

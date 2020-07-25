@@ -1,8 +1,15 @@
+import {NextPageContext} from 'next'
 import {initializeApollo} from '@lib/graphql/apolloClient'
 import {TJWTToken} from '@lib/api/auth/types'
 import * as AuthAPI from '@lib/api/auth'
-import {authStateFactory} from '@context/auth'
-import {NextPageContext} from 'next'
+import {AuthState} from '@context/auth/state'
+import {IProvideAuthState} from '@context/auth/types'
+import {NormalizedCacheObject} from 'apollo-cache-inmemory'
+
+export type ServerSideProps = {
+  initialAuthState: IProvideAuthState
+  initialApolloState: NormalizedCacheObject
+}
 
 /**
  * @description Refresh the token server side and set cookies on the response
@@ -33,7 +40,7 @@ export const refreshAuth = async (ctx, props = {}) => {
   const response = await refreshToken(ctx)
   return {
     ...props,
-    initialAuthState: authStateFactory(response, true),
+    initialAuthState: AuthState.Authenticated(response),
   }
 }
 

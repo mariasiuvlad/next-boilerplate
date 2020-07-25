@@ -1,19 +1,10 @@
 import {useState, createContext, useContext, useEffect, useRef} from 'react'
-import {TLoginResponseData} from '@lib/api/auth/types'
 import createAuthActions from './actions'
 import {IProvideAuthState, IProvideAuthActions, IProvideAuth} from './types'
 import {logger, useStateLogger} from '@lib/log'
+import {AuthState} from './state'
 
 const log = logger.extend('auth:context')
-
-export const authStateFactory = (
-  data: TLoginResponseData = null,
-  initialized = false
-): IProvideAuthState => ({
-  data,
-  initialized: !!data || initialized,
-  isLoggedIn: !!data,
-})
 
 const authContext = createContext<IProvideAuthState>(null)
 const authActionsContext = createContext<IProvideAuthActions>(null)
@@ -38,20 +29,17 @@ export function useProvideAuth(initial: IProvideAuthState): IProvideAuth {
   return {state, actions}
 }
 
-export default function ProvideAuth({children, value = authStateFactory()}) {
+export default function ProvideAuth({children, value = AuthState.Uninitialized()}) {
   const {state, actions} = useProvideAuth(value)
+
+  // attempt to refresh token
+  useEffect(() => {
+    if (!state.initialized) actions.refresh()
+  }, [])
+
   return (
     <authContext.Provider value={state}>
       <authActionsContext.Provider value={actions}>{children}</authActionsContext.Provider>
     </authContext.Provider>
   )
 }
-
-export const withProvideAuth = (Component) => ({
-  initialAuthState = authStateFactory(),
-  ...rest
-}) => (
-  <ProvideAuth value={initialAuthState}>
-    <Component {...rest} />
-  </ProvideAuth>
-)

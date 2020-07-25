@@ -1,10 +1,8 @@
 import {useRouter} from 'next/router'
 import {TournamentInfoFragment, GetTournamentDocument} from '__generated__/graphql'
 import {initializeApollo} from '@lib/graphql/apolloClient'
-import {withProvideAuth} from '@context/auth'
 import Loading from '@atom/Loading'
 import Layout from '@organism/Layout'
-import withSilentRefresh from '@components/util/withSilentRefresh'
 
 function TournamentPage({tournament}: {tournament: TournamentInfoFragment}) {
   const {isFallback} = useRouter()
@@ -12,29 +10,27 @@ function TournamentPage({tournament}: {tournament: TournamentInfoFragment}) {
     return <Loading />
   }
   return (
-    <Layout>
-      <div className="text-white my-4 flex flex-row items-end justify-between bg-gray-800 border border-gray-900 p-4 rounded-lg">
-        <div>
-          <h2 className="text-2xl">{tournament.title}</h2>
-          <p className="text-sm text-gray-500 mt-2">
-            <span className="text-white">{tournament.type} </span>
-            by <span className="text-yellow-500">{tournament.owner.display_name}</span>
-          </p>
-          <p className="text-sm">
-            {tournament.participants.length}/{tournament.participants_limit}
-          </p>
-          <div className="mt-8">
-            <h1 className="text-2xl mb-4 text-yellow-500">Participants</h1>
-            {tournament.participants.map(({user_id, user}) => (
-              <div key={user_id} className="flex flex-row items-center my-4">
-                <img className="w-16 h-16 rounded-full mr-8" src={user.avatar_url} />
-                <p>{user.display_name}</p>
-              </div>
-            ))}
-          </div>
+    <div className="text-white my-4 flex flex-row items-end justify-between bg-gray-800 border border-gray-900 p-4 rounded-lg">
+      <div>
+        <h2 className="text-2xl">{tournament.title}</h2>
+        <p className="text-sm text-gray-500 mt-2">
+          <span className="text-white">{tournament.type} </span>
+          by <span className="text-yellow-500">{tournament.owner.display_name}</span>
+        </p>
+        <p className="text-sm">
+          {tournament.participants.length}/{tournament.participants_limit}
+        </p>
+        <div className="mt-8">
+          <h1 className="text-2xl mb-4 text-yellow-500">Participants</h1>
+          {tournament.participants.map(({user_id, user}) => (
+            <div key={user_id} className="flex flex-row items-center my-4">
+              <img className="w-16 h-16 rounded-full mr-8" src={user.avatar_url} />
+              <p>{user.display_name}</p>
+            </div>
+          ))}
         </div>
       </div>
-    </Layout>
+    </div>
   )
 }
 
@@ -57,4 +53,6 @@ export async function getStaticPaths() {
   }
 }
 
-export default withProvideAuth(withSilentRefresh(TournamentPage))
+TournamentPage.getLayout = Layout
+
+export default TournamentPage
