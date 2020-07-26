@@ -130,6 +130,18 @@ export default function LoginForm({
 LoginForm.Config = Config
 ```
 
+Make sure to apply the configuration to the Form Component
+
+```tsx
+import * as Config from './config'
+// ...
+export default function LoginForm() {
+  // ...
+}
+// ...
+LoginForm.Config = Config
+```
+
 ## <a name="controls">Form controls</a>
 
 By default inputs are provided as an array
