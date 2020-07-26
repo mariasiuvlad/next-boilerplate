@@ -9,7 +9,7 @@ export interface SignupFormProps extends FormProps<SignupFormValues> {
   inputs: UseInput[]
 }
 
-export const EMAIL_CONFIG: InputConfig = {
+export const EmailConfig: InputConfig = {
   label: 'email',
   placeholder: 'email@example.com',
   type: 'email',
@@ -24,7 +24,7 @@ export const EMAIL_CONFIG: InputConfig = {
   },
 }
 
-export const PASSWORD_CONFIG: InputConfig = {
+export const PasswordConfig: InputConfig = {
   label: 'password',
   placeholder: 'Enter your password',
   type: 'password',

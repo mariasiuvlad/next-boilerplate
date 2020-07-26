@@ -4,7 +4,7 @@ import {TLoginRequestData} from '@lib/api/auth/types'
 import FormContainer from '../components/FormContainer'
 import LoginForm from './LoginForm'
 
-const LoginFormContainer = () => {
+export default function LoginFormContainer() {
   const {login} = useAuthActions()
   const callback = useCallback(async ({email, password}: TLoginRequestData) => {
     return login(email, password).catch(() => {
@@ -15,5 +15,3 @@ const LoginFormContainer = () => {
 
   return <FormContainer render={LoginForm} callback={callback} />
 }
-
-export default LoginFormContainer
