@@ -1,6 +1,6 @@
 import User from '@molecule/UserInfo'
 import Layout from '@organism/Layout'
-import CreateTournament from '@components/form/CreateTournament'
+import CreateTournament from '@components/form/CreateTournamentForm'
 import ListTournaments from '@organism/ListTournament'
 import PrivateRoute from '@components/route/PrivateRoute'
 

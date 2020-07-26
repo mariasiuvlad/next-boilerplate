@@ -1,3 +1,7 @@
 .wrapper {
-  @apply flex min-h-screen w-screen bg-gray-700;
+  @apply flex bg-gray-700 min-h-screen;
+}
+
+.container {
+  @apply flex flex-col flex-grow bg-gray-700;
 }

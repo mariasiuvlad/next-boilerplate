@@ -3,7 +3,6 @@ import Link from 'next/link'
 import {FooterLinks} from '@config'
 import Logo from '@atom/Logo'
 import Icon from '@atom/Icon'
-
 import style from './Footer.module.css'
 
 export default function Footer() {

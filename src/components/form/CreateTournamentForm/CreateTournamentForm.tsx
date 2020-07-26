@@ -1,15 +1,7 @@
 import Button from '@atom/Button'
 import {ErrorMessage} from '@hookform/error-message'
-import {CreateTournamentMutationVariables} from '__generated__/graphql'
-import {UseFormMethods} from 'react-hook-form'
-import {UseInput} from '../types'
 import FormError from '@atom/FormError'
-
-interface CreateTournamentProps {
-  inputs: UseInput[]
-  onSubmit(): void
-  form: UseFormMethods<CreateTournamentMutationVariables>
-}
+import * as Config from './config'
 
 export default function CreateTournament({
   inputs,
@@ -18,7 +10,7 @@ export default function CreateTournament({
     errors,
     formState: {isSubmitting},
   },
-}: CreateTournamentProps) {
+}: Config.CreateTournamentProps) {
   return (
     <form onSubmit={onSubmit}>
       <section className="mb-4 mt-16">
@@ -36,3 +28,5 @@ export default function CreateTournament({
     </form>
   )
 }
+
+CreateTournament.Config = Config
