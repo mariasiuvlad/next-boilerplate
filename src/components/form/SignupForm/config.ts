@@ -6,10 +6,7 @@ export interface SignupFormValues extends TRegisterRequestData {
 }
 
 export interface SignupFormProps extends FormProps<SignupFormValues> {
-  inputs: {
-    email: UseInput
-    password: UseInput
-  }
+  inputs: UseInput[]
 }
 
 export const EMAIL_CONFIG: InputConfig = {

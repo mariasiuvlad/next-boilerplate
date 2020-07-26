@@ -6,10 +6,7 @@ export interface LoginFormValues extends TLoginRequestData {
 }
 
 export interface LoginFormProps extends FormProps<LoginFormValues> {
-  inputs: {
-    email: UseInput
-    password: UseInput
-  }
+  inputs: UseInput[]
 }
 
 export const EMAIL_CONFIG: InputConfig = {

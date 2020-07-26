@@ -1,8 +1,16 @@
 import {
   Tournaments_Tournament_Status_Enum_Enum,
   Tournaments_Tournament_Type_Enum_Enum,
+  CreateTournamentMutationVariables,
 } from '__generated__/graphql'
-import {InputConfig} from '../types'
+import {InputConfig, UseInput} from '../types'
+import {UseFormMethods} from 'react-hook-form'
+
+export interface CreateTournamentProps {
+  inputs: UseInput[]
+  onSubmit(): void
+  form: UseFormMethods<CreateTournamentMutationVariables>
+}
 
 /** @TODO move somewhere else */
 const selectOptions = (sourceEnum: Record<string, string>) =>

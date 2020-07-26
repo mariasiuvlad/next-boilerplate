@@ -1,7 +1,7 @@
 import CreateTournament from './container'
 import {render, fireEvent, screen, waitFor} from '@testing-library/react'
 import {MockedProvider} from '@apollo/react-testing'
-import {CreateTournamentDocument} from '__generated__/graphql'
+import {CreateTournamentDocument, GetTournamentsDocument} from '__generated__/graphql'
 
 let mutationCalled = false
 
@@ -21,6 +21,11 @@ export const CreateTournamentMock = {
     mutationCalled = true
     return {data: {affected_rows: 1}}
   },
+}
+
+export const GetTournamentsMock = {
+  request: {query: GetTournamentsDocument, variables: {limit: 10, offset: 0}},
+  result: () => ({data: {}}),
 }
 
 const submit = () => fireEvent.submit(screen.getByRole('button'))
@@ -55,7 +60,7 @@ test('it renders', () => {
 
 test('it shows errors', async () => {
   const {getAllByRole} = render(
-    <MockedProvider mocks={[CreateTournamentMock]}>
+    <MockedProvider mocks={[CreateTournamentMock, GetTournamentsMock]}>
       <CreateTournament />
     </MockedProvider>
   )
@@ -65,7 +70,7 @@ test('it shows errors', async () => {
 
 test('it submits', async () => {
   const {queryAllByRole} = render(
-    <MockedProvider mocks={[CreateTournamentMock]}>
+    <MockedProvider mocks={[CreateTournamentMock, GetTournamentsMock]}>
       <CreateTournament />
     </MockedProvider>
   )
@@ -75,5 +80,5 @@ test('it submits', async () => {
   setEntryFee(100)
   submit()
   await waitFor(() => expect(queryAllByRole('alert')).toHaveLength(0))
-  expect(mutationCalled).toBe(true)
+  await waitFor(() => expect(mutationCalled).toBe(true))
 })

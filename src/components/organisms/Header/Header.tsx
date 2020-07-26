@@ -18,18 +18,18 @@ const Auth = ({isLoggedIn, logout}) =>
 export default function Header({initialized, isLoggedIn, logout}) {
   return (
     <nav className={style.nav}>
-      <div className="mx-16">
+      <div className="lg:mx-16">
         <Link href="/">
           <a>
             <Logo />
           </a>
         </Link>
       </div>
-      <div className="flex-grow">
+      <div className="flex-grow hidden lg:block">
         <MenuPrimary menu={MainNavigation} />
         <div className={style.spinner} />
       </div>
-      <div className="w-1/6 flex justify-center items-center">
+      <div className="flex justify-center items-center">
         {initialized ? <Auth isLoggedIn={isLoggedIn} logout={logout} /> : <AuthFallback />}
       </div>
     </nav>

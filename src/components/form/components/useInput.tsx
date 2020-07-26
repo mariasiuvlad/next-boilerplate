@@ -11,7 +11,7 @@ function createInput(config: InputConfig, ref) {
     case 'select':
       return <Select name={name} id={id} options={options} ref={ref} />
     default:
-      return <TextInput id={id} name={name} placeholder={placeholder} ref={ref} />
+      return <TextInput id={id} type={type} name={name} placeholder={placeholder} ref={ref} />
   }
 }
 

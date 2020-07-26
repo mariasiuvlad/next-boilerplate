@@ -7,7 +7,7 @@ function Layout({children}) {
   return (
     <div className={style.wrapper}>
       <Sidebar />
-      <div className="flex flex-col flex-grow">
+      <div className={style.container}>
         <Header />
         <main className="container flex-grow">{children}</main>
         <Footer />
