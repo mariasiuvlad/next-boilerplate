@@ -35,7 +35,7 @@ const wsLink = (jwtToken: string) =>
   // only create WebSocket link in the browser
   process.browser
     ? new WebSocketLink({
-        uri: `ws://localhost:8080/v1/graphql`,
+        uri: GQL_API.replace('https', 'ws'),
         options: {
           reconnect: true,
           connectionParams: {

@@ -52,13 +52,8 @@ export const JoinTournament = gql`
 `
 
 export const LeaveTournament = gql`
-  mutation LeaveTournament(
-    $tournament_id: uuid_comparison_exp = {}
-    $user_id: uuid_comparison_exp = {}
-  ) {
-    delete_tournaments_tournament_participants(
-      where: {_and: {tournament_id: $tournament_id, user_id: $user_id}}
-    ) {
+  mutation LeaveTournament($id: uuid = "") {
+    delete_tournaments_tournament_participants(where: {tournament_id: {_eq: $id}}) {
       affected_rows
     }
   }
