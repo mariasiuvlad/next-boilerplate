@@ -1,13 +1,22 @@
 import gql from 'graphql-tag'
 
 export const GET_USER = gql`
+  fragment UserInfo on users {
+    id
+    display_name
+    avatar_url
+    updated_at
+    created_at
+  }
   query GetUser {
     me {
-      id
-      display_name
-      avatar_url
-      updated_at
-      created_at
+      ...UserInfo
+    }
+  }
+
+  subscription WatchUser {
+    me {
+      ...UserInfo
     }
   }
 `

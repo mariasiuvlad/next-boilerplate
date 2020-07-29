@@ -8,7 +8,7 @@ import {logger} from '@lib/log'
 
 const log = logger.extend('gql')
 
-const authLink = (jwtToken: string) =>
+export const authLink = (jwtToken: string) =>
   new ApolloLink((operation, forward) => {
     if (jwtToken) {
       const headers = {Authorization: `Bearer ${jwtToken}`}
@@ -17,13 +17,16 @@ const authLink = (jwtToken: string) =>
     return forward(operation)
   })
 
-const errorLink = onError(({graphQLErrors, networkError}) => {
-  if (graphQLErrors)
-    graphQLErrors.forEach(({message, locations, path}) =>
-      log('[GraphQL error]: Message: %s, Location: %s, Path: %s', message, locations, path)
-    )
-  if (networkError) log('[Network error] %o', networkError)
-})
+export const errorLink = (errorHandler) =>
+  onError(({graphQLErrors, networkError}) => {
+    if (graphQLErrors)
+      graphQLErrors.forEach(({message, locations, path}) =>
+        log('[GraphQL error]: Message: %s, Location: %s, Path: %s', message, locations, path)
+      )
+    if (networkError) log('[Network error] %o', networkError)
+    errorHandler[graphQLErrors[0].extensions.code] &&
+      errorHandler[graphQLErrors[0].extensions.code]()
+  })
 
 const httpLink = new HttpLink({
   uri: GQL_API, // Server URL (must be absolute)
@@ -35,7 +38,7 @@ const wsLink = (jwtToken: string) =>
   // only create WebSocket link in the browser
   process.browser
     ? new WebSocketLink({
-        uri: GQL_API.replace('https', 'ws'),
+        uri: GQL_API.replace('http', 'ws'),
         options: {
           reconnect: true,
           connectionParams: {
@@ -47,7 +50,7 @@ const wsLink = (jwtToken: string) =>
       })
     : null
 
-const transportLink = (jwtToken: string) =>
+export const transportLink = (jwtToken: string) =>
   // only use WebSocket link in the browser
   process.browser
     ? split(
@@ -62,7 +65,3 @@ const transportLink = (jwtToken: string) =>
         httpLink
       )
     : httpLink
-
-export const createClientLink = (jwtToken: string) => {
-  return ApolloLink.from([errorLink, authLink(jwtToken), transportLink(jwtToken)])
-}

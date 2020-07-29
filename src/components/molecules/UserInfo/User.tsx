@@ -1,10 +1,10 @@
 import AvatarDropzone from '@atom/AvatarDropzone/AvatarDropzone'
 import Skeleton from '@atom/Skeleton'
-import {Users} from '__generated__/graphql'
 import style from './User.module.css'
+import {UserInfoFragment} from '__generated__/graphql'
 
 interface UserProps {
-  user: Partial<Users>
+  user: UserInfoFragment
   loading: boolean
 }
 

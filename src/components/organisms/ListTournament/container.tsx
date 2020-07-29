@@ -2,8 +2,10 @@ import {useCountTournamentsQuery, useGetTournamentsQuery} from '__generated__/gr
 import ListTournament from './ListTournament'
 
 export default function ListTournamentContainer() {
-  const {data, loading} = useGetTournamentsQuery({pollInterval: 60000})
+  const {data, loading, error} = useGetTournamentsQuery({pollInterval: 60000})
   const {data: count} = useCountTournamentsQuery({pollInterval: 60000})
+
+  if (error) return <div>{JSON.stringify(error)}</div>
 
   return (
     <ListTournament
