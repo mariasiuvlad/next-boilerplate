@@ -1,13 +1,13 @@
-import Header from '@components/organisms/Header'
-import Footer from '@components/molecules/Footer'
-import Sidebar from '@components/molecules/Sidebar'
+import Header from '@organism/Header'
+import Footer from '@molecule/Footer'
+import Sidebar from '@molecule/Sidebar'
 import style from './Layout.module.css'
 
-export default function Layout({children}) {
+function Layout({children}) {
   return (
     <div className={style.wrapper}>
       <Sidebar />
-      <div className="flex flex-col flex-grow">
+      <div className={style.container}>
         <Header />
         <main className="container flex-grow">{children}</main>
         <Footer />
@@ -15,3 +15,5 @@ export default function Layout({children}) {
     </div>
   )
 }
+
+export default Layout

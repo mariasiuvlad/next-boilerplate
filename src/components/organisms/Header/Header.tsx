@@ -1,22 +1,37 @@
 import Link from 'next/link'
 import {MainNavigation, AuthLinks} from '@config'
-import MenuPrimary from '@components/molecules/MenuPrimary'
-import Logo from '@components/atoms/Logo'
-import Button from '@components/atoms/Button'
+import MenuPrimary from '@molecule/MenuPrimary'
+import Logo from '@atom/Logo'
+import Button from '@atom/Button'
 import style from './Header.module.css'
+import Loading from '@atom/Loading'
 
-export default function Header({isLoggedIn, logout}) {
+const AuthFallback = () => <Loading size="small" />
+
+const Auth = ({isLoggedIn, logout}) =>
+  !isLoggedIn ? (
+    <MenuPrimary menu={AuthLinks} />
+  ) : (
+    <Button variant="outline" onClick={logout} label="logout" />
+  )
+
+export default function Header({initialized, isLoggedIn, logout}) {
   return (
     <nav className={style.nav}>
-      <Link href="/">
-        <Logo />
-      </Link>
-      <MenuPrimary menu={MainNavigation} />
-      {!isLoggedIn ? (
-        <MenuPrimary menu={AuthLinks} />
-      ) : (
-        <Button variant="outline" onClick={logout} label="logout" />
-      )}
+      <div className="lg:mx-16">
+        <Link href="/">
+          <a>
+            <Logo />
+          </a>
+        </Link>
+      </div>
+      <div className="flex-grow hidden lg:block">
+        <MenuPrimary menu={MainNavigation} />
+        <div className={style.spinner} />
+      </div>
+      <div className="flex justify-center items-center">
+        {initialized ? <Auth isLoggedIn={isLoggedIn} logout={logout} /> : <AuthFallback />}
+      </div>
     </nav>
   )
 }

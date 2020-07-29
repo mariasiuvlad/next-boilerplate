@@ -1,10 +1,11 @@
 import React from 'react'
-import {mount} from 'enzyme'
 import Button from './Button'
+import {fireEvent, screen, render} from '@testing-library/react'
+
+const onClick = jest.fn()
 
 test('fires callback', () => {
-  const onClick = jest.fn()
-  const wrapper = mount(<Button variant="outline" onClick={onClick} label="Test Button" />)
-  wrapper.find('button').simulate('click')
+  render(<Button onClick={onClick} label="Test Button" />)
+  fireEvent.click(screen.getByText('Test Button'))
   expect(onClick).toHaveBeenCalled()
 })

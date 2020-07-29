@@ -21,6 +21,10 @@ export const GetTournaments = gql`
     }
     participants {
       user_id
+      user {
+        display_name
+        avatar_url
+      }
     }
     entry_fee
     description

@@ -1,9 +1,9 @@
 import React from 'react'
-import {mount} from 'enzyme'
 import Error from './ErrorMessage'
+import {render} from '@testing-library/react'
 
 test('renders the error', () => {
-  const wrapper = mount(<Error error={{message: '<Error message>'}} />)
+  const {container} = render(<Error error={{message: '<Error message>'}} />)
   // renders logout button
-  expect(wrapper.find('pre').text()).toBe(JSON.stringify({message: '<Error message>'}))
+  expect(container.textContent).toBe('error: ' + JSON.stringify({message: '<Error message>'}))
 })

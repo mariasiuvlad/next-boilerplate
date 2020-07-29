@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from '@components/atoms/Icon'
+import Icon from '@atom/Icon'
 import style from './TextInput.module.css'
 
 interface TextInputProps {

@@ -5,7 +5,7 @@ import style from './Select.module.css'
 interface SelectProps {
   name: string
   id: string
-  options: SelectOption[]
+  options?: SelectOption[]
 }
 
 const Select = ({name, id, options = []}: SelectProps, ref: React.LegacyRef<HTMLSelectElement>) => {

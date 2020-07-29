@@ -1,17 +1,16 @@
-import {SignupFormProps} from './config'
 import {ErrorMessage} from '@hookform/error-message'
-import Button from '@components/atoms/Button'
-import FormError from '@components/atoms/FormError'
+import Button from '@atom/Button'
+import FormError from '@atom/FormError'
+import * as Config from './config'
 
-const SignupForm = ({
+export default function SignupForm({
   inputs,
   onSubmit,
   form: {
     errors,
     formState: {isSubmitting},
   },
-}: SignupFormProps) => {
-  const {email, password} = inputs
+}: Config.SignupFormProps) {
   return (
     <form className="bg-gray-800 rounded-lg p-8" onSubmit={onSubmit}>
       <h1 className="text-2xl text-white mb-8">Sign up to Playtwin</h1>
@@ -32,8 +31,11 @@ const SignupForm = ({
       <section className="mb-4">
         <ErrorMessage errors={errors} name="api" render={FormError} />
       </section>
-      <section className="mb-4">{email.Control}</section>
-      <section className="mb-4">{password.Control}</section>
+      {inputs.map((input) => (
+        <div className="my-4" key={input.name}>
+          {input.Control}
+        </div>
+      ))}
       <div className="flex items-center justify-center mt-8">
         <Button disabled={isSubmitting} variant="primary" label="Create Account" />
       </div>
@@ -41,4 +43,4 @@ const SignupForm = ({
   )
 }
 
-export default SignupForm
+SignupForm.Config = Config

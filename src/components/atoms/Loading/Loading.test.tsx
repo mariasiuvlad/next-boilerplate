@@ -1,9 +1,8 @@
 import React from 'react'
-import {mount} from 'enzyme'
 import Loading from './Loading'
+import {render} from '@testing-library/react'
 
 test('renders loading message', () => {
-  const wrapper = mount(<Loading />)
-  // renders logout button
-  expect(wrapper.text()).toBe('loading...')
+  const {container} = render(<Loading />)
+  expect(container.textContent).toBe('')
 })

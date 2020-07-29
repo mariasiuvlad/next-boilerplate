@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './Button.module.css'
-import Icon from '@components/atoms/Icon'
+import Icon from '@atom/Icon'
 
 export interface ButtonProps {
   label?: string

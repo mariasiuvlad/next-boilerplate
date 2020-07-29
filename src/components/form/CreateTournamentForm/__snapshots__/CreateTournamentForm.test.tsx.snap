@@ -1,0 +1,378 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <form>
+        <section
+          class="mb-4 mt-16"
+        />
+        <section
+          class="mb-8"
+        >
+          <h1
+            class="text-yellow-500 text-2xl text-center"
+          >
+            Create Tournament
+          </h1>
+          <div
+            class="my-4"
+          >
+            <label
+              class="label"
+              for="title"
+            >
+              title
+            </label>
+            <div
+              class="container"
+            >
+              <input
+                class="input"
+                id="title"
+                name="title"
+                placeholder="title"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="my-4"
+          >
+            <label
+              class="label"
+              for="type"
+            >
+              type
+            </label>
+            <select
+              class="select"
+              id="type"
+              name="type"
+            >
+              <option
+                class="p-8"
+                value="elimination"
+              >
+                elimination
+              </option>
+              <option
+                class="p-8"
+                value="group"
+              >
+                group
+              </option>
+            </select>
+          </div>
+          <div
+            class="my-4"
+          >
+            <label
+              class="label"
+              for="status"
+            >
+              status
+            </label>
+            <select
+              class="select"
+              id="status"
+              name="status"
+            >
+              <option
+                class="p-8"
+                value="in_progress"
+              >
+                in_progress
+              </option>
+            </select>
+          </div>
+          <div
+            class="my-4"
+          >
+            <label
+              class="label"
+              for="start_date"
+            >
+              start_date
+            </label>
+            <div
+              class="container"
+            >
+              <input
+                class="input"
+                id="start_date"
+                name="start_date"
+                placeholder="start_date"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="my-4"
+          >
+            <label
+              class="label"
+              for="participants_limit"
+            >
+              participants_limit
+            </label>
+            <div
+              class="container"
+            >
+              <input
+                class="input"
+                id="participants_limit"
+                name="participants_limit"
+                placeholder="participants_limit"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="my-4"
+          >
+            <label
+              class="label"
+              for="entry_fee"
+            >
+              entry_fee
+            </label>
+            <div
+              class="container"
+            >
+              <input
+                class="input"
+                id="entry_fee"
+                name="entry_fee"
+                placeholder="entry_fee"
+                type="text"
+              />
+            </div>
+          </div>
+        </section>
+        <button
+          class="button primary"
+        >
+          <span
+            class="label"
+          >
+            Create Tournament
+          </span>
+        </button>
+      </form>
+    </div>
+  </body>,
+  "container": <div>
+    <form>
+      <section
+        class="mb-4 mt-16"
+      />
+      <section
+        class="mb-8"
+      >
+        <h1
+          class="text-yellow-500 text-2xl text-center"
+        >
+          Create Tournament
+        </h1>
+        <div
+          class="my-4"
+        >
+          <label
+            class="label"
+            for="title"
+          >
+            title
+          </label>
+          <div
+            class="container"
+          >
+            <input
+              class="input"
+              id="title"
+              name="title"
+              placeholder="title"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          class="my-4"
+        >
+          <label
+            class="label"
+            for="type"
+          >
+            type
+          </label>
+          <select
+            class="select"
+            id="type"
+            name="type"
+          >
+            <option
+              class="p-8"
+              value="elimination"
+            >
+              elimination
+            </option>
+            <option
+              class="p-8"
+              value="group"
+            >
+              group
+            </option>
+          </select>
+        </div>
+        <div
+          class="my-4"
+        >
+          <label
+            class="label"
+            for="status"
+          >
+            status
+          </label>
+          <select
+            class="select"
+            id="status"
+            name="status"
+          >
+            <option
+              class="p-8"
+              value="in_progress"
+            >
+              in_progress
+            </option>
+          </select>
+        </div>
+        <div
+          class="my-4"
+        >
+          <label
+            class="label"
+            for="start_date"
+          >
+            start_date
+          </label>
+          <div
+            class="container"
+          >
+            <input
+              class="input"
+              id="start_date"
+              name="start_date"
+              placeholder="start_date"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          class="my-4"
+        >
+          <label
+            class="label"
+            for="participants_limit"
+          >
+            participants_limit
+          </label>
+          <div
+            class="container"
+          >
+            <input
+              class="input"
+              id="participants_limit"
+              name="participants_limit"
+              placeholder="participants_limit"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          class="my-4"
+        >
+          <label
+            class="label"
+            for="entry_fee"
+          >
+            entry_fee
+          </label>
+          <div
+            class="container"
+          >
+            <input
+              class="input"
+              id="entry_fee"
+              name="entry_fee"
+              placeholder="entry_fee"
+              type="text"
+            />
+          </div>
+        </div>
+      </section>
+      <button
+        class="button primary"
+      >
+        <span
+          class="label"
+        >
+          Create Tournament
+        </span>
+      </button>
+    </form>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -1,16 +1,14 @@
 import SignupForm from '@components/form/SignupForm'
-import Layout from '@components/organisms/Layout'
-import withPlatformRedirect from '@components/util/withPlatformRedirect'
-import {withProvideAuth} from '@context/auth'
+import Layout from '@organism/Layout'
 
-const RegisterPage = () => {
+const SignupPage = () => {
   return (
-    <Layout>
-      <div className="container max-w-md my-16">
-        <SignupForm />
-      </div>
-    </Layout>
+    <div className="container max-w-md my-16">
+      <SignupForm />
+    </div>
   )
 }
 
-export default withProvideAuth(withPlatformRedirect(RegisterPage))
+SignupPage.getLayout = Layout
+
+export default SignupPage

@@ -11,7 +11,7 @@
 }
 
 .input {
-  @apply bg-gray-700 p-4 w-full;
+  @apply bg-gray-700 p-4 w-full text-white;
 }
 
 .input:placeholder {

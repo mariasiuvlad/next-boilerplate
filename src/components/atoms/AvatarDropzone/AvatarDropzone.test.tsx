@@ -47,5 +47,5 @@ test('it uploads dropped files', async () => {
     target: {dataTransfer: {files}},
   })
 
-  await waitFor(() => expect(container.textContent).toMatch('loading...'))
+  await waitFor(() => expect(container.textContent).toBe(''))
 })

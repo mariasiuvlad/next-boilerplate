@@ -1,7 +1,7 @@
 import React from 'react'
-import {mount} from 'enzyme'
+import {render} from '@testing-library/react'
 
 test('Testing suite is set up correctly', () => {
-  const wrapper = mount(<p>Hello Jest!</p>)
-  expect(wrapper.text()).toMatch('Hello Jest!')
+  const {container} = render(<p>Hello Jest!</p>)
+  expect(container.textContent).toBe('Hello Jest!')
 })

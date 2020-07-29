@@ -7,54 +7,54 @@ export interface MenuItem {
 export const MainNavigation: MenuItem[] = [
   {
     label: 'games',
-    href: '/games',
+    href: '#',
   },
   {
     label: 'live play',
-    href: '/live',
+    href: '#',
   },
   {
     label: 'jackpot',
-    href: '/jackpot',
+    href: '#',
   },
   {
     label: 'chat',
-    href: '/chat',
+    href: '#',
   },
   {
     label: 'promotions',
-    href: '/promotions',
+    href: '#',
   },
   {
     label: 'news',
-    href: '/news',
+    href: '#',
   },
 ]
 
 export const FooterLinks: MenuItem[] = [
   {
     label: 'ABOUT',
-    href: '/',
+    href: '#',
   },
   {
     label: 'CONTACT',
-    href: '/',
+    href: '#',
   },
   {
     label: 'TERM OF USE',
-    href: '/',
+    href: '#',
   },
   {
     label: 'HELP',
-    href: '/',
+    href: '#',
   },
   {
     label: 'FAQ',
-    href: '/',
+    href: '#',
   },
   {
     label: 'PRIVACY POLICY',
-    href: '/',
+    href: '#',
   },
 ]
 
@@ -75,7 +75,7 @@ export const SidebarNavigation: MenuItem[] = [
     icon: 'menu',
   },
   {
-    href: '#',
+    href: '/platform',
     icon: 'home',
   },
   {

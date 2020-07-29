@@ -1,9 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-import {FooterLinks} from '@config/menus'
-import Logo from '@components/atoms/Logo'
-import Icon from '@components/atoms/Icon'
-
+import {FooterLinks} from '@config'
+import Logo from '@atom/Logo'
+import Icon from '@atom/Icon'
 import style from './Footer.module.css'
 
 export default function Footer() {
