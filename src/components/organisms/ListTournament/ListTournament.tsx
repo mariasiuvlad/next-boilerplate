@@ -1,6 +1,6 @@
-import {TournamentCard} from './TournamentCard'
 import Skeleton from '@atom/Skeleton'
 import Loading from '@atom/Loading'
+import TournamentCard from './TournamentCard'
 
 const Fallback = () => (
   <div className="mt-8">

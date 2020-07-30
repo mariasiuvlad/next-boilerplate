@@ -3516,16 +3516,6 @@
             "defaultValue": null
           },
           {
-            "name": "owner_id",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "uuid",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
             "name": "participants",
             "description": null,
             "type": {

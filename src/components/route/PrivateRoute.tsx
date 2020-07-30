@@ -1,5 +1,4 @@
-import {useEffect} from 'react'
-import React from 'react'
+import React, {useEffect} from 'react'
 import Router from 'next/router'
 import {useAuth} from '@context/auth'
 import Loading from '@atom/Loading'
