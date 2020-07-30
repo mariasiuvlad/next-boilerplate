@@ -10,7 +10,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject>
 type ApolloInitOptions = {
   initialState?: NormalizedCacheObject
   jwtToken?: string
-  errorHandler: Record<string, () => void>
+  errorHandler?: Record<string, () => void>
 }
 
 function createApolloClient(jwtToken = '', errorHandler?) {
