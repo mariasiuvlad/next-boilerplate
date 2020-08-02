@@ -3,6 +3,7 @@
     "email": "mariasiuvlad@gmail.com",
     "name": "Vlad Mariasiu"
   },
+  "license": "MIT",
   "name": "nextjs-boilerplate",
   "version": "0.1.0",
   "private": false,
