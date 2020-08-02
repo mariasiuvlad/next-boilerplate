@@ -6,7 +6,7 @@ interface AppProps {
   pageProps: unknown
 }
 
-export default function App({Component, pageProps}: AppProps): React.FC {
+export default function App({Component, pageProps}: AppProps): JSX.Element {
   return (
     <>
       <Head>
