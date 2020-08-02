@@ -3,10 +3,7 @@ const AppSourceDir = path.join(__dirname, '..', 'src')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
-  stories: [
-    '../stories/**/*.stories.(tsx|mdx)', // root stories folder
-    '../src/**/*.stories.(tsx|mdx)', // component stories
-  ],
+  stories: ['../src/**/*.stories.(tsx|mdx)'],
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-knobs/register',
