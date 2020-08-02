@@ -1,4 +1,4 @@
-const Custom404 = () => {
+const Custom404: React.FC = () => {
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center bg-gray-800 text-white">
       <h1 className="text-6xl mb-8">Wrong turn!</h1>

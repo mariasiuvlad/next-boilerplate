@@ -1,7 +1,12 @@
 import Head from 'next/head'
 import '../styles/global.css'
 
-export default function App({Component, pageProps}) {
+interface AppProps {
+  Component: React.FC
+  pageProps: unknown
+}
+
+export default function App({Component, pageProps}: AppProps): React.FC {
   return (
     <>
       <Head>

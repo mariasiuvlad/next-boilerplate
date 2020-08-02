@@ -20,8 +20,9 @@
     "codegen": "graphql-codegen --config codegen.yml --watch",
     "codegen:ci": "graphql-codegen --config codegen.yml",
     "codegen:update": "graphql-codegen --config codegen-update.js --watch",
-    "lint": "eslint '*/**/*.{js,ts,tsx}'",
-    "lint:ci": "eslint '*/**/*.{js,ts,tsx}' --quiet"
+    "lint": "eslint 'src/*/**/*.{js,jsx,ts,tsx}'",
+    "lint:ci": "eslint 'src/*/**/*.{js,jsx,ts,tsx}' --quiet",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
