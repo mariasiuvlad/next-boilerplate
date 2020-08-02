@@ -21,7 +21,6 @@ module.exports = {
   transformIgnorePatterns: ['/node_modules/', '^.+\\.module\\.(css|sass|scss)$'],
   moduleNameMapper: {
     '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
-    '\\.svg$': '<rootDir>/src/__mocks__/svgrMock.ts',
     '@lib/(.*)': '<rootDir>/src/lib/$1',
     '@store/(.*)': '<rootDir>/src/store/$1',
     '@context/(.*)': '<rootDir>/src/context/$1',

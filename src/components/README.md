@@ -7,14 +7,6 @@
 - `Component\Component.test.tsx` | unit test
 - `Component\Component.stories.tsx` | Storybook
 
-## Folders
-- `atoms` - smallest elements
-- `molecules` - composed form atoms
-- `organisms` - composed from molecules, atoms or other organisms
-- `from` - form related components
-- `route`
-
-
 # Workflow
 
 1. Create basic folder structure, minimal component

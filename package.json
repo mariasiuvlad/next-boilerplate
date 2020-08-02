@@ -1,17 +1,20 @@
 {
-  "name": "pt-web",
+  "author": {
+    "email": "mariasiuvlad@gmail.com",
+    "name": "Vlad Mariasiu"
+  },
+  "name": "nextjs-boilerplate",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
-    "dev": "next -p 9009",
+    "dev": "next",
     "build": "next build",
-    "serve": "NODE_ENV=production next start -p 8080",
-    "start": "./scripts/start.sh",
+    "serve": "next start",
     "test": "yarn jest",
     "test:ci": "yarn jest --ci --coverage",
     "test:coverage": "yarn jest --coverage",
-    "storybook": "IS_STORYBOOK=true start-storybook -s ./public -p 6006",
-    "storybook:build": "IS_STORYBOOK=true build-storybook -s ./public  -c .storybook -o .out",
+    "storybook": "start-storybook -s ./public -p 6006",
+    "storybook:build": "build-storybook -s ./public  -c .storybook -o .out",
     "storybook:serve": "npx http-server .out",
     "codegen": "graphql-codegen --config codegen.js --watch",
     "codegen:ci": "graphql-codegen --config codegen.js",

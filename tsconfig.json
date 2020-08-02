@@ -15,18 +15,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": "./src",
-    "paths": {
-      "@lib/*": ["lib/*"],
-      "@store/*": ["store/*"],
-      "@context/*": ["context/*"],
-      "@atom/*": ["components/atoms/*"],
-      "@molecule/*": ["components/molecules/*"],
-      "@organism/*": ["components/organisms/*"],
-      "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"],
-      "@config": ["config/index"],
-      "@assets/*": ["assets/*"]
-    }
+    "paths": {}
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "custom.d.ts", "**/*.ts", "**/*.tsx"]

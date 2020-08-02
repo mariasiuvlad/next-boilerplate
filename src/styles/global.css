@@ -8,11 +8,3 @@
 
 @tailwind components;
 @tailwind utilities;
-
-body {
-  @apply font-medium;
-}
-
-pre {
-  @apply overflow-x-auto break-words;
-}

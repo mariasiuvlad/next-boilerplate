@@ -1,4 +1,5 @@
 import {addons} from '@storybook/addons'
 import {themes} from '@storybook/theming'
 
-addons.setConfig({theme: themes.dark})
+/** enable dark theme */
+// addons.setConfig({theme: themes.dark})

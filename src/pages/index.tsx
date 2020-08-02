@@ -1,12 +1,10 @@
-import Layout from '@organism/Layout'
-
 const IndexPage = () => (
-  <div className="flex flex-col items-center text-white mt-4 lg:mt-16">
-    <h1 className="text-3xl mb-4">Landing Page</h1>
-    <h2>Coming soon...</h2>
+  <div className="h-screen w-screen">
+    <div className="flex flex-col h-full w-full items-center justify-center bg-gray-800 text-white">
+      <h1 className="text-6xl mb-8">Landing Page</h1>
+      <h2 className="text-4xl">Coming soon...</h2>
+    </div>
   </div>
 )
-
-IndexPage.getLayout = Layout
 
 export default IndexPage

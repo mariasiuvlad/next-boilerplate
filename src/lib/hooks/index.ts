@@ -1,1 +1,0 @@
-export {useAvatarUpload} from './useAvatarUpload'

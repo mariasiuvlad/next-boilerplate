@@ -9,21 +9,17 @@ import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../tailwind.config.js'
 const fullConfig = resolveConfig(tailwindConfig)
 
+/** backgrounds */
 addParameters({
   backgrounds: [
-    {
-      name: 'dark',
-      value: fullConfig.theme.colors.gray[700],
-      default: true,
-    },
+    {name: 'dark', value: fullConfig.theme.colors.gray[700]},
     {name: 'light', value: fullConfig.theme.colors.gray[300]},
   ],
 })
 
-addParameters({
-  options: {
-    theme: themes.dark,
-  },
-})
-
-addDecorator((storyFn) => <div className="p-10 flex justify-center">{storyFn()}</div>)
+/** enable dark theme for addons */
+// addParameters({
+//   options: {
+//     theme: themes.dark,
+//   },
+// })

@@ -52,7 +52,14 @@ module.exports = {
           loader: 'css-loader',
           options: {modules: {auto: true}, importLoaders: 1},
         },
-        'postcss-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            config: {
+              path: '.storybook/',
+            },
+          },
+        },
       ],
     })
 
